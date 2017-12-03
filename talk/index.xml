@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Recent &amp; Upcoming Talks on </title>
+    <link>https://aranega.github.io/talk/</link>
+    <description>Recent content in Recent &amp; Upcoming Talks on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Vincent Aranega</copyright>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/talk/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>MDE Collaboration: Temporality and Ergonomy in the Cloud, the GenMyModel Solution</title>
+      <link>https://aranega.github.io/talk/commitmde-talk/</link>
+      <pubDate>Tue, 04 Oct 2016 16:00:00 +0200</pubDate>
+      
+      <guid>https://aranega.github.io/talk/commitmde-talk/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
