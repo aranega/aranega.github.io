@@ -8,7 +8,82 @@
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Vincent Aranega</copyright>
     <lastBuildDate>Wed, 20 Apr 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/home/" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://aranega.github.io/home/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://aranega.github.io/home/about/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://aranega.github.io/home/about/</guid>
+      <description>I am currently R&amp;amp;D project manager at Axellience, startup created in 2012 by Alexis Muller and editor of the GenMyModel platform. From 2011 to 2012, I had a one-year position as researcher/lecturer at the University of Technology of Lille 1 (IUT) where I worked with Anne Etien on automatic model transformation chaining using static analysis and product lines. Before that, I obtained a PhD degree from the University of Lille 1 in the DaRT research team at INRIA Lille with Anne Etien and Professor Jean-Luc Dekeyser where I worked on model debugging/profiling and MDE compilation chain debugging, using traceability.</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://aranega.github.io/home/projects/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://aranega.github.io/home/projects/</guid>
+      <description> GenMyModel: MDE for and in the Cloud, online collaborative modeler and MDE tools in the Cloud. Geppetto: MDE based engine and simulator for biological system modeling for the OpenWorm project Gaspard: modeling, simulation and code generation of SoC applications and hardware architectures.  </description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>https://aranega.github.io/home/publications/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://aranega.github.io/home/publications/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Invited Talks</title>
+      <link>https://aranega.github.io/home/talks/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://aranega.github.io/home/talks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Teaching</title>
+      <link>https://aranega.github.io/home/teaching/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://aranega.github.io/home/teaching/</guid>
+      <description>Since the beginning of my PhD, I&amp;rsquo;m an assistant teacher. I have given courses to the University Lille 1 from 2008 to 2011, the University Institute of Technology of Lille 1 from 2011 to 2012, and since 2012, I teach to Polytech&amp;rsquo;Lille (Engineer School):
+ Polytech&amp;rsquo;Lille  Model Driven Engineering Advanced C Programming System Programming Language &amp;amp; Compiler Computer/System Architecture Low-Level Architecture Shell Programming  IUT of Lille 1:  Computer Architecture/Assembly Programming C Programming Advanced Data Structures Computer Sciences Basics  University of Lille 1:  Functionnal Programming Operating System Architecture Advanced Database C Programming   Service details (partially in French)</description>
+    </item>
+    
+    <item>
+      <title>Services</title>
+      <link>https://aranega.github.io/home/services/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://aranega.github.io/home/services/</guid>
+      <description> Reviewer for the journal IEEE Software: Collaborative Modeling in Software Engineering PC Member for CommitMDE 2016 and CommitMDE 2017 Subreviewer for:  journal: ISI, special edition: &amp;ldquo;Développement des Systèmes d’Information à base de modèles : exigences, traçabilité et co-conception&amp;rdquo; conferences &amp;amp; workshops: ECMFA&amp;rsquo;10, ECMFA&amp;rsquo;11, ECMFA&amp;rsquo;12, GTTSE&amp;rsquo;12, INFORSID&amp;rsquo;12, CommitMDE&amp;rsquo;16, CommitMDE&amp;rsquo;17  From 2012, redaction of yearly reports for French national Research tax credit Participating to the organization of the &amp;ldquo;journées IDM &amp;amp; GDR-GPL 2011&amp;rdquo; Participating to the organization of the DSD/SEAA 2010 conference  </description>
+    </item>
+    
+    <item>
+      <title>Softwares</title>
+      <link>https://aranega.github.io/home/softwares/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://aranega.github.io/home/softwares/</guid>
+      <description>PyEcore: a Python implementation of the Eclipse Modeling Framework (EMF/Ecore). This implementation is compatible with the Java version through XMI and JSON export. This implementation is used to explore contributions of dynamic languages for MDE: @runtime behavior, model-to-model transformation, code generation, parsing and bridge between textual syntaxes, self-modifying metamodels. pygeppetto: Python implementation of the Geppetto metamodel for biological modeling. GenMyModel: the first online collaborative MDE platform. Catsoolang: a dynamically typed DSL for rapid model scripting (integrated in GenMyModel).</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>https://aranega.github.io/home/contact/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://aranega.github.io/home/contact/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
