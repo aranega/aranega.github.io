@@ -1,0 +1,24 @@
+# ----- REMOVE LINES ABOVE HERE --------------------------
+#
+# This license is valid from Mon May 30 07:51:18 GMT+00:00 2011.
+#
+# This is license NODELOCKED to HOSTID=ANY;
+# there is no need to run lmgrd for this license.
+#
+#
+# This is a permanent license generated on Mon May 30 07:51:18 GMT+00:00 2011
+INCREMENT Web_Package xilinxd 2012.05 permanent uncounted \
+BAF1336D301F \
+VENDOR_STRING=jean-luc.dekeyser@Lifl.fr,Web_Package,software,permanent,_205238990_0_0_579 \
+HOSTID=ANY ISSUER="Xilinx Inc" START=30-May-2011 TS_OK
+#
+#
+# ----------------------------------------------------------------------
+#  The following PACKAGE definition is a REQUIRED part of this license:
+#
+PACKAGE Web_Package xilinxd 2012.05 C7EA8C0AA2AD \
+COMPONENTS="PlanAhead WebPACK" OPTIONS=SUITE
+#
+# ------------------------------------------------------------------------------
+#
+# ----- REMOVE LINES BELOW HERE --------------------------
