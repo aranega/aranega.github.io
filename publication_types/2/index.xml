@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2 | </title>
+    <link>/publication_types/2/</link>
+      <atom:link href="/publication_types/2/index.xml" rel="self" type="application/rss+xml" />
+    <description>2</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 01 Jan 2015 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>2</title>
+      <link>/publication_types/2/</link>
+    </image>
+    
+    <item>
+      <title>Towards an automation of the mutation analysis dedicated to model transformation</title>
+      <link>/publication/stvr15/</link>
+      <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
+      <guid>/publication/stvr15/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Integrating Profiling into MDE Compilers</title>
+      <link>/publication/ijsea14/</link>
+      <pubDate>Tue, 01 Jul 2014 00:00:00 +0000</pubDate>
+      <guid>/publication/ijsea14/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using an Alternative Trace for QVT</title>
+      <link>/publication/eceasst/</link>
+      <pubDate>Sat, 01 Jan 2011 00:00:00 +0000</pubDate>
+      <guid>/publication/eceasst/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

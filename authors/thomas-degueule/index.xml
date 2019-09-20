@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thomas Degueule | </title>
+    <link>/authors/thomas-degueule/</link>
+      <atom:link href="/authors/thomas-degueule/index.xml" rel="self" type="application/rss+xml" />
+    <description>Thomas Degueule</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 01 Jan 2015 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>Thomas Degueule</title>
+      <link>/authors/thomas-degueule/</link>
+    </image>
+    
+    <item>
+      <title>Towards an automation of the mutation analysis dedicated to model transformation</title>
+      <link>/publication/stvr15/</link>
+      <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
+      <guid>/publication/stvr15/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
