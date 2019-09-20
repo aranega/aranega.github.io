@@ -19,37 +19,25 @@
       <guid>/teaching/</guid>
       <description>&lt;p&gt;Since the beginning of my PhD, I&amp;rsquo;m an assistant teacher. I have given courses to
 the &lt;a href=&#34;http://www.univ-lille1.fr/&#34; target=&#34;_blank&#34;&gt;University Lille 1&lt;/a&gt; from 2008 to 2011, the &lt;a href=&#34;http://www.iut.univ-lille1.fr/&#34; target=&#34;_blank&#34;&gt;University Institute of Technology of
-Lille 1&lt;/a&gt; from 2011 to 2012, and since 2012, I teach to &lt;a href=&#34;http://www.polytech-lille.fr/ecole-d-ingenieurs.html&#34; target=&#34;_blank&#34;&gt;Polytech&amp;rsquo;Lille&lt;/a&gt; (Engineer School):&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Polytech&amp;rsquo;Lille
-
-&lt;ul&gt;
-&lt;li&gt;Model Driven Engineering&lt;/li&gt;
-&lt;li&gt;Advanced C Programming&lt;/li&gt;
-&lt;li&gt;System Programming&lt;/li&gt;
-&lt;li&gt;Language &amp;amp; Compiler&lt;/li&gt;
-&lt;li&gt;Computer/System Architecture&lt;/li&gt;
-&lt;li&gt;Low-Level Architecture&lt;/li&gt;
-&lt;li&gt;Shell Programming&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;IUT of Lille 1:
-
-&lt;ul&gt;
-&lt;li&gt;Computer Architecture/Assembly Programming&lt;/li&gt;
-&lt;li&gt;C Programming&lt;/li&gt;
-&lt;li&gt;Advanced Data Structures&lt;/li&gt;
-&lt;li&gt;Computer Sciences Basics&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;University of Lille 1:
-
-&lt;ul&gt;
-&lt;li&gt;Functionnal Programming&lt;/li&gt;
-&lt;li&gt;Operating System Architecture&lt;/li&gt;
-&lt;li&gt;Advanced Database&lt;/li&gt;
-&lt;li&gt;C Programming&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
+Lille 1&lt;/a&gt; from 2011 to 2012, and since 2012, I teach to &lt;a href=&#34;http://www.polytech-lille.fr/ecole-d-ingenieurs.html&#34; target=&#34;_blank&#34;&gt;Polytech&amp;rsquo;Lille&lt;/a&gt; (Engineer School):
+- Polytech&amp;rsquo;Lille
+  - Model Driven Engineering
+  - Advanced C Programming
+  - System Programming
+  - Language &amp;amp; Compiler
+  - Computer/System Architecture
+  - Low-Level Architecture
+  - Shell Programming
+- IUT of Lille 1:
+  - Computer Architecture/Assembly Programming
+  - C Programming
+  - Advanced Data Structures
+  - Computer Sciences Basics
+- University of Lille 1:
+  - Functionnal Programming
+  - Operating System Architecture
+  - Advanced Database
+  - C Programming&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;teaching&#34; target=&#34;_blank&#34;&gt;Service details (in French)&lt;/a&gt;&lt;/p&gt;
 </description>
@@ -85,6 +73,64 @@ Lille 1&lt;/a&gt; from 2011 to 2012, and since 2012, I teach to &lt;a href=&#34;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/post/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Ressources</title>
+      <link>/courses/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/courses/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_c3p_paradigme_de_programmation_par_la_pratique&#34;&gt;C3P - Paradigme de Programmation par la Pratique&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;sect2&#34;&gt;
+&lt;h3 id=&#34;_supports_de_cours_et_de_tps&#34;&gt;Supports de cours et de TPs&lt;/h3&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/01-intro.pdf&#34;&gt;Introduction&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/04-OCaml.pdf&#34;&gt;Programmation Fonctionnelle avec OCaml&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;ulist&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/01-TP-ocaml.pdf&#34;&gt;TP1 - Premières fonctions&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/02-TP-ocaml.pdf&#34;&gt;TP2 - Listes, fonctions sur les listes&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect2&#34;&gt;
+&lt;h3 id=&#34;_liens_et_ressources_externes&#34;&gt;Liens et ressources externes&lt;/h3&gt;
+&lt;div class=&#34;sect3&#34;&gt;
+&lt;h4 id=&#34;_ocaml&#34;&gt;OCaml&lt;/h4&gt;
+&lt;div class=&#34;ulist&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://caml.inria.fr/pub/docs/manual-ocaml/index.html&#34;&gt;Documentation OCaml&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://dev.realworldocaml.org/toc.html&#34;&gt;Real World OCaml&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://ounit.forge.ocamlcore.org/api-ounit/index.html&#34;&gt;OUnit User Guide&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://nealford.com/functionalthinking.html&#34;&gt;Functional Thinking&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
   </channel>
