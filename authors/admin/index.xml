@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <link>/authors/admin/</link>
+      <atom:link href="/authors/admin/index.xml" rel="self" type="application/rss+xml" />
+    <description></description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 01 Jan 2015 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title></title>
+      <link>/authors/admin/</link>
+    </image>
+    
+    <item>
+      <title>Towards an automation of the mutation analysis dedicated to model transformation</title>
+      <link>/publication/stvr15/</link>
+      <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
+      <guid>/publication/stvr15/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Integrating Profiling into MDE Compilers</title>
+      <link>/publication/ijsea14/</link>
+      <pubDate>Tue, 01 Jul 2014 00:00:00 +0000</pubDate>
+      <guid>/publication/ijsea14/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GenMyModel : An Online UML Case Tool</title>
+      <link>/publication/ecoop13/</link>
+      <pubDate>Tue, 01 Jan 2013 00:00:00 +0000</pubDate>
+      <guid>/publication/ecoop13/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using Feature Model to Build Model Transformation Chains</title>
+      <link>/publication/models12/</link>
+      <pubDate>Mon, 01 Oct 2012 00:00:00 +0000</pubDate>
+      <guid>/publication/models12/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Chaining Model Transformations</title>
+      <link>/publication/amt12/</link>
+      <pubDate>Sun, 01 Jan 2012 00:00:00 +0000</pubDate>
+      <guid>/publication/amt12/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Enabling Traceability in an MDE Approach to Improve Performance of GPU Applications</title>
+      <link>/publication/rr11/</link>
+      <pubDate>Mon, 01 Aug 2011 00:00:00 +0000</pubDate>
+      <guid>/publication/rr11/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using Trace to Situate Errors in Model Transformations</title>
+      <link>/publication/sdt11/</link>
+      <pubDate>Fri, 01 Apr 2011 00:00:00 +0000</pubDate>
+      <guid>/publication/sdt11/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using an Alternative Trace for QVT</title>
+      <link>/publication/eceasst/</link>
+      <pubDate>Sat, 01 Jan 2011 00:00:00 +0000</pubDate>
+      <guid>/publication/eceasst/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Traceability for Mutation Analysis in Model Transformation</title>
+      <link>/publication/modevva10b/</link>
+      <pubDate>Fri, 01 Oct 2010 00:00:00 +0000</pubDate>
+      <guid>/publication/modevva10b/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using an Alternative Trace for QVT</title>
+      <link>/publication/mpm10/</link>
+      <pubDate>Fri, 01 Oct 2010 00:00:00 +0000</pubDate>
+      <guid>/publication/mpm10/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using Traceability to Enhance Mutation Analysis Dedicated to Model Transformation</title>
+      <link>/publication/modevva10/</link>
+      <pubDate>Fri, 01 Oct 2010 00:00:00 +0000</pubDate>
+      <guid>/publication/modevva10/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Traceability mechanism for error localization in model transformation</title>
+      <link>/publication/icsoft09/</link>
+      <pubDate>Wed, 01 Jul 2009 00:00:00 +0000</pubDate>
+      <guid>/publication/icsoft09/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Modeling Uncertain and Imprecise Information in Process Modeling with UML</title>
+      <link>/publication/comad08/</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
+      <guid>/publication/comad08/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
