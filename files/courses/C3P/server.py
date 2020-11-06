@@ -18,7 +18,7 @@ class NotSameRoomException(Exception):
     pass
 
 
-@app.route("/connect")
+@app.route("/connect", methods=["POST"])
 def connect():
     result = {
         "guid": uuid,
