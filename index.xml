@@ -5,12 +5,36 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description></description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 01 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 01 Feb 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/img/icon-192.png</url>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title></title>
       <link>/</link>
     </image>
+    
+    <item>
+      <title>Sub-method, partial behavioral reflection with Reflectivity: Looking back on 10 years of use</title>
+      <link>/publication/programming-20/</link>
+      <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/programming-20/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Illicium A modular transpilation toolchain from Pharo to C</title>
+      <link>/publication/iwst-19/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>/publication/iwst-19/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sindarin: A Versatile Scripting API for the Pharo Debugger</title>
+      <link>/publication/sdl-19/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>/publication/sdl-19/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Teaching</title>
@@ -18,174 +42,153 @@
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
       <guid>/teaching/</guid>
       <description>&lt;p&gt;Since the beginning of my PhD, I&amp;rsquo;m an assistant teacher. I have given courses to
-the &lt;a href=&#34;http://www.univ-lille1.fr/&#34; target=&#34;_blank&#34;&gt;University Lille 1&lt;/a&gt; from 2008 to 2011, the &lt;a href=&#34;http://www.iut.univ-lille1.fr/&#34; target=&#34;_blank&#34;&gt;University Institute of Technology of
-Lille 1&lt;/a&gt; from 2011 to 2012, and since 2012, I teach to &lt;a href=&#34;http://www.polytech-lille.fr/ecole-d-ingenieurs.html&#34; target=&#34;_blank&#34;&gt;Polytech&amp;rsquo;Lille&lt;/a&gt; (Engineer School):
-- Polytech&amp;rsquo;Lille
-  - Model Driven Engineering
-  - Advanced C Programming
-  - System Programming
-  - Language &amp;amp; Compiler
-  - Computer/System Architecture
-  - Low-Level Architecture
-  - Shell Programming
-- IUT of Lille 1:
-  - Computer Architecture/Assembly Programming
-  - C Programming
-  - Advanced Data Structures
-  - Computer Sciences Basics
-- University of Lille 1:
-  - Functionnal Programming
-  - Operating System Architecture
-  - Advanced Database
-  - C Programming&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;teaching&#34; target=&#34;_blank&#34;&gt;Service details (in French)&lt;/a&gt;&lt;/p&gt;
+the &lt;a href=&#34;http://www.univ-lille1.fr/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University Lille 1&lt;/a&gt; from 2008 to 2011, the &lt;a href=&#34;http://www.iut.univ-lille1.fr/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University Institute of Technology of
+Lille 1&lt;/a&gt; from 2011 to 2012, and since 2012, I teach to &lt;a href=&#34;http://www.polytech-lille.fr/ecole-d-ingenieurs.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Polytech&amp;rsquo;Lille&lt;/a&gt; (Engineer School):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Polytech&amp;rsquo;Lille
+&lt;ul&gt;
+&lt;li&gt;Model Driven Engineering&lt;/li&gt;
+&lt;li&gt;Advanced C Programming&lt;/li&gt;
+&lt;li&gt;System Programming&lt;/li&gt;
+&lt;li&gt;Language &amp;amp; Compiler&lt;/li&gt;
+&lt;li&gt;Computer/System Architecture&lt;/li&gt;
+&lt;li&gt;Low-Level Architecture&lt;/li&gt;
+&lt;li&gt;Shell Programming&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;IUT of Lille:
+&lt;ul&gt;
+&lt;li&gt;Computer Architecture/Assembly Programming&lt;/li&gt;
+&lt;li&gt;C Programming&lt;/li&gt;
+&lt;li&gt;Advanced Data Structures&lt;/li&gt;
+&lt;li&gt;Computer Sciences Basics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;University of Lille:
+&lt;ul&gt;
+&lt;li&gt;Functionnal Programming&lt;/li&gt;
+&lt;li&gt;Operating System Architecture&lt;/li&gt;
+&lt;li&gt;Advanced Database&lt;/li&gt;
+&lt;li&gt;C Programming&lt;/li&gt;
+&lt;li&gt;Programming Langages Paradigmes&lt;/li&gt;
+&lt;li&gt;Metamodeling&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;teaching&#34;&gt;Service details (in French)&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>Recent &amp; Upcoming Talks</title>
-      <link>/talk/</link>
+      <title>MDE Collaboration: Temporality and Ergonomy in the Cloud, the GenMyModel Solution</title>
+      <link>/talk/commitmde-talk/</link>
       <pubDate>Tue, 04 Oct 2016 16:00:00 +0000</pubDate>
-      <guid>/talk/</guid>
+      <guid>/talk/commitmde-talk/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Publications</title>
-      <link>/publication/</link>
+      <title>Towards an automation of the mutation analysis dedicated to model transformation</title>
+      <link>/publication/stvr15/</link>
       <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
-      <guid>/publication/</guid>
+      <guid>/publication/stvr15/</guid>
       <description></description>
     </item>
     
     <item>
-      <title></title>
-      <link></link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid></guid>
+      <title>Integrating Profiling into MDE Compilers</title>
+      <link>/publication/ijsea14/</link>
+      <pubDate>Tue, 01 Jul 2014 00:00:00 +0000</pubDate>
+      <guid>/publication/ijsea14/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Posts</title>
-      <link>/post/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/post/</guid>
+      <title>GenMyModel : An Online UML Case Tool</title>
+      <link>/publication/ecoop-13/</link>
+      <pubDate>Tue, 01 Jan 2013 00:00:00 +0000</pubDate>
+      <guid>/publication/ecoop-13/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Ressources</title>
-      <link>/courses/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/courses/</guid>
-      <description>&lt;div class=&#34;sect1&#34;&gt;
-&lt;h2 id=&#34;_c3p_paradigme_de_programmation_par_la_pratique&#34;&gt;C3P - Paradigme de Programmation par la Pratique&lt;/h2&gt;
-&lt;div class=&#34;sectionbody&#34;&gt;
-&lt;div class=&#34;sect2&#34;&gt;
-&lt;h3 id=&#34;_supports_de_cours_et_de_tps&#34;&gt;Supports de cours et de TPs&lt;/h3&gt;
-&lt;div class=&#34;olist arabic&#34;&gt;
-&lt;ol class=&#34;arabic&#34;&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/01-intro.pdf&#34;&gt;Introduction&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/04-OCaml.pdf&#34;&gt;Programmation Fonctionnelle avec OCaml&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&#34;ulist&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/01-TP-ocaml.pdf&#34;&gt;TP1 - Premières fonctions&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/02-TP-ocaml.pdf&#34;&gt;TP2 - Listes, fonctions sur les listes&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/03-TP-ocaml.pdf&#34;&gt;TP3 - Arbres Binaires&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/04-TP-ocaml.pdf&#34;&gt;TP4 - Mini langage d&amp;#8217;expressions&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/03-C.pdf&#34;&gt;Programmation Procédurale avec C&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&#34;ulist&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/07-TP-C.pdf&#34;&gt;TP5 - Désassemblage ROM Chip8&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/06-TP-C.pdf&#34;&gt;TP6 - Framework check&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&#34;ulist&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/tsuite.h&#34;&gt;tsuite.h&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/Makefile&#34;&gt;Makefile&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/05-Python.pdf&#34;&gt;Programmation Orienté Objet avec Python&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&#34;ulist&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/07-TP-python.pdf&#34;&gt;TP7 - Prise en main de pytest&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/08-TP-python.pdf&#34;&gt;TP8 - Mini langage d&amp;#8217;expression en Python&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/09-TP-python.pdf&#34;&gt;TP9 - Micro framework de spécification de code&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Projets C3P 2019&lt;/p&gt;
-&lt;div class=&#34;ulist&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;../files/courses/C3P/projets.html&#34;&gt;2019&lt;/a&gt; (&lt;a href=&#34;../files/courses/C3P/protocol.txt&#34;&gt;specification du protocol&lt;/a&gt;, &lt;a href=&#34;../files/courses/C3P/server.py&#34;&gt;serveur REST de test&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;sect2&#34;&gt;
-&lt;h3 id=&#34;_liens_et_ressources_externes&#34;&gt;Liens et ressources externes&lt;/h3&gt;
-&lt;div class=&#34;sect3&#34;&gt;
-&lt;h4 id=&#34;_ocaml&#34;&gt;OCaml&lt;/h4&gt;
-&lt;div class=&#34;ulist&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://caml.inria.fr/pub/docs/manual-ocaml/index.html&#34;&gt;Documentation OCaml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://dev.realworldocaml.org/toc.html&#34;&gt;Real World OCaml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://ounit.forge.ocamlcore.org/api-ounit/index.html&#34;&gt;OUnit User Guide&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://nealford.com/functionalthinking.html&#34;&gt;Functional Thinking&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description>
+      <title>Using Feature Model to Build Model Transformation Chains</title>
+      <link>/publication/models-12/</link>
+      <pubDate>Mon, 01 Oct 2012 00:00:00 +0000</pubDate>
+      <guid>/publication/models-12/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Chaining Model Transformations</title>
+      <link>/publication/amt-12/</link>
+      <pubDate>Sun, 01 Jan 2012 00:00:00 +0000</pubDate>
+      <guid>/publication/amt-12/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Enabling Traceability in an MDE Approach to Improve Performance of GPU Applications</title>
+      <link>/publication/rr-11/</link>
+      <pubDate>Mon, 01 Aug 2011 00:00:00 +0000</pubDate>
+      <guid>/publication/rr-11/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using Trace to Situate Errors in Model Transformations</title>
+      <link>/publication/sdt11/</link>
+      <pubDate>Fri, 01 Apr 2011 00:00:00 +0000</pubDate>
+      <guid>/publication/sdt11/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using an Alternative Trace for QVT</title>
+      <link>/publication/eceasst/</link>
+      <pubDate>Sat, 01 Jan 2011 00:00:00 +0000</pubDate>
+      <guid>/publication/eceasst/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Traceability for Mutation Analysis in Model Transformation</title>
+      <link>/publication/modevva-10-b/</link>
+      <pubDate>Fri, 01 Oct 2010 00:00:00 +0000</pubDate>
+      <guid>/publication/modevva-10-b/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using an Alternative Trace for QVT</title>
+      <link>/publication/mpm10/</link>
+      <pubDate>Fri, 01 Oct 2010 00:00:00 +0000</pubDate>
+      <guid>/publication/mpm10/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using Traceability to Enhance Mutation Analysis Dedicated to Model Transformation</title>
+      <link>/publication/modevva-10/</link>
+      <pubDate>Fri, 01 Oct 2010 00:00:00 +0000</pubDate>
+      <guid>/publication/modevva-10/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Traceability mechanism for error localization in model transformation</title>
+      <link>/publication/icsoft-09/</link>
+      <pubDate>Wed, 01 Jul 2009 00:00:00 +0000</pubDate>
+      <guid>/publication/icsoft-09/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Modeling Uncertain and Imprecise Information in Process Modeling with UML</title>
+      <link>/publication/comad-08/</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
+      <guid>/publication/comad-08/</guid>
+      <description></description>
     </item>
     
   </channel>

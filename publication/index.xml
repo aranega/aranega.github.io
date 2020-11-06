@@ -5,12 +5,36 @@
     <link>/publication/</link>
       <atom:link href="/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>Publications</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 01 Jan 2015 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 01 Feb 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/img/icon-192.png</url>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Publications</title>
       <link>/publication/</link>
     </image>
+    
+    <item>
+      <title>Sub-method, partial behavioral reflection with Reflectivity: Looking back on 10 years of use</title>
+      <link>/publication/programming-20/</link>
+      <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/programming-20/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Illicium A modular transpilation toolchain from Pharo to C</title>
+      <link>/publication/iwst-19/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>/publication/iwst-19/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sindarin: A Versatile Scripting API for the Pharo Debugger</title>
+      <link>/publication/sdl-19/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>/publication/sdl-19/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Towards an automation of the mutation analysis dedicated to model transformation</title>
@@ -30,33 +54,33 @@
     
     <item>
       <title>GenMyModel : An Online UML Case Tool</title>
-      <link>/publication/ecoop13/</link>
+      <link>/publication/ecoop-13/</link>
       <pubDate>Tue, 01 Jan 2013 00:00:00 +0000</pubDate>
-      <guid>/publication/ecoop13/</guid>
+      <guid>/publication/ecoop-13/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Using Feature Model to Build Model Transformation Chains</title>
-      <link>/publication/models12/</link>
+      <link>/publication/models-12/</link>
       <pubDate>Mon, 01 Oct 2012 00:00:00 +0000</pubDate>
-      <guid>/publication/models12/</guid>
+      <guid>/publication/models-12/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Chaining Model Transformations</title>
-      <link>/publication/amt12/</link>
+      <link>/publication/amt-12/</link>
       <pubDate>Sun, 01 Jan 2012 00:00:00 +0000</pubDate>
-      <guid>/publication/amt12/</guid>
+      <guid>/publication/amt-12/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Enabling Traceability in an MDE Approach to Improve Performance of GPU Applications</title>
-      <link>/publication/rr11/</link>
+      <link>/publication/rr-11/</link>
       <pubDate>Mon, 01 Aug 2011 00:00:00 +0000</pubDate>
-      <guid>/publication/rr11/</guid>
+      <guid>/publication/rr-11/</guid>
       <description></description>
     </item>
     
@@ -78,9 +102,9 @@
     
     <item>
       <title>Traceability for Mutation Analysis in Model Transformation</title>
-      <link>/publication/modevva10b/</link>
+      <link>/publication/modevva-10-b/</link>
       <pubDate>Fri, 01 Oct 2010 00:00:00 +0000</pubDate>
-      <guid>/publication/modevva10b/</guid>
+      <guid>/publication/modevva-10-b/</guid>
       <description></description>
     </item>
     
@@ -94,25 +118,25 @@
     
     <item>
       <title>Using Traceability to Enhance Mutation Analysis Dedicated to Model Transformation</title>
-      <link>/publication/modevva10/</link>
+      <link>/publication/modevva-10/</link>
       <pubDate>Fri, 01 Oct 2010 00:00:00 +0000</pubDate>
-      <guid>/publication/modevva10/</guid>
+      <guid>/publication/modevva-10/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Traceability mechanism for error localization in model transformation</title>
-      <link>/publication/icsoft09/</link>
+      <link>/publication/icsoft-09/</link>
       <pubDate>Wed, 01 Jul 2009 00:00:00 +0000</pubDate>
-      <guid>/publication/icsoft09/</guid>
+      <guid>/publication/icsoft-09/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Modeling Uncertain and Imprecise Information in Process Modeling with UML</title>
-      <link>/publication/comad08/</link>
+      <link>/publication/comad-08/</link>
       <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
-      <guid>/publication/comad08/</guid>
+      <guid>/publication/comad-08/</guid>
       <description></description>
     </item>
     
