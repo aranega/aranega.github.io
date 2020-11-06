@@ -1,0 +1,88 @@
+
+= Protocol
+
+forme generale: POST <url>/connect
+ou bien: POST <url>/<guid>/command
+Content-Type: application/json
+
+
+1) connection
+code: 201
+
+
+POST <url>/connect
+
+requete: rien
+
+reponse:
+{
+ "guid": <guid>
+ "totalvie": <integer>
+ "salle": {
+    "description": <description (string)>
+    "passages": [ "N", "E", ... ]
+    "entites": [ <guid1>, <guid2>, <guid3>, ...]
+  }
+}
+
+2) regarder salle
+
+GET <url>/<guid>/regarder
+
+{
+ "description": <description (string)>
+ "passages": [ "N", "E", ... ]
+ "entites": [ <guid1>, <guid2>, <guid3>, ...]
+}
+
+3) deplacement
+
+POST <url>/<guid>/deplacement
+
+requete:
+
+{
+  "direction":  "N" | "S" | "E" | "W"
+}
+
+reponse:
+{
+ "description": <description (string)>
+ "passages": [ "N", "E", ... ]
+ "entites": [ <guid1>, <guid2>, <guid3>, ...]
+}
+
+4) examiner
+
+GET <url>/<guidsource>/examiner/<guiddest>
+
+reponse:
+
+{
+ "description": <description>
+ "type" : "JOUEUR" | "MONSTRE"
+ "vie": <integer>
+ "totalvie": <integer>
+}
+
+5) taper
+
+POST <url>/<guidsource>/taper
+{
+  "cible:" <guid cible (integer)>
+}
+
+
+Gestion d'erreurs:
+- Si la requete est malformee (pas du json valide, ou bien manque des fields
+etc): 400
+
+- Si l'URL existe pas (commande inconnue, guid inconnu, etc.): 404
+
+- code 409 pour tout autre erreur
+reponse json:
+
+{
+ "type": "MORT" | "MUR"
+ "message:" string
+}
