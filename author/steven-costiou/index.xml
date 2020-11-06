@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Steven Costiou | </title>
+    <link>/author/steven-costiou/</link>
+      <atom:link href="/author/steven-costiou/index.xml" rel="self" type="application/rss+xml" />
+    <description>Steven Costiou</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 01 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Steven Costiou</title>
+      <link>/author/steven-costiou/</link>
+    </image>
+    
+    <item>
+      <title>Sub-method, partial behavioral reflection with Reflectivity: Looking back on 10 years of use</title>
+      <link>/publication/programming-20/</link>
+      <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/programming-20/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sindarin: A Versatile Scripting API for the Pharo Debugger</title>
+      <link>/publication/sdl-19/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>/publication/sdl-19/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

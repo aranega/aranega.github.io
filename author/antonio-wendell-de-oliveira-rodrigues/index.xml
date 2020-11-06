@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Antonio Wendell De Oliveira Rodrigues | </title>
+    <link>/author/antonio-wendell-de-oliveira-rodrigues/</link>
+      <atom:link href="/author/antonio-wendell-de-oliveira-rodrigues/index.xml" rel="self" type="application/rss+xml" />
+    <description>Antonio Wendell De Oliveira Rodrigues</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 01 Jul 2014 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Antonio Wendell De Oliveira Rodrigues</title>
+      <link>/author/antonio-wendell-de-oliveira-rodrigues/</link>
+    </image>
+    
+    <item>
+      <title>Integrating Profiling into MDE Compilers</title>
+      <link>/publication/ijsea14/</link>
+      <pubDate>Tue, 01 Jul 2014 00:00:00 +0000</pubDate>
+      <guid>/publication/ijsea14/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Enabling Traceability in an MDE Approach to Improve Performance of GPU Applications</title>
+      <link>/publication/rr-11/</link>
+      <pubDate>Mon, 01 Aug 2011 00:00:00 +0000</pubDate>
+      <guid>/publication/rr-11/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

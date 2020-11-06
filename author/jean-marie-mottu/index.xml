@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jean-Marie Mottu | </title>
+    <link>/author/jean-marie-mottu/</link>
+      <atom:link href="/author/jean-marie-mottu/index.xml" rel="self" type="application/rss+xml" />
+    <description>Jean-Marie Mottu</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 01 Jan 2015 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Jean-Marie Mottu</title>
+      <link>/author/jean-marie-mottu/</link>
+    </image>
+    
+    <item>
+      <title>Towards an automation of the mutation analysis dedicated to model transformation</title>
+      <link>/publication/stvr15/</link>
+      <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
+      <guid>/publication/stvr15/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using Trace to Situate Errors in Model Transformations</title>
+      <link>/publication/sdt11/</link>
+      <pubDate>Fri, 01 Apr 2011 00:00:00 +0000</pubDate>
+      <guid>/publication/sdt11/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Traceability for Mutation Analysis in Model Transformation</title>
+      <link>/publication/modevva-10-b/</link>
+      <pubDate>Fri, 01 Oct 2010 00:00:00 +0000</pubDate>
+      <guid>/publication/modevva-10-b/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using Traceability to Enhance Mutation Analysis Dedicated to Model Transformation</title>
+      <link>/publication/modevva-10/</link>
+      <pubDate>Fri, 01 Oct 2010 00:00:00 +0000</pubDate>
+      <guid>/publication/modevva-10/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Traceability mechanism for error localization in model transformation</title>
+      <link>/publication/icsoft-09/</link>
+      <pubDate>Wed, 01 Jul 2009 00:00:00 +0000</pubDate>
+      <guid>/publication/icsoft-09/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

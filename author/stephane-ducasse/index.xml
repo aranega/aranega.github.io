@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Stéphane Ducasse | </title>
+    <link>/author/stephane-ducasse/</link>
+      <atom:link href="/author/stephane-ducasse/index.xml" rel="self" type="application/rss+xml" />
+    <description>Stéphane Ducasse</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 01 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Stéphane Ducasse</title>
+      <link>/author/stephane-ducasse/</link>
+    </image>
+    
+    <item>
+      <title>Illicium A modular transpilation toolchain from Pharo to C</title>
+      <link>/publication/iwst-19/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>/publication/iwst-19/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sindarin: A Versatile Scripting API for the Pharo Debugger</title>
+      <link>/publication/sdl-19/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>/publication/sdl-19/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
