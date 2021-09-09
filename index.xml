@@ -7,7 +7,7 @@
     <description></description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 01 Feb 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title></title>
       <link>/</link>
     </image>
@@ -189,6 +189,152 @@ Lille 1&lt;/a&gt; from 2011 to 2012, and since 2012, I teach to &lt;a href=&#34;
       <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
       <guid>/publication/comad-08/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/courses/metamodelisation/tp1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/courses/metamodelisation/tp1/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_rappel&#34;&gt;Rappel&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Tout les TPs sont à faire sur UN SEUL repo gitlab.
+Avant toutes choses, créez un dépôt et ajoutez  Anne Etien et Vincent Aranega comme dévelopeurs à votre dépôt.
+Vous pouvez travaillez en binôme, mais gardez en tête qu’un des TPs sera noté et à faire en temps limité pendant la séance de TP, donc soyez tous à l’aise avec la façon de travailler et surtout, créez bien tous un dépôt pour vous.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_pré_requis&#34;&gt;Pré-requis&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Dans ce premier TP, vous allez créer des méta-modèles manuellement en utilisant les outils proposés dans Eclipse.
+Installer les outils de modélisation directement dans une instance d’Eclipse est quelque chose de pénible.
+Heureusement, il existe des &amp;#34;saveurs&amp;#34; d’Eclipse spéciales avec les outils déjà pré-installés.
+Dans notre cas, nous allons utiliser la version &amp;#34;Eclipse Modeling Tools&amp;#34;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Téléchargez &amp;#34;Eclipse Modeling Tools&amp;#34; à l’adresse suivante: &lt;a href=&#34;https://www.eclipse.org/downloads/packages/&#34; class=&#34;bare&#34;&gt;https://www.eclipse.org/downloads/packages/&lt;/a&gt; et décompressez le.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_modélisation_du_méta_modèle_de_java_simplifié&#34;&gt;Modélisation du méta-modèle de Java simplifié&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Dans un premier temps, vous allez modéliser le méta-modèle de Java simplfié que nous avons vu en cours.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Assurez-vous que vous avez bien tous les concepts et re-modélisez les sur papier si nécessaire.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Une fois Eclipse ouvert, créez un &amp;#34;Ecore Modeling Project&amp;#34; (&lt;code&gt;File→new→Others&lt;/code&gt;) et nommez-le &lt;code&gt;simplejava&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Vous pouvez remarquez que toute une hiérachie de répertoire et de &amp;#34;configuration&amp;#34; est automatiquement créée.
+Le projet créé est automatiquement paramétré avec les différentes dépendances nécessaires pour le bon fonctionnement de votre projet de méta-modélisation.
+Pour l’instant, vous allez uniquement travailler dans le répertoire &lt;code&gt;model&lt;/code&gt; généré.
+Il contient trois fichiers, un &lt;code&gt;.aird&lt;/code&gt;, un &lt;code&gt;.ecore&lt;/code&gt; et un &lt;code&gt;.genmodel&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;ulist&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Le &lt;code&gt;.aird&lt;/code&gt; est le fichier avec la représentation graphique de votre méta-modèle.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Le &lt;code&gt;.ecore&lt;/code&gt; est le fichier contenant la définition de votre méta-modèle.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Le &lt;code&gt;.genmodel&lt;/code&gt; est le fichier qui servira plus tard à générer le code de votre méta-modèle.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Pour ce TP, vous allez uniquement travailler avec le &lt;code&gt;.aird&lt;/code&gt;, mais vous allez d’abord vérifier certaines informations sur le &lt;code&gt;.ecore&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Déroulez dans l’arbre le &lt;code&gt;.ecore&lt;/code&gt; et cliquez sur le package &lt;code&gt;simplejava&lt;/code&gt; et vérifiez dans l’onglet &lt;code&gt;Default&lt;/code&gt; de la fenêtre &lt;code&gt;Properties&lt;/code&gt; que toutes les informations sont bien remplies (préfix, URI et nom). Si elles ne le sont pas, remplissez les en utilisant &lt;code&gt;simplejava&lt;/code&gt; comme nom et préfix et &lt;code&gt;&lt;a href=&#34;http://simplejava/1.0&#34; class=&#34;bare&#34;&gt;http://simplejava/1.0&lt;/a&gt;&lt;/code&gt; comme préfix.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ouvrez maintenant le fichier de représentation graphique de votre méta-modèle et modélisez le méta-modèle de Java simplifié (pour modifiez des informations d’élements, vous pouvez le faire dans l’onglet &lt;code&gt;Semantic&lt;/code&gt; de la fenêtre de propriétés).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Une fois terminé, ouvrez le &lt;code&gt;.ecore&lt;/code&gt; (l’éditeur réfléxif générique devrait s’ouvrir) et vérifiez que tous les concepts sont bien présents.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Maintenant que votre méta-modèle est créé, pour vérifier que tout &amp;#34;est bon&amp;#34; dans votre méta-modèle, vous allez créer plusieurs modèles conformes.
+Pour créer des méta-modèles dynamiquement, sans générer de code, vous allez devoir choisir depuis la vue arborescente de votre ecore le concept qui représente la &amp;#34;racine&amp;#34; de votre modèle.
+Dans un modèle, il faut toujours considérer un conteneur principal qui est le conteneur de tous les éléments de votre modèle (ici, des packages java par exemple).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Ouvrez la vue arborescente et sélectionnez votre concept racine, puis faites un clic-droit sur l’élément, puis &lt;code&gt;Create dynamique instances…​&lt;/code&gt;. Cela va vous créer un fichier &lt;code&gt;.xmi&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ouvrez le fichier &lt;code&gt;.xmi&lt;/code&gt; il devrait s’ouvrir avec l’éditeur générique réflexif (le même que lorsque vous ouvrez directement le &lt;code&gt;.ecore&lt;/code&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Créez un premier modèle avec quelques packages et classes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Créez maintenant un autre modèle (clic-droit…​etc) et modélisez un autre modèle conforme au méta-modèle de java simplifié.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_modélisation_du_méta_modèle_de_système_de_fichier&#34;&gt;Modélisation du méta-modèle de système de fichier&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Pour cet exercice, vous allez créer un nouveau &amp;#34;Ecore Modeling Project&amp;#34; avec le nom &amp;#34;metamodels&amp;#34;.
+Ce projet servira à mettre tout vos autres méta-modèles (pas uniquement le java simplifié).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Créez le nouveau projet&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dans le répertoire &lt;code&gt;models&lt;/code&gt;, créez un nouveau méta-modèle ecore: &lt;code&gt;File→new→Others→Ecore Model&lt;/code&gt; nommé &lt;code&gt;filesystem.ecore&lt;/code&gt;, puis ouvez le dans l’éditeur arborescent, sélectionnez le package à l’intérieur, faites clic-droit et &lt;code&gt;New representation→Class Diagram&lt;/code&gt;. Cela crée une représentation graphique, mais ne crée pas pour autant de fichier &lt;code&gt;.aird&lt;/code&gt; spécial.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;En cliquant sur le package de votre méta-modèle, entrez les informations suivantes pour le nom, préfix et URI: &lt;code&gt;filesystem&lt;/code&gt;, &lt;code&gt;filesystem&lt;/code&gt; et &lt;code&gt;&lt;a href=&#34;http://filesystem/1.0&#34; class=&#34;bare&#34;&gt;http://filesystem/1.0&lt;/a&gt;&lt;/code&gt;. Vous pouvez rentrer n’importe quel nom et préfix, mais il est toujours mieux d’avoir les mêmes et d’avoir le nom apparaissant dans l’URI (qui, de préférence doit avoir la tête d’une URL).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Modélisez votre méta-modèle de système de fichier.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Modélisez ensuite quelques modèles instances de ce méta-modèle.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_modélisation_du_méta_modèle_de_base_de_données&#34;&gt;Modélisation du méta-modèle de base de données&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Vous suivrez les mêmes étapes que pour le méta-modèle précédent, créez le dans votre projet &lt;code&gt;metamodels&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
   </channel>

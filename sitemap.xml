@@ -1,306 +1,186 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>/</loc>
     <lastmod>2020-11-06T11:48:42+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication-type/2/</loc>
     <lastmod>2020-11-06T11:38:53+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/authors/</loc>
     <lastmod>2020-11-06T11:48:42+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/marcus-denker/</loc>
     <lastmod>2020-11-06T11:38:53+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication_types/</loc>
     <lastmod>2020-11-06T11:48:42+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication/</loc>
     <lastmod>2020-11-06T11:48:42+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/steven-costiou/</loc>
     <lastmod>2020-11-06T11:38:53+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication/programming-20/</loc>
     <lastmod>2020-11-06T11:38:53+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/vincent-aranega/</loc>
     <lastmod>2020-11-06T11:48:42+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tag/transpilation-pharo-c-language-tools/</loc>
     <lastmod>2020-11-06T11:38:52+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication-type/1/</loc>
     <lastmod>2020-11-06T11:48:42+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/guillermo-polito/</loc>
     <lastmod>2020-11-06T11:38:53+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication/iwst-19/</loc>
     <lastmod>2020-11-06T11:38:52+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/pierre-misse-chanabier/</loc>
     <lastmod>2020-11-06T11:38:52+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/stephane-ducasse/</loc>
     <lastmod>2020-11-06T11:38:53+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/</loc>
     <lastmod>2020-11-06T11:38:53+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tag/debugging/</loc>
     <lastmod>2020-11-06T11:38:53+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tag/object-centrics/</loc>
     <lastmod>2020-11-06T11:38:53+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tag/pharo/</loc>
     <lastmod>2020-11-06T11:38:53+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tag/scripting/</loc>
     <lastmod>2020-11-06T11:38:53+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication/sdl-19/</loc>
     <lastmod>2020-11-06T11:38:53+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/teaching/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/thomas-dupriez/</loc>
     <lastmod>2020-11-06T11:38:53+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/talk/commitmde-talk/</loc>
     <lastmod>2016-10-04T16:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/talk/</loc>
     <lastmod>2016-10-04T16:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/anne-etien/</loc>
     <lastmod>2020-11-06T11:48:42+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/benoit-baudry/</loc>
     <lastmod>2015-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/jean-luc-dekeyser/</loc>
     <lastmod>2020-11-06T11:48:42+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/jean-marie-mottu/</loc>
     <lastmod>2020-11-06T11:48:42+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/thomas-degueule/</loc>
     <lastmod>2015-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication/stvr15/</loc>
     <lastmod>2015-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/antonio-wendell-de-oliveira-rodrigues/</loc>
     <lastmod>2020-11-06T11:48:42+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/frederic-guyomarch/</loc>
     <lastmod>2020-11-06T11:48:42+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication/ijsea14/</loc>
     <lastmod>2014-07-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication-type/0/</loc>
     <lastmod>2020-11-06T11:48:41+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/alexis-muller/</loc>
     <lastmod>2020-11-06T11:48:41+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication/ecoop-13/</loc>
     <lastmod>2020-11-06T11:48:41+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/michel-dirix/</loc>
     <lastmod>2020-11-06T11:48:41+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/sebastien-mosser/</loc>
     <lastmod>2020-11-06T11:48:42+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication/models-12/</loc>
     <lastmod>2020-11-06T11:48:42+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication/amt-12/</loc>
     <lastmod>2020-11-06T11:48:41+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/richard-f.-paige/</loc>
     <lastmod>2020-11-06T11:48:41+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/xavier-blanc/</loc>
     <lastmod>2020-11-06T11:48:41+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication-type/4/</loc>
     <lastmod>2020-11-06T11:48:42+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication/rr-11/</loc>
     <lastmod>2020-11-06T11:48:42+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication-type/6/</loc>
     <lastmod>2011-04-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication/sdt11/</loc>
     <lastmod>2011-04-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication/eceasst/</loc>
     <lastmod>2011-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication/modevva-10-b/</loc>
     <lastmod>2020-11-06T11:48:42+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication/mpm10/</loc>
     <lastmod>2010-10-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication/modevva-10/</loc>
     <lastmod>2020-11-06T11:48:42+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication/icsoft-09/</loc>
     <lastmod>2020-11-06T11:48:41+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/claude-baron/</loc>
     <lastmod>2020-11-06T11:48:41+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/lei-pi/</loc>
     <lastmod>2020-11-06T11:48:41+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/publication/comad-08/</loc>
     <lastmod>2020-11-06T11:48:41+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/pierre-pinel/</loc>
     <lastmod>2020-11-06T11:48:41+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/xiao-jing/</loc>
     <lastmod>2020-11-06T11:48:41+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/author/</loc>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>/courses/metamodelisation/tp1/</loc>
+  </url><url>
     <loc>/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/post/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/courses/</loc>
   </url>
-  
 </urlset>
