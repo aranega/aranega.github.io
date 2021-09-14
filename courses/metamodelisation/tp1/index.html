@@ -836,7 +836,7 @@ Dans notre cas, nous allons utiliser la version &#34;Eclipse Modeling Tools&#34;
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Téléchargez &#34;Eclipse Modeling Tools&#34; à l’adresse suivante: <a href="https://www.eclipse.org/downloads/packages/" class="bare">https://www.eclipse.org/downloads/packages/</a> et décompressez le.</p>
+<p>Téléchargez &#34;Eclipse Modeling Tools&#34; à l’adresse suivante: <a href="https://www.eclipse.org/downloads/packages/" class="bare">https://www.eclipse.org/downloads/packages/</a> et décompressez le (il faut vraiment aller chercher la &#34;flavour&#34; modeling sur la page).</p>
 </li>
 </ol>
 </div>
@@ -883,13 +883,16 @@ Il contient trois fichiers, un <code>.aird</code>, un <code>.ecore</code> et un 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Déroulez dans l’arbre le <code>.ecore</code> et cliquez sur le package <code>simplejava</code> et vérifiez dans l’onglet <code>Default</code> de la fenêtre <code>Properties</code> que toutes les informations sont bien remplies (préfix, URI et nom). Si elles ne le sont pas, remplissez les en utilisant <code>simplejava</code> comme nom et préfix et <code><a href="http://simplejava/1.0" class="bare">http://simplejava/1.0</a></code> comme préfix.</p>
+<p>Déroulez dans l’arbre le <code>.ecore</code> et cliquez sur le package <code>simplejava</code> et vérifiez dans l’onglet <code>Default</code> de la fenêtre <code>Properties</code> que toutes les informations sont bien remplies (préfix, URI et nom). Si elles ne le sont pas, remplissez les en utilisant <code>simplejava</code> comme nom et préfix et <code><a href="http://simplejava/1.0" class="bare">http://simplejava/1.0</a></code> comme URI.</p>
 </li>
 <li>
-<p>Ouvrez maintenant le fichier de représentation graphique de votre méta-modèle et modélisez le méta-modèle de Java simplifié (pour modifiez des informations d’élements, vous pouvez le faire dans l’onglet <code>Semantic</code> de la fenêtre de propriétés).</p>
+<p>Ouvrez maintenant le fichier de représentation graphique de votre méta-modèle et modélisez le méta-modèle de Java simplifié (pour modifiez des informations d’élements, vous pouvez le faire dans l’onglet <code>Semantic</code> de la fenêtre de propriétés). <strong>Pensez bien à prefixer tout vos concepts par un <code>J</code></strong> (par ex: <code>JClass</code> pour <code>Class</code>), pour éviter qu’il y ait des clash de noms par la suite lors de la génération de code Java et/ou Python (dans les prochains TPs).</p>
 </li>
 <li>
 <p>Une fois terminé, ouvrez le <code>.ecore</code> (l’éditeur réfléxif générique devrait s’ouvrir) et vérifiez que tous les concepts sont bien présents.</p>
+</li>
+<li>
+<p>De manière générale, il est important que vous validiez bien votre <code>.ecore</code>. L’opération de validation va bien vérifier que les informations que vous avez entrée dans votre méta-modèle sont bonnes (pas d’espaces en trop, de caractères non autorisés,…​etc). Si vous ne le faites pas et que des erreurs se sont glissée dans votre méta-modèle, il y a de très fortes chances que les opérations suivantes s’appuyant sur votre méta-modèle (création d’instances, génération de code,…​) vous retourne une erreur incompréhensible. Pour bien valider le méta-modèle, une fois que vous l’avez ouvert avec l’éditeur réflexif, faites un clic-droit sur la racine de votre méta-modèle (le <code>EPackage</code>) et choisissez <code>validate</code>. Si des problèmes sont relevés, ils sont indiqués et des labels sur les objets problématiques apparaissent dans l’éditeur réflexif. Corrigez les et revalidez votre modèle jusqu’à ce que le validateur vous assure que tout va bien. Attention, le fait que votre méta-modèle valide n’indique pas que votre méta-modèle représente correctement les concepts, cela veut juste dire que votre méta-modèle respecte bien le méta-méta-modèle et qu’aucune information entrée ne devrait poser problème par la suite.</p>
 </li>
 </ol>
 </div>

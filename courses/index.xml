@@ -39,7 +39,7 @@ Dans notre cas, nous allons utiliser la version &amp;#34;Eclipse Modeling Tools&
 &lt;div class=&#34;olist arabic&#34;&gt;
 &lt;ol class=&#34;arabic&#34;&gt;
 &lt;li&gt;
-&lt;p&gt;Téléchargez &amp;#34;Eclipse Modeling Tools&amp;#34; à l’adresse suivante: &lt;a href=&#34;https://www.eclipse.org/downloads/packages/&#34; class=&#34;bare&#34;&gt;https://www.eclipse.org/downloads/packages/&lt;/a&gt; et décompressez le.&lt;/p&gt;
+&lt;p&gt;Téléchargez &amp;#34;Eclipse Modeling Tools&amp;#34; à l’adresse suivante: &lt;a href=&#34;https://www.eclipse.org/downloads/packages/&#34; class=&#34;bare&#34;&gt;https://www.eclipse.org/downloads/packages/&lt;/a&gt; et décompressez le (il faut vraiment aller chercher la &amp;#34;flavour&amp;#34; modeling sur la page).&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
@@ -86,13 +86,16 @@ Il contient trois fichiers, un &lt;code&gt;.aird&lt;/code&gt;, un &lt;code&gt;.e
 &lt;div class=&#34;olist arabic&#34;&gt;
 &lt;ol class=&#34;arabic&#34;&gt;
 &lt;li&gt;
-&lt;p&gt;Déroulez dans l’arbre le &lt;code&gt;.ecore&lt;/code&gt; et cliquez sur le package &lt;code&gt;simplejava&lt;/code&gt; et vérifiez dans l’onglet &lt;code&gt;Default&lt;/code&gt; de la fenêtre &lt;code&gt;Properties&lt;/code&gt; que toutes les informations sont bien remplies (préfix, URI et nom). Si elles ne le sont pas, remplissez les en utilisant &lt;code&gt;simplejava&lt;/code&gt; comme nom et préfix et &lt;code&gt;&lt;a href=&#34;http://simplejava/1.0&#34; class=&#34;bare&#34;&gt;http://simplejava/1.0&lt;/a&gt;&lt;/code&gt; comme préfix.&lt;/p&gt;
+&lt;p&gt;Déroulez dans l’arbre le &lt;code&gt;.ecore&lt;/code&gt; et cliquez sur le package &lt;code&gt;simplejava&lt;/code&gt; et vérifiez dans l’onglet &lt;code&gt;Default&lt;/code&gt; de la fenêtre &lt;code&gt;Properties&lt;/code&gt; que toutes les informations sont bien remplies (préfix, URI et nom). Si elles ne le sont pas, remplissez les en utilisant &lt;code&gt;simplejava&lt;/code&gt; comme nom et préfix et &lt;code&gt;&lt;a href=&#34;http://simplejava/1.0&#34; class=&#34;bare&#34;&gt;http://simplejava/1.0&lt;/a&gt;&lt;/code&gt; comme URI.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Ouvrez maintenant le fichier de représentation graphique de votre méta-modèle et modélisez le méta-modèle de Java simplifié (pour modifiez des informations d’élements, vous pouvez le faire dans l’onglet &lt;code&gt;Semantic&lt;/code&gt; de la fenêtre de propriétés).&lt;/p&gt;
+&lt;p&gt;Ouvrez maintenant le fichier de représentation graphique de votre méta-modèle et modélisez le méta-modèle de Java simplifié (pour modifiez des informations d’élements, vous pouvez le faire dans l’onglet &lt;code&gt;Semantic&lt;/code&gt; de la fenêtre de propriétés). &lt;strong&gt;Pensez bien à prefixer tout vos concepts par un &lt;code&gt;J&lt;/code&gt;&lt;/strong&gt; (par ex: &lt;code&gt;JClass&lt;/code&gt; pour &lt;code&gt;Class&lt;/code&gt;), pour éviter qu’il y ait des clash de noms par la suite lors de la génération de code Java et/ou Python (dans les prochains TPs).&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Une fois terminé, ouvrez le &lt;code&gt;.ecore&lt;/code&gt; (l’éditeur réfléxif générique devrait s’ouvrir) et vérifiez que tous les concepts sont bien présents.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;De manière générale, il est important que vous validiez bien votre &lt;code&gt;.ecore&lt;/code&gt;. L’opération de validation va bien vérifier que les informations que vous avez entrée dans votre méta-modèle sont bonnes (pas d’espaces en trop, de caractères non autorisés,…​etc). Si vous ne le faites pas et que des erreurs se sont glissée dans votre méta-modèle, il y a de très fortes chances que les opérations suivantes s’appuyant sur votre méta-modèle (création d’instances, génération de code,…​) vous retourne une erreur incompréhensible. Pour bien valider le méta-modèle, une fois que vous l’avez ouvert avec l’éditeur réflexif, faites un clic-droit sur la racine de votre méta-modèle (le &lt;code&gt;EPackage&lt;/code&gt;) et choisissez &lt;code&gt;validate&lt;/code&gt;. Si des problèmes sont relevés, ils sont indiqués et des labels sur les objets problématiques apparaissent dans l’éditeur réflexif. Corrigez les et revalidez votre modèle jusqu’à ce que le validateur vous assure que tout va bien. Attention, le fait que votre méta-modèle valide n’indique pas que votre méta-modèle représente correctement les concepts, cela veut juste dire que votre méta-modèle respecte bien le méta-méta-modèle et qu’aucune information entrée ne devrait poser problème par la suite.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
@@ -152,6 +155,1001 @@ Ce projet servira à mettre tout vos autres méta-modèles (pas uniquement le ja
 &lt;div class=&#34;sectionbody&#34;&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Vous suivrez les mêmes étapes que pour le méta-modèle précédent, créez le dans votre projet &lt;code&gt;metamodels&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/courses/metamodelisation/tp2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/courses/metamodelisation/tp2/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_notes&#34;&gt;Notes&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;À partir de ce TP, vous allez devoir manipuler les modèles de façon programmatique.
+Cela va forcément impliquer l’utilisation d’un langage de programmation pour lequel il existe le support de librairies de méta-modélisation.
+Vous avez le choix entre Java et Python.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;ulist&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Si vous décidez d’utiliser Java, vous devez travailler sous Eclipse, vous ne pouvez pas utiliser Intellij, les outils EMFs ne sont disponibles que sous Eclipse.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Si vous décidez d’utiliser Python, vous pouvez utiliser l’éditeur de code que vous préférez, mais il est indispensable d’utiliser un env. virtuel pour installer les dépendances sans altérer votre système.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Comme ce TP est une prise en main des différentes librairies, des détails seront donnés pour les deux langages et les différents outils.
+Par contre, il est important que :
+* soit vous décidiez de tester les deux librairies au fil des TPs et alors, d’être bien attentif et de faire attention à la manière de manipuler les choses,
+* soit vous décidiez de rester avec un seul langage/lib pour éviter de multiplier la complexité, dans ce cas, jetez quand-même un oeil à comment les choses sont manipulées chez un de vos camarades pour bien voir les similitudes et différences techniques.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_manipulation_dinstances&#34;&gt;Manipulation d’instances&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Vous allez manipuler ici les méta-modèles que vous avez définis au TP précédent, c’est-à-dire &lt;code&gt;simplejava&lt;/code&gt;, &lt;code&gt;filesystem&lt;/code&gt; et votre méta-modèle de base de donnée.
+Pour pouvoir manipuler des modèles, il faut être en mesure de charger le méta-modèle dont ils sont instances depuis un fichier &lt;code&gt;.ecore&lt;/code&gt;.
+Pour charger un fichier, EMF/PyEcore passent par un système de &lt;code&gt;Resource&lt;/code&gt;.
+Une &lt;code&gt;Resource&lt;/code&gt; représente une entité logique qui contient un modèle ou un méta-modèle depuis une source en particulier (ici depuis un fichier).
+Ces resources sont conservées dans un &lt;code&gt;ResourceSet&lt;/code&gt;, qui représente un conteneur de resources.
+Le &lt;code&gt;ResourceSet&lt;/code&gt; fait plus qu’uniquement conserver des resources par ce qu’il va aussi permettre de lier des factories spéciales pour lire des formats de fichiers spécifiques et pour enregistrer des méta-modèles existants.
+Enregistrer un méta-modèle dans un ResourceSet signifie que ce ResourceSet est en mesure de lire des instances de ce méta-modèle.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect2&#34;&gt;
+&lt;h3 id=&#34;_directement_à_partir_de_code_généré&#34;&gt;Directement, à partir de code généré&lt;/h3&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;La génération du code d’un méta-modèle repose sur le fait de générer le code Java ou Python des méta-classes décrites dans le méta-modèle.
+Comme les librairies de méta-modélisation sont légèrement différentes, la génération de code ne se passe pas de la même manière.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect3&#34;&gt;
+&lt;h4 id=&#34;_en_java_avec_emf&#34;&gt;En Java avec EMF&lt;/h4&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;La génération de code passe par un &lt;code&gt;.genmodel&lt;/code&gt; qui est un fichier de configuration de la génération de code.
+Pour le méta-modèle simple java, le &lt;code&gt;.genmodel&lt;/code&gt; devrait être déjà existant, vous pouvez donc le réutiliser.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Ouvrez le fichier &lt;code&gt;.genmodel&lt;/code&gt; et faites clic-droit sur la racine du fichier ouvert, puis &lt;code&gt;Generate Model Code&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Si vous n’avez pas de &lt;code&gt;.genmodel&lt;/code&gt; pour votre méta-modèle&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Faites un clic-droit sur votre &lt;code&gt;.ecore&lt;/code&gt;, puis &lt;code&gt;new→Other→EMF Generator Model&lt;/code&gt;, suivez les étapes pour générer le &lt;code&gt;.genmodel&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ouvrez ensuite le fichier généré et faites clic-droit sur la racine du fichier ouvert, puis &lt;code&gt;Generate Model Code&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;À l’issue de ces étapes, vous devriez avoir le code de votre méta-modèle entièrement généré.
+Maintenant, pour pouvoir ouvrir des modèles existant, il est nécessaire d’enregistrer le méta-modèle que vous voulez utiliser dans un &lt;code&gt;ResourceSet&lt;/code&gt;.
+Cela se fait avec le code suivant :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;rouge highlight&#34;&gt;&lt;code data-lang=&#34;java&#34;&gt;&lt;span class=&#34;nc&#34;&gt;ResourceSet&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ResourceSetImpl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getResourceFactoryRegistry&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getExtensionToFactoryMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ecore&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;XMIResourceFactoryImpl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getPackageRegistry&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;SimplejavaPackage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;eNS_URI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;SimplejavaPackage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;eINSTANCE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;nc&#34;&gt;Resource&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getResource&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;URI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;fileURI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;path_vers_un_modele&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;nc&#34;&gt;JavaModel&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;model&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;JavaModel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getContents&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// JavaModel est le nom du concept racine du méta-modèle simple java,&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// chez vous il peut avoir un nom différent&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect3&#34;&gt;
+&lt;h4 id=&#34;_en_python_avec_pyecore&#34;&gt;En Python avec PyEcore&lt;/h4&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;La génération de code avec PyEcore passe par &lt;code&gt;pyecoregen&lt;/code&gt; un outil dédié utilisant PyEcore pour générer le code Python des concepts du méta-modèle.
+Dans un premier temps, créez un env. virtuel :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;placez-vous dans votre répertoire de travail (celui de votre repository) et tapez la commande suivante : &lt;code&gt;$ virtualenv venv&lt;/code&gt;. Cela va créer un environnement virtuel dans le répertoire &lt;code&gt;venv&lt;/code&gt; que vous pourrez activez quand vous voulez.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Avant d’activer votre environnement virtuel, ajoutez le répertoire &lt;code&gt;venv&lt;/code&gt; à votre &lt;code&gt;.gitignore&lt;/code&gt; pour ne pas le commiter&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Activez votre environnement virtuel de la manière suivante : &lt;code&gt;source venv/bin/activate&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Vous pouvez maintenant installer les dépendances qui vous seront utiles :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Installez &lt;code&gt;pyecoregen&lt;/code&gt;, dans votre virtualenv, tapez &lt;code&gt;pip install pyecoregen&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Générez le code de votre méta-modèle, ceci se fait avec la commande &lt;code&gt;pyecoregen -e chemin_vers_ecore -o .&lt;/code&gt; (il s’agit bien d’un &lt;code&gt;.&lt;/code&gt; en fin de ligne). Cette commande génère le code de votre méta-modèle dans le répertoire courant.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Maintenant que le code de votre méta-modèle est généré, il est possible de l’utiliser et d’ouvrir un modèle existant :
+Dans un premier temps, enregistrez le métamodèle dans un &lt;code&gt;ResourceSet&lt;/code&gt; comme ceci :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;rouge highlight&#34;&gt;&lt;code data-lang=&#34;python&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pyecore.resources&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt;
+&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;simplejava&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# pour le méta-modèle simplejava
+&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ResourceSet&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;metamodel_registry&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;simplejava&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nsURI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;simplejava&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_resource&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;path_vers_un_modele_simplejava&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;racine&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;contents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect3&#34;&gt;
+&lt;h4 id=&#34;_questions_générales&#34;&gt;Questions générales&lt;/h4&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Voilà quelques questions relatives à simple java :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui prend en paramètre l’équivalent d’un &lt;code&gt;JavaModel&lt;/code&gt; et qui retourne la liste de toutes les classes de votre modèle. Testez votre fonction avec plusieurs modèles. Si vous êtes certains qu’un de vos collègues à exactement le même méta-modèle que vous (mêmes nommage, relations, URI, prefix…​etc), vous pouvez échanger des modèles pour vérifier que tout fonctionne correctement.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui affiche à l’écran le nom de tous les attributs de votre modèle java.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui retourne la profondeur d’héritage d’une classe en particulier (0 pour la classe Object, 1 pour les classes qui héritent de Object, 2 pour les classes qui héritent des précédentes et ainsi de suite)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui retourne le nom pleinement qualifié d’une classe (le nom de tous ses packages contenant séparés par un &lt;code&gt;.&lt;/code&gt; suivi du nom de la classe)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Voilà quelques questions relatives à filesystem :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui retourne le nombre de fichiers de votre modèle&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui retourne le poids de tous les fichiers contenus dans un répertoire&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui retourne le poids de tous les fichiers contenus dans le modèle&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Et quelques questions pour la manipulation directe de vos méta-modèles :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui prend un &lt;code&gt;EPackage&lt;/code&gt; en paramètre et retourne le nombre de méta-classes d’un de vos méta-modèles&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui prend une &lt;code&gt;EClass&lt;/code&gt; en paramètre et retourne les méta-classes qui héritent d’elle dans votre méta-modèle.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect2&#34;&gt;
+&lt;h3 id=&#34;_réflexivement_sans_code_généré&#34;&gt;Réflexivement, sans code généré&lt;/h3&gt;
+&lt;div class=&#34;sect3&#34;&gt;
+&lt;h4 id=&#34;_en_java_avec_emf_2&#34;&gt;En Java avec EMF&lt;/h4&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;La première étape pour pouvoir créer des modèles relatifs à un méta-modèle, il vous faut charger en mémoire un méta-modèle existant à partir d’un fichier &lt;code&gt;.ecore&lt;/code&gt;.
+Pour pouvoir faire ceci, il est nécessaire d’ajouter des dépendances à votre projet &amp;#34;Ecore Modeling Project&amp;#34;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Ouvrez le fichier &lt;code&gt;META-INF/MANIFEST.MF&lt;/code&gt;, puis switchez sur l’onglet &lt;code&gt;Dependencies&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;À partir de cet onglet, cliquez sur le &lt;code&gt;Add…​&lt;/code&gt; de la frame de gauche &lt;code&gt;Required plug-ins&lt;/code&gt; et ajoutez le plugin suivant :&lt;/p&gt;
+&lt;div class=&#34;ulist&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;org.eclipse.emf.ecore.xmi&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Voilà le fragment de code que vous pouvez utiliser pour charger un modèle ecore/xmi directement en Java :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;rouge highlight&#34;&gt;&lt;code data-lang=&#34;java&#34;&gt;&lt;span class=&#34;nc&#34;&gt;ResourceSet&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ResourceSetImpl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getResourceFactoryRegistry&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getExtensionToFactoryMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()*&lt;/span&gt;
+                                 &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ecore&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;XMIResourceFactoryImpl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+
+&lt;span class=&#34;nc&#34;&gt;Resource&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getResource&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;URI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;createFileURI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;path_vers_ecore&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// À partir de là &amp;#34;pack&amp;#34; contient le EPackage de votre méta-modèle&lt;/span&gt;
+&lt;span class=&#34;nc&#34;&gt;EPackage&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pack&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;EPackage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getContents&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// Puis pour l&amp;#39;enregistrer&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getPackageRegistry&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pack&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getNsURI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pack&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Vous pouvez maintenant charger un modèle instance du méta-modèle enregistré comme vue précédemment en utilisant le &lt;code&gt;ResourceSet&lt;/code&gt; correctement paramétré.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect3&#34;&gt;
+&lt;h4 id=&#34;_en_python_avec_pyecore_2&#34;&gt;En Python avec PyEcore&lt;/h4&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;L’ouverture d’un modèle &lt;code&gt;.ecore&lt;/code&gt; via PyEcore se fait de plusieurs façons, mais la façon la plus simple est d’utiliser un &lt;code&gt;ResourceSet&lt;/code&gt; :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;rouge highlight&#34;&gt;&lt;code data-lang=&#34;python&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pyecore.resources&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ResourceSet&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ResourceSet&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_resource&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;path_vers_ecore&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;pack&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;contents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;metamodel_registry&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pack&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nsURI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pack&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_création_modification_de_modèles&#34;&gt;Création, modification de modèles&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Une fois que votre métamodèle est chargé en mémoire à partir de son &lt;code&gt;.ecore&lt;/code&gt;, vous allez l’utiliser pour créer des petits modèles dans les questions suivantes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui prend en paramètre le nom d’une des méta-classes de votre métamodèle et qui retourne la méta-classe associée ou &lt;code&gt;null&lt;/code&gt; si la méta-classe n’existe pas.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui permet de créer une instance d’un méta-classe dont le &lt;code&gt;EPackage&lt;/code&gt; et le nom de la méta-classe serait passé en paramètre.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui prend un &lt;code&gt;EObject&lt;/code&gt; quelconque, une chaine de caractère et qui initialise l’équivalent du nom de l&amp;#39;`EObject` à la valeur passée en paramètre si l’objet en question possède un attribut &lt;code&gt;name&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Testez votre solution avec des instances de votre méta-modèle java, votre méta-modèle de système de fichier et votre méta-modèle de BD. Pour faire ceci :&lt;/p&gt;
+&lt;div class=&#34;olist loweralpha&#34;&gt;
+&lt;ol class=&#34;loweralpha&#34; type=&#34;a&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;chargez les trois &lt;code&gt;EPackage&lt;/code&gt; de chaque méta-modèles depuis leur &lt;code&gt;.ecore&lt;/code&gt; dans des variables &lt;code&gt;sjava&lt;/code&gt;, &lt;code&gt;fsystem&lt;/code&gt; et &lt;code&gt;bd&lt;/code&gt; en utilisant le code fournit plus haut relatif à votre langage (celui pour charger un métamodèle depuis un &lt;code&gt;.ecore&lt;/code&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;créez une instance d’un des concepts de vos métamodèles en utilisant votre fonction de création à partir d’un nom de méta-classe&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;initialisez le nom des instances que vous avez créé avec une valeur&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;recherchez reflexivement la valeur du &lt;code&gt;name&lt;/code&gt; de votre objet pour vérifier que la valeur a bien été initialisé pour l’attribut.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect2&#34;&gt;
+&lt;h3 id=&#34;_autre_utilisation_de_la_couche_réflexive&#34;&gt;Autre utilisation de la couche réflexive&lt;/h3&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Dans cette partie du TP, vous allez utilisez plus en détail la couche réflexive pour commencer à prendre plus d’aisance avec la manipulation du méta-niveau.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui prend un &lt;code&gt;EObject&lt;/code&gt; quelconque et qui affiche à l’écran le nom de chacun de ses attributs/références ainsi que la valeur de chacun des attributs/références.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui recherche dans un objet le premier attribut de type chaîne de caractère (type &lt;code&gt;EString&lt;/code&gt;) et qui le modifie pour que le nom devienne &lt;code&gt;id_VALEURAVANT&lt;/code&gt; (ex : pour &lt;code&gt;egg&lt;/code&gt; stocké dans l’attribut &lt;code&gt;nom&lt;/code&gt;, la nouvelle chaîne attribué à &lt;code&gt;nom&lt;/code&gt; sera &lt;code&gt;id_egg&lt;/code&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/courses/metamodelisation/tp3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/courses/metamodelisation/tp3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/courses/metamodelisation/tp4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/courses/metamodelisation/tp4/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_note&#34;&gt;Note&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Dans ce TP vous allez coder un algorithme de sérialisation à plat.
+Comme pour les précédents TPs, vous avez le choix entre Java et Python.
+De manière générale, pour simplifier le parsing, nous allons sérialiser les modèles en JSON selon un schéma de votre choix.
+Regardez comment produire et lire du JSON en Java.
+En Python, tout est intégré dans la bibliothèque standard, mais en Java, il faudra que vous utilisiez une bibliothèque externe.
+Regardez celles qui existent et choisissez celle que vous préférez.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Au TP2, vous avez vu comment lire toutes les informations d’un objet de manière réflexive, cette étape est primordiale pour pouvoir écrire l’algorithme de sérialisation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_format_des_données_et_méta_information&#34;&gt;Format des données et méta-information&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;La manière dont vous choisissez de sauvegarder les données dépend de vous (pour ce TP, même si vous allez tous produire plus ou moins la même chose), néanmoins, dès que vous allez devoir faire référence à des méta-classes et aux objets en interne, il est important que vous gardiez le même format.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Deux méta-informations vont devoir être conservées lorsque le modèle est sérialisé.
+Ces informations sont nécessaires pour indiquer certaines choses sur les données, mais elle ne fait pas directement partie de l’objet.
+On parle donc de méta-information, elle est utile, mais pas directement comprise dans les objets.
+Ici, deux méta-informations vont être nécessaires :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;ulist&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;un identifiant unique qui sera donné à chaque objet afin de pouvoir le référencer dans le modèle,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;une référence vers la méta-classe de l’objet.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Concernant l’identifiant, un simple numéro sera suffisant pour référencer les informations à travers le fichier.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Pour la référence à la méta-classe, plutôt que, comme dans XMI, donner juste le nom de la méta-classe et faire référence à un préfix représentant une référence indirecte vers l’URI du méta-modèle dans lequel se trouve la méta-classe en question, vous allez utiliser le format suivant : &lt;code&gt;URI_DU_MM#NOM_DE_LA_MC&lt;/code&gt;.
+Si on prend l’exemple de java simplifié, il serait possible de sérialiser un simple objet classe en JSON de la manière suivante :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;rouge highlight&#34;&gt;&lt;code data-lang=&#34;json&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+  &lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;&amp;#34;#id&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+  &lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;&amp;#34;#metaclass&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;http://simplejava/1.0#JavaClass&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+  &lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;MyClass&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Sur cette exemple, les champs débutant par un &lt;code&gt;#&lt;/code&gt; représentent des méta-informations.
+Le champ &lt;code&gt;#metaclass&lt;/code&gt; donne à la fois l’URI du méta-modèle d’où provient la méta-classe et le nom de la méta-classe en elle-même.
+Le champ &lt;code&gt;#id&lt;/code&gt; donne un numéro unique pour l’objet qui est sérialisé.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_sérialisation_à_plat&#34;&gt;Sérialisation &amp;#34;à plat&amp;#34;&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Comme nous l’avons vu en cours, la sérialisation à plat repose sur le fait que tous les éléments sont &amp;#34;à plat&amp;#34;, c’est-à-dire qu’ils sont tous sauvegardés de manière textuelle dans l’équivalent d’une grande liste.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Pour écrire la sérialisation, voilà les questions que vous devez vous poser :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Quelles informations dois-je sauvegarder ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dois-je traiter les attributs et références de manières différentes ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Comment dois-je gérer les relations many ? Et les relations &amp;#34;opposites&amp;#34; ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Comment dois-je faire référence à un objet au sein du fichier ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Est-il possible d’éviter de sauvegarder certaines informations ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_sil_vous_reste_du_temps&#34;&gt;S’il vous reste du temps&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Vous pouvez essayer d’écrire un algorithme de désérialisation.
+Ces algos sont beaucoup moins triviaux à écrire que ceux de la sérialisation comme il faut à la fois lire les données du fichier et lier chaque élément lu avec une méta-classe afin d’en créer une instance.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Quelle information du fichier sérialisé va donner l’indication sur le méta-modèle à utiliser ? À partir de quel objet peut-on trouver le méta-modèle correspondant ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une classe qui va représenter le désérialiseur.&lt;/p&gt;
+&lt;div class=&#34;olist loweralpha&#34;&gt;
+&lt;ol class=&#34;loweralpha&#34; type=&#34;a&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui, étant donné cette information est capable de retrouver le méta-modèle à utiliser.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui, étant donné un nom de méta-classe est capable de retrouver la méta-classe depuis le méta-modèle&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui est capable de créer une instance de cette méta-classe, de lire les informations de l’objet depuis le fichier&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/courses/metamodelisation/tp5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/courses/metamodelisation/tp5/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_note_et_pré_requis&#34;&gt;Note et pré-requis&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Le but de ce TP va être de produire plusieurs petites transformations de modèles, basées sur les méta-modèles que vous avez pu développer ainsi qu’un moteur de chaînes de transformations MDE-based.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Ce TP, un peu plus long que les autres, est à faire en utilisant Python, pour des raisons techniques.
+Les moteurs de transformations de modèles utilisant les technologies EMF-Java (ex: ATL, QVTo, Epsilon, Acceleo), sont bien établies et fonctionnent très bien lorsqu’on les utilise de manière localisées, mais leur usage est parfois très lourd : configurations complexes, interfaçage avec divers moteurs complexes, chaînage de transformations complexes à mettre en oeuvre et usage en dehors d’Eclipse vraiment compliqué et pénible.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;dlist&#34;&gt;
+&lt;dl&gt;
+&lt;dt class=&#34;hdlist1&#34;&gt;Pré-requis&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;Si vous n’avez pas travaillé en Python en premier lieux, assurez-vous d’avoir bien les méta-modèles au format &lt;code&gt;.ecore&lt;/code&gt; pour ce TP, il faudra générer les méta-modèle PyEcore à partir d’eux. Aussi, créez un virtualenv dédié pour ce TPs (environnement virtuel Python pour installer des dépendances sans bouleverser votre système).&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_génération_du_code_des_méta_modèles&#34;&gt;Génération du code des méta-modèles&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Si vous avez le code des méta-modèles déjà générés en Python, vous pouvez sauter cette étape et passer directement à la prochaine section.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Si vous n’avez pas le code des méta-modèles en Python, il est nécessaire de les générer.
+Pour faire ça, dans un premier temps, il est intéressant de créer un environnement virtuel.
+Pour créer un environnement virtuel :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;placez-vous dans votre répertoire de travail (celui de votre repository) et tapez la commande suivante : &lt;code&gt;$ virtualenv venv&lt;/code&gt;. Cela va créer un environnement virtuel dans le répertoire &lt;code&gt;venv&lt;/code&gt; que vous pourrez activez quand vous voulez.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Avant d’activer votre environnement virtuel, ajoutez le répertoire &lt;code&gt;venv&lt;/code&gt; à votre &lt;code&gt;.gitignore&lt;/code&gt; pour ne pas le commiter&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Activez votre environnement virtuel de la manière suivante : &lt;code&gt;source venv/bin/activate&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Vous pouvez maintenant installer les outils nécessaires pour méta-modéliser et travailler avec Ecore de la manière suivante :&lt;br/&gt;
+&lt;code&gt;$ pip install pyecore pyecoregen&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_transformations_de_modèles_avec_motra&#34;&gt;Transformations de modèles avec Motra&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;L’année passée vous avez manipulé des transformations de modèles type ATL ou, très certainement, QVTo.
+Ces langages de transformations reposent sur OCL pour la navigation dans les modèles et rajoutent des concepts pour la création/modification/suppression d’éléments dans les modèles manipulés.
+Dans ce TP, vous allez utiliser un nouveau type de langage qui n’est pas, comme ATL, QVT…​ un DSL externe, mais un DSL interne à Python nommé Motra (pour MOdel TRAnsformation).
+Ce DSL repose entièrement sur Python en étendant, d’une certaine manière, le langage et en proposant une sémantique proche de QVTo.
+Motra est toujours considéré comme expérimental, donc si vous trouvez des soucis, n’hésitez pas à nous les remonter directement ou à écrire une issue détaillée sur github.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Activez votre virtualenv et installez la librairie : &lt;code&gt;$ pip install motra&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Regardez les quelques exemples donnés directement sur le repository : &lt;a href=&#34;https://github.com/pyecore/motra/tree/main/examples/m2m&#34; class=&#34;bare&#34;&gt;https://github.com/pyecore/motra/tree/main/examples/m2m&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Vous allez maintenant écrire plusieurs petites transformations qui seront des transformations &amp;#34;sur-place&amp;#34; et &amp;#34;exogènes&amp;#34;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect2&#34;&gt;
+&lt;h3 id=&#34;_transformation_sur_votre_meta_modèle_de_bd&#34;&gt;Transformation sur votre meta-modèle de BD&lt;/h3&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une transformation qui transforme le nom de toutes les tables de camel case vers snake case majuscule (ex: &lt;code&gt;MyTable&lt;/code&gt; deviendra &lt;code&gt;MY_TABLE&lt;/code&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect2&#34;&gt;
+&lt;h3 id=&#34;_transformations_sur_simplejava&#34;&gt;Transformations sur &lt;code&gt;simplejava&lt;/code&gt;&lt;/h3&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une transformation qui ajoute un attribut &lt;code&gt;id&lt;/code&gt; de type &lt;code&gt;String&lt;/code&gt; pour chaque objets. Attention à n’introduire l’attribut que pour les classes qui n’héritent d’aucune autre. S’il existe déjà dans la classe un attribut qui commence par &lt;code&gt;id_&lt;/code&gt; ou qui s’appelle &lt;code&gt;id&lt;/code&gt;, alors la transformation n’ajoutera pas de nouveau l’élément.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une transformation qui introduit une interface commune possédant une méthode &lt;code&gt;getUUID()&lt;/code&gt; à tout les objets. Attention à n’introduire l’interface que pour les classes qui n’héritent d’aucune autre.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une transformation qui détecte les hiérarchies de classes (arbres d’héritages) et qui rajoute au modèle l’équivalent d’une factory, c’est-à-dire, une classe qui possède une méthode pour créer une instance de chaque classe non abstraite de l’arbre d’héritage découvert.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect2&#34;&gt;
+&lt;h3 id=&#34;_transformation_de_simplejava_vers_votre_méta_modèle_de_bd&#34;&gt;Transformation de &lt;code&gt;simplejava&lt;/code&gt; vers votre méta-modèle de BD&lt;/h3&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Vous allez maintenant écrire une transformation qui permet de passer d’un modèle simple Java vers un modèle de base de donnée.
+Voilà les questions à vous poser :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;ulist&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Quels sont les éléments à traduire ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Quelle va être la traduction d’une classe ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Quelle va être la traduction d’un attribut ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Comment gérer l’héritage ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Comment déterminer une clef primaire depuis une classe Java ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Puis, une fois que vous avez des réponses plutôt précises à ces questions :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez la transformation pour passer d’un modèle Java à un modèle de base de données.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect2&#34;&gt;
+&lt;h3 id=&#34;_transformation_de_simplejava_vers_votre_méta_modèle_de_système_de_fichiers&#34;&gt;Transformation de &lt;code&gt;simplejava&lt;/code&gt; vers votre méta-modèle de système de fichiers&lt;/h3&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Comme précédemment, les mêmes questions se posent :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;ulist&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Quels sont les éléments à traduire ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Quelle va être la traduction d’un package ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Quelle va être la traduction d’une classe ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Puis, une fois que vous avez des réponses plutôt précises à ces questions :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez la transformation pour passer d’un modèle Java à un modèle de système de fichiers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_un_moteur_de_chaîne_de_transformations&#34;&gt;Un moteur de chaîne de transformations&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Vous allez développer ici un moteur de chaîne de transformations et expérimenter avec les transformations que vous avez écrites avant.
+Pour modéliser le moteur de chaîne, vous allez modéliser dans un premier temps un méta-modèle Ecore de chaîne de transformations.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect2&#34;&gt;
+&lt;h3 id=&#34;_une_chaîne_simplifiée_de_transformations&#34;&gt;Une chaîne simplifiée de transformations&lt;/h3&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Une chaîne de transformations est composée de plusieurs opérations.
+Ces opérations peuvent être des transformations de modèles (M2M et M2T) ou une opération de sauvegarde de modèle vers un chemin en particulier.
+Chaque opération possède une relation vers la chaîne qui la contient.
+Chaque opération possède une méthode &lt;code&gt;execute&lt;/code&gt; qui prend exactement un paramètre, le modèle sur lequel va s’appliquer l’opération et qui retourne le nouveau modèle.
+Chaque transformation est liée à une transformation Motra (modélisée par un attribut vers un &lt;code&gt;EJavaObject&lt;/code&gt; qui sera traduit vers une relation vers un objet Python natif lors de la génération).
+Finalement, la chaîne en elle-même possède une méthode &lt;code&gt;run&lt;/code&gt; qui prend en paramètre un chemin vers un fichier et qui retourne le résultat de la dernière opération exécutée.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Modélisez le méta-modèle de chaîne de transformations au format Ecore en utilisant le &amp;#34;ecore diagram tool&amp;#34; sous Eclipse. Pour simplifier les prochaines opérations, utilisez ces valeurs pour le package racine de votre méta-modèle : &lt;code&gt;name=chainengine&lt;/code&gt;, &lt;code&gt;nsPrefix=chainengine&lt;/code&gt;, &lt;code&gt;nsURI=http://chainengine/1.0&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Une fois que vous avez modélisé votre méta-modèle de chaîne, utilisez la ligne suivante pour générer le code du méta-modèle :&lt;br/&gt;
+&lt;code&gt;$ pyecoregen -e votre_metamodel.ecore -o . --user-module chainengine.mixins&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Copiez le fichier de mixins généré avec cette commande : &lt;code&gt;$ cp chainengine/chainengine_mixins.py.skeleton chainengine/mixins.py&lt;/code&gt;. Vous allez écrire le code des méthodes &lt;code&gt;execute&lt;/code&gt; et &lt;code&gt;run&lt;/code&gt; directement dans ce fichier &lt;code&gt;chainengine/mixins.py&lt;/code&gt;, cela évitera, si vous générez plusieurs fois le code de votre méta-modèle, d’écraser le code que vous avez écrit.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Voici un exemple de comment vous pouvez décrire maintenant une chaîne de transformations (pour un méta-modèle, si vous avez modélisé les choses autrement, vous aurez un autre code) :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;rouge highlight&#34;&gt;&lt;code data-lang=&#34;python&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;chainengine&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;
+&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;transfos&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t3&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# on suppose plusieurs transformations
+&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;chain&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Chain&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;first_chain&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;chain&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;operations&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;M2M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;transformation&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;chain&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;operations&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;M2M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;transformation&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;chain&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;operations&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SaveModel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;intermediaire.xmi&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;chain&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;operations&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;M2M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;transformation&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;chain&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;operations&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;M2M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;transformation&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;chain&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;operations&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SaveModel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;final.xmi&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;chain&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;run&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;mon_modele.xmi&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Actuellement, si vous exécutez ce code, vous allez récupérer une exception vous disant que votre code pour les méthodes &lt;code&gt;run&lt;/code&gt; et &lt;code&gt;execute&lt;/code&gt; ne sont pas encore implémentées.
+C’est ce que vous allez faire maintenant, mais avant ça, il est nécessaire de comprendre un peu comment Motra lance les transformations, ce qu’il attend en paramètre et ce qu’il retourne.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect3&#34;&gt;
+&lt;h4 id=&#34;_motra_paramètre_dentrée_de_sorties_et_un_resourceset_unique&#34;&gt;Motra, paramètre d’entrée, de sorties et un &lt;code&gt;ResourceSet&lt;/code&gt; unique&lt;/h4&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Lorsque vous avez codé une transformation avec Motra, vous pouvez la lancer de la manière suivante :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;rouge highlight&#34;&gt;&lt;code data-lang=&#34;python&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pyecore.resources&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ResourceSet&lt;/span&gt;
+&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;matransfo&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# import de la transformation
+&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# En considérant que &amp;#34;t&amp;#34; est définie comme t [in_model, out_model]
+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ResourceSet&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;run&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;in_model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;path_to_model.xmi&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;resource_set&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Il est important de noter que pour lancer la transformation, le nom du modèle d’entrée spécifié lors de la transformation doit-être utilisé.
+Il faut aussi noter que tout au long de la transformation, il faudra gérer une même instance de &lt;code&gt;ResourceSet&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Au début de la méthode &lt;code&gt;run&lt;/code&gt; de votre chaîne, ajouter un attribut d’instance &lt;code&gt;resource_set&lt;/code&gt; initialisé avec une nouvelle instance de &lt;code&gt;ResourceSet&lt;/code&gt;. Cette instance pourra être récupérée par toutes les opérations si elles en ont besoin.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;À la fin de la méthode &lt;code&gt;run&lt;/code&gt; de votre chaîne, affectez la valeur &lt;code&gt;None&lt;/code&gt; à votre attribut d’instance &lt;code&gt;resource_set&lt;/code&gt;. Cela marque le fait qu’une fois que l’exécution de la chaine est terminée, cet attribut n’a plus de raison d’avoir une valeur non-nulle.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Vous allez coder maintenant les méthodes &lt;code&gt;execute&lt;/code&gt; pour chacune des opérations.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez la méthode &lt;code&gt;execute&lt;/code&gt; de l’opération de sauvegarde de modèle. Pour rappel, cette méthode reçoit en paramètre la resource représentant le modèle qui doit être sauvegardé, doit sauvegarder le modèle (en utilisant la méthode &lt;code&gt;save(output=…​)&lt;/code&gt; de la resource), puis retourner la resource passée en paramètre.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez la méthode &lt;code&gt;execute&lt;/code&gt; de l’opération d’exécution d’une transformation de modèle. Cette méthode doit :&lt;br/&gt;&lt;/p&gt;
+&lt;div class=&#34;olist loweralpha&#34;&gt;
+&lt;ol class=&#34;loweralpha&#34; type=&#34;a&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;prendre en paramètre un modèle,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;demander à la transformation le nom de son paramètre d’entrée (récupérable par en utilisant le premier élément de la collection &lt;code&gt;input_defs[0]&lt;/code&gt;),&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;construire un dictionnaire avec comme clé le nom du paramètre d’entrée et en valeur associé le paramètre d’entrée de la méthode,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;récupérer le &lt;code&gt;ResourceSet&lt;/code&gt; de la chaîne,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;exécuter la transformation associé à l’opération avec en paramètre, le resource set récupéré et le dictionnaire que vous avez construit expand avec l’opérateur &lt;code&gt;**&lt;/code&gt;. Cela signifie que si votre dictionnaire s’appelle &lt;code&gt;input_dict&lt;/code&gt; et votre resource set stocké dans une variable &lt;code&gt;rset&lt;/code&gt;, les paramètres passés à l’appel devront être &lt;code&gt;(resource_set=rset, **input_dict)&lt;/code&gt;,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;récupérer le résultat de l’exécution&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;retourner le premier modèle de sortie de la transformation, récupérable via l’attribut &lt;code&gt;outputs[0]&lt;/code&gt; du résultat de l’exécution&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;À l’issue de ces 2 méthodes, vous avez presque fini l’écriture de votre moteur de chaîne, il ne vous reste plus qu’à coder le corps de la fonction qui va vous servir à lancer le tout.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez la méthode &lt;code&gt;run&lt;/code&gt; de votre chaîne. Cette méthode va tout simplement itérer sur toutes les opérations de votre chaîne et passer le résultat de chaque appels comme paramètre de la prochaine opération.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Utilisez votre moteur de chaîne pour décrire plusieurs chaînes de transformations en composant avec les transformations que vous avez codé précédemment, ou en utilisant les transformations codées par vos camarade, si vous êtes certains que vous avez des méta-modèles compatibles&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect2&#34;&gt;
+&lt;h3 id=&#34;_vers_une_fluent_api_pour_la_création_de_chaînes&#34;&gt;Vers une fluent-API pour la création de chaînes&lt;/h3&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Avec votre moteur de chaînes, vous êtes en mesure de créer des chaînes complexes et d’observer comment les transformations peuvent-être réutilisés et l’impact du chaînage sur les modèles.
+Cependant, vous pouvez remarquer que la description d’un modèle de chaînes est un peu pénible.
+Ici, vous allez implémenter une fluent-API qui va vous permettre de modéliser plus facilement des chaînes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Les fluent-API sont des APIs proposés pour simplifier l’utilisation de bibliothèques en donnant une abstraction qui permet de très facilement chaîner plusieurs appels pour écrire une &amp;#34;longue phrase&amp;#34; plutôt que plusieurs lignes.
+C’est, par exemple, le cas de l’API de stream de Java et, plus généralement, pour implémenter les patterns builder.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Pour faire ceci, vous allez implémenter, dans un module Python séparé (un autre fichier Python), une classe qui servira de point d’entrée pour la création de chaînes.
+Vous nommerez cette classe comme vous voulez, mais voilà à quoi devrait ressembler ce que vous pourrez exprimer une fois que votre fluent-API aura été codée (ici nommé ChainBuilder):&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;rouge highlight&#34;&gt;&lt;code data-lang=&#34;python&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Les parenthèses de début et fin ne sont là que pour pouvoir écrire le code sur
+# plusieurs lignes
+&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ChainBuilder&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;first_chain&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m2m&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m2m&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;save&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;intermediaire.xmi&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m2m&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m2m&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;save&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;final.xmi&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;run&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;mon_modele.xmi&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une classe permettant de définir une Fluent-API pour votre moteur de chaine.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Utilisez votre nouvelle API pour décrire plusieurs chaines de transformations en composant avec les transformations que vous avez codé précédemment, ou en utilisant les transformations codées par vos camarade, si vous êtes certains que vous avez des méta-modèles compatibles&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/courses/metamodelisation/tp6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/courses/metamodelisation/tp6/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_note&#34;&gt;Note&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Dans ce TP, vous allez mettre manipuler un type de modèle un peu différent de ceux que vous avez manipulé pendant les TPs précédent.
+Cette fois, vous n’utiliserez pas EMF ou PyEcore, mais vous vous allez manipuler directement le méta-modèle Java pour extraire de l’information, générer du code ou coder des fonctions utilitaires.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_méta_niveau_en_java&#34;&gt;Méta-niveau en Java&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;La manipulation du méta-niveau en Java est moins aisé qu’en Python, elle est aussi beaucoup moins permissive.
+Néanmoins, elle permet de faire des choses assez avancée.
+À travers les questions suivantes, vous allez écrire l’équivalent d’une classe qui va permettre de builder des instances d’objets quelconque, du moment que les attributs sont des attributs primitifs (chaînes de caractères, entiers, …​).
+Avant ça, quelques fonctions pour vous mettre un poil à l’aise avec une partie de l’API reflexive de Java.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui prend une instance et qui retourne dans une map le nom et le type de tout ses attributs d’instances.&lt;/p&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui prend une classe et qui affiche son nom, ainsi que le nom de toutes ses super-classes en suivant l’arbre d’héritage.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une méthode static &lt;code&gt;getAllFields()&lt;/code&gt;  qui prend une classe en paramètre et qui retourne une liste de toute ses &lt;code&gt;Field&lt;/code&gt;, direct et hérités (la méthode &lt;code&gt;.getDeclaredFields()&lt;/code&gt;) ne retourne que les fields de la classe, pas de ses super-classes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui prend un objet en paramètre et qui retourne dans une map la valeur de tout les attributs de cette instance. Pour accéder à la valeur d’un champ, il faut demander à l’instance de &lt;code&gt;Field&lt;/code&gt; (représentant l’attribut), sa valeur sur un object en particulier en utilisant la méthode &lt;code&gt;.get(Object o)&lt;/code&gt;. Pour accéder aux champs privés d’un objet, il est nécessaire, avant d’y accéder, de changer son accéssibilité avec la méthode &lt;code&gt;.setAccessible(true)&lt;/code&gt;. &lt;em&gt;Note&lt;/em&gt;: vous n’allez pas forcément vous servir de la fonction écrite précédemment.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Maintenant que vous savez manipuler un peu mieux le méta-niveau, vous allez écrire un classe spéciale &lt;code&gt;Instance&lt;/code&gt; qui va représenter une instance. Cette classe possède 2 champs :
+* un champ &lt;code&gt;_class&lt;/code&gt; de type &lt;code&gt;String&lt;/code&gt; qui va représenter le type de l’instance,
+* un champ &lt;code&gt;attributes&lt;/code&gt; de type &lt;code&gt;Map&amp;lt;String, String&amp;gt;&lt;/code&gt; qui va représenter le dictionnaire de toutes les valeurs des instances.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une telle classe&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une méthode statique dans votre classe &lt;code&gt;Instance&lt;/code&gt; qui prend une instance quelconque et qui retourne une instance de votre classe &lt;code&gt;Instance&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Maintenant que le travail est fait dans un sens (instance vers &lt;code&gt;Instance&lt;/code&gt;), vous allez faire le travail inverse, soit prendre une instance de &lt;code&gt;Instance&lt;/code&gt; et recréer une instance de la véritable classe qu’il représente.
+Dans un premier temps, vous allez écrire plusieurs méthode utilitaires.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une méthode &lt;code&gt;Field findField(Class&amp;lt;?&amp;gt; cls, String name)&lt;/code&gt; qui cherche dans la liste de tout les attributs de la classe &lt;code&gt;cls&lt;/code&gt; le &lt;code&gt;Field&lt;/code&gt; associé au nom &lt;code&gt;name&lt;/code&gt;. Cette méthode lèvera l’exception &lt;code&gt;NoSuchFieldException&lt;/code&gt; si le champ n’existe pas. &lt;em&gt;Note&lt;/em&gt; : utilisez la méthode &lt;code&gt;getAllFields&lt;/code&gt; que vous avez déjà codé pour vous aider.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Si vous avez suivit, vous savez que les valeurs des attributs sont représentés dans &lt;code&gt;Instance&lt;/code&gt; comme des &lt;code&gt;String&lt;/code&gt;.
+Il faut donc un moyen de parser ces strings en objets natif.
+Pour faire ceci, vous allez écrire une méthode générique qui va automatiquement appeler la bonne méthode de traduction en fonction du nom et du type de l’attribut à parser.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une méthode &lt;code&gt;Object parse(Field f, String s)&lt;/code&gt; qui prend le champ représentant l’attribut, ainsi que la chaîne de caractère représentant la valeur du champ et qui retourne la valeur native Java de l’attribut (par exemple, la méthode retournera la valeur entière &lt;code&gt;3&lt;/code&gt; pour la chaîne de caractère &lt;code&gt;&amp;#34;3&amp;#34;&lt;/code&gt; si le champ est un champ de type &lt;code&gt;int&lt;/code&gt; ).
+Pour faire ceci de manière générique, vous allez suivre les étapes suivantes:&lt;/p&gt;
+&lt;div class=&#34;olist loweralpha&#34;&gt;
+&lt;ol class=&#34;loweralpha&#34; type=&#34;a&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Récupérez à l’aide de la méthode &lt;code&gt;getDeclaredMethod(…​, …​)&lt;/code&gt; la méthode qui porte le nom &lt;code&gt;parse_NOMDUTYPE&lt;/code&gt; ou &lt;code&gt;NOMDUTYPE&lt;/code&gt; est remplacé par le nom du type du &lt;code&gt;Field&lt;/code&gt;. La méthode &lt;code&gt;getDeclaredMethod&lt;/code&gt; attend au moins 2 paramètres, le nom de la méthode, et le type des paramètres de la méthode à rechercher. Par exemple, pour un &lt;code&gt;Field&lt;/code&gt; de type &lt;code&gt;int&lt;/code&gt;, le nom de la méthode à chercher sera &lt;code&gt;parse_int&lt;/code&gt; et le paramètre de la méthode uniquement un &lt;code&gt;String&lt;/code&gt;. Pour rechercher une telle méthode, votre code ressemblera à ça :&lt;br/&gt;
+&lt;code&gt;Method m = this.getClass().getDeclaredMethod(&amp;#34;parse_int&amp;#34;, String.class);&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Une fois que vous avez la méthode, invoquez là sur votre propre instance avec la chaîne à traduire:&lt;br/&gt;
+&lt;code&gt;m.invoke(this, s)&lt;/code&gt; et retourner la valeur.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Cette fonction est générique et va automatiquement rechercher la bonne fonction en fonction du type définit du champ.
+Cependant, pour que cette fonction marche, il est impératif de coder les méthodes associés (&lt;code&gt;parse_int&lt;/code&gt;, &lt;code&gt;parse_float&lt;/code&gt;, …​) dans votre classe &lt;code&gt;Instance&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez les différentes fonctions &lt;code&gt;parse_int&lt;/code&gt;…​etc pour les types primitifs de Java&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une méthode &lt;code&gt;create()&lt;/code&gt; dans la classe &lt;code&gt;Instance&lt;/code&gt; qui créé une véritable instance de la classe que vous avez donné comme paramètre &lt;code&gt;_class&lt;/code&gt; de votre instance d&amp;#39;`Instance` et qui initialise tout les attributs d’instances. &lt;em&gt;Note&lt;/em&gt; : pour trouver une véritable classe à partir de son nom, il faut passer par le &lt;code&gt;ClassLoader&lt;/code&gt; qui est accessible via n’importe quelle classe en utilisant : &lt;code&gt;.getClassLoader()&lt;/code&gt; puis la méthode &lt;code&gt;.loadClass(…​)&lt;/code&gt; qui prend en paramètre la &lt;code&gt;String&lt;/code&gt; représentant le nom de la classe. La recette à suivre est la suivante :&lt;/p&gt;
+&lt;div class=&#34;olist loweralpha&#34;&gt;
+&lt;ol class=&#34;loweralpha&#34; type=&#34;a&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Récupérez le class loader&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;À l’aide du class loader, récupérez la classe qui porte le nom du champ &lt;code&gt;_class&lt;/code&gt; de votre &lt;code&gt;Instance&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Récupérez le premier constructeur de la classe que vous avez récupéré (&lt;code&gt;.getConstructors()&lt;/code&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Depuis ce constructeur, créez une instance (&lt;code&gt;.newInstance()&lt;/code&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Itérez sur toutes les entrées de votre table &lt;code&gt;attributes&lt;/code&gt; et pour chaque entrée:&lt;/p&gt;
+&lt;div class=&#34;olist lowerroman&#34;&gt;
+&lt;ol class=&#34;lowerroman&#34; type=&#34;i&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Utilisez la clé de l’entrée pour récupérez le &lt;code&gt;Field&lt;/code&gt; dans la classe que vous avez récupéré&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Parsez la value de l’entrée&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Indiquez que le field est accessible (&lt;code&gt;.setAccessible(true)&lt;/code&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Initialisez la valeur du field avec la valeur que vous avez parsé.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Si votre code des correct, en considérant les classes suivantes, voilà comment vous devriez pouvoir utiliser tout votre code.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;rouge highlight&#34;&gt;&lt;code data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;B&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+	&lt;span class=&#34;kd&#34;&gt;protected&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+
+  &lt;span class=&#34;c1&#34;&gt;// and accessors&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;A&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;B&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;float&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+
+  &lt;span class=&#34;c1&#34;&gt;// and accessors&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MyMain&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;no&#34;&gt;A&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+    &lt;span class=&#34;nc&#34;&gt;Instance&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Instance&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;convert&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;no&#34;&gt;A&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;create&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;assert&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getX&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getX&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;assert&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getY&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getY&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;assert&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getZ&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getZ&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+
+    &lt;span class=&#34;nc&#34;&gt;Instance&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Instance&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;i2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;set_class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;toto.titi.B&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// Nom plainement qualifié nécessaire&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;i2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setX&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;i2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setY&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;no&#34;&gt;B&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;B&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;create&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;assert&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getX&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;assert&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getY&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
