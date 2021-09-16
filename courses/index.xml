@@ -292,7 +292,7 @@ Dans un premier temps, enregistrez le métamodèle dans un &lt;code&gt;ResourceS
 &lt;/div&gt;
 &lt;div class=&#34;listingblock&#34;&gt;
 &lt;div class=&#34;content&#34;&gt;
-&lt;pre class=&#34;rouge highlight&#34;&gt;&lt;code data-lang=&#34;python&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pyecore.resources&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt;
+&lt;pre class=&#34;rouge highlight&#34;&gt;&lt;code data-lang=&#34;python&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pyecore.resources&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ResourceSet&lt;/span&gt;
 &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;simplejava&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# pour le méta-modèle simplejava
 &lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ResourceSet&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
