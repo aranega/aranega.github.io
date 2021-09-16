@@ -886,19 +886,43 @@ Pour le méta-modèle simple java, le <code>.genmodel</code> devrait être déj�
 </div>
 <div class="paragraph">
 <p>À l’issue de ces étapes, vous devriez avoir le code de votre méta-modèle entièrement généré.
-Maintenant, pour pouvoir ouvrir des modèles existant, il est nécessaire d’enregistrer le méta-modèle que vous voulez utiliser dans un <code>ResourceSet</code>.
+Maintenant, pour pouvoir ouvrir des modèles existant, il est nécessaire d’enregistrer une dépendance en plus pour votre projet &#34;Ecore Modeling Project&#34;.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ouvrez le fichier <code>META-INF/MANIFEST.MF</code>, puis switchez sur l’onglet <code>Dependencies</code></p>
+</li>
+<li>
+<p>À partir de cet onglet, cliquez sur le <code>Add…​</code> de la frame de gauche <code>Required plug-ins</code> et ajoutez le plugin suivant :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>org.eclipse.emf.ecore.xmi</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Vous pouvez maintenant charger un modèle instance du méta-modèle enregistré comme vue précédemment en utilisant le <code>ResourceSet</code> correctement paramétré.</p>
+</div>
+<div class="paragraph">
+<p>le méta-modèle que vous voulez utiliser dans un <code>ResourceSet</code>.
 Cela se fait avec le code suivant :</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nc">ResourceSet</span> <span class="n">rset</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ResourceSetImpl</span><span class="o">();</span>
 <span class="n">rset</span><span class="o">.</span><span class="na">getResourceFactoryRegistry</span><span class="o">().</span><span class="na">getExtensionToFactoryMap</span><span class="o">().</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;ecore&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="nc">XMIResourceFactoryImpl</span><span class="o">());</span>
+<span class="n">rset</span><span class="o">.</span><span class="na">getResourceFactoryRegistry</span><span class="o">().</span><span class="na">getExtensionToFactoryMap</span><span class="o">().</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;xmi&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="nc">XMIResourceFactoryImpl</span><span class="o">());</span>
 <span class="n">rset</span><span class="o">.</span><span class="na">getPackageRegistry</span><span class="o">().</span><span class="na">put</span><span class="o">(</span><span class="nc">SimplejavaPackage</span><span class="o">.</span><span class="na">eNS_URI</span><span class="o">,</span> <span class="nc">SimplejavaPackage</span><span class="o">.</span><span class="na">eINSTANCE</span><span class="o">);</span>
 
-<span class="nc">Resource</span> <span class="n">resource</span> <span class="o">=</span> <span class="n">rset</span><span class="o">.</span><span class="na">getResource</span><span class="o">(</span><span class="no">URI</span><span class="o">.</span><span class="na">fileURI</span><span class="o">(</span><span class="s">&#34;path_vers_un_modele&#34;</span><span class="o">),</span> <span class="kc">true</span><span class="o">);</span>
+<span class="nc">Resource</span> <span class="n">resource</span> <span class="o">=</span> <span class="n">rset</span><span class="o">.</span><span class="na">getResource</span><span class="o">(</span><span class="no">URI</span><span class="o">.</span><span class="na">createFileURI</span><span class="o">(</span><span class="s">&#34;path_vers_un_modele&#34;</span><span class="o">),</span> <span class="kc">true</span><span class="o">);</span>
 <span class="nc">JavaModel</span> <span class="n">model</span> <span class="o">=</span> <span class="o">(</span><span class="nc">JavaModel</span><span class="o">)</span> <span class="n">resource</span><span class="o">.</span><span class="na">getContents</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
 <span class="c1">// JavaModel est le nom du concept racine du méta-modèle simple java,</span>
-<span class="c1">// chez vous il peut avoir un nom différent</span></code></pre>
+<span class="c1">// chez vous il peut avoir un nom différent ! Pensez bien à le modifier !</span></code></pre>
 </div>
 </div>
 </div>
@@ -1035,7 +1059,8 @@ Pour pouvoir faire ceci, il est nécessaire d’ajouter des dépendances à votr
 <pre class="rouge highlight"><code data-lang="java"><span class="nc">ResourceSet</span> <span class="n">rset</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ResourceSetImpl</span><span class="o">();</span>
 <span class="n">rset</span><span class="o">.</span><span class="na">getResourceFactoryRegistry</span><span class="o">().</span><span class="na">getExtensionToFactoryMap</span><span class="o">()*</span>
                                  <span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;ecore&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="nc">XMIResourceFactoryImpl</span><span class="o">());</span>
-
+<span class="n">rset</span><span class="o">.</span><span class="na">getResourceFactoryRegistry</span><span class="o">().</span><span class="na">getExtensionToFactoryMap</span><span class="o">()*</span>
+                                 <span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;xmi&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="nc">XMIResourceFactoryImpl</span><span class="o">());</span>
 <span class="nc">Resource</span> <span class="n">resource</span> <span class="o">=</span> <span class="n">rset</span><span class="o">.</span><span class="na">getResource</span><span class="o">(</span><span class="no">URI</span><span class="o">.</span><span class="na">createFileURI</span><span class="o">(</span><span class="s">&#34;path_vers_ecore&#34;</span><span class="o">),</span> <span class="kc">true</span><span class="o">);</span>
 
 <span class="c1">// À partir de là &#34;pack&#34; contient le EPackage de votre méta-modèle</span>

@@ -417,19 +417,43 @@ Pour le méta-modèle simple java, le &lt;code&gt;.genmodel&lt;/code&gt; devrait
 &lt;/div&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;À l’issue de ces étapes, vous devriez avoir le code de votre méta-modèle entièrement généré.
-Maintenant, pour pouvoir ouvrir des modèles existant, il est nécessaire d’enregistrer le méta-modèle que vous voulez utiliser dans un &lt;code&gt;ResourceSet&lt;/code&gt;.
+Maintenant, pour pouvoir ouvrir des modèles existant, il est nécessaire d’enregistrer une dépendance en plus pour votre projet &amp;#34;Ecore Modeling Project&amp;#34;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Ouvrez le fichier &lt;code&gt;META-INF/MANIFEST.MF&lt;/code&gt;, puis switchez sur l’onglet &lt;code&gt;Dependencies&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;À partir de cet onglet, cliquez sur le &lt;code&gt;Add…​&lt;/code&gt; de la frame de gauche &lt;code&gt;Required plug-ins&lt;/code&gt; et ajoutez le plugin suivant :&lt;/p&gt;
+&lt;div class=&#34;ulist&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;org.eclipse.emf.ecore.xmi&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Vous pouvez maintenant charger un modèle instance du méta-modèle enregistré comme vue précédemment en utilisant le &lt;code&gt;ResourceSet&lt;/code&gt; correctement paramétré.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;le méta-modèle que vous voulez utiliser dans un &lt;code&gt;ResourceSet&lt;/code&gt;.
 Cela se fait avec le code suivant :&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;listingblock&#34;&gt;
 &lt;div class=&#34;content&#34;&gt;
 &lt;pre class=&#34;rouge highlight&#34;&gt;&lt;code data-lang=&#34;java&#34;&gt;&lt;span class=&#34;nc&#34;&gt;ResourceSet&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ResourceSetImpl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getResourceFactoryRegistry&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getExtensionToFactoryMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ecore&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;XMIResourceFactoryImpl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getResourceFactoryRegistry&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getExtensionToFactoryMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;xmi&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;XMIResourceFactoryImpl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getPackageRegistry&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;SimplejavaPackage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;eNS_URI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;SimplejavaPackage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;eINSTANCE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
 
-&lt;span class=&#34;nc&#34;&gt;Resource&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getResource&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;URI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;fileURI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;path_vers_un_modele&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;nc&#34;&gt;Resource&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getResource&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;URI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;createFileURI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;path_vers_un_modele&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
 &lt;span class=&#34;nc&#34;&gt;JavaModel&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;model&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;JavaModel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getContents&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;// JavaModel est le nom du concept racine du méta-modèle simple java,&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// chez vous il peut avoir un nom différent&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&#34;c1&#34;&gt;// chez vous il peut avoir un nom différent ! Pensez bien à le modifier !&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -566,7 +590,8 @@ Pour pouvoir faire ceci, il est nécessaire d’ajouter des dépendances à votr
 &lt;pre class=&#34;rouge highlight&#34;&gt;&lt;code data-lang=&#34;java&#34;&gt;&lt;span class=&#34;nc&#34;&gt;ResourceSet&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ResourceSetImpl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getResourceFactoryRegistry&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getExtensionToFactoryMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()*&lt;/span&gt;
                                  &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ecore&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;XMIResourceFactoryImpl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
-
+&lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getResourceFactoryRegistry&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getExtensionToFactoryMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()*&lt;/span&gt;
+                                 &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;xmi&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;XMIResourceFactoryImpl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
 &lt;span class=&#34;nc&#34;&gt;Resource&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getResource&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;URI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;createFileURI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;path_vers_ecore&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
 
 &lt;span class=&#34;c1&#34;&gt;// À partir de là &amp;#34;pack&amp;#34; contient le EPackage de votre méta-modèle&lt;/span&gt;
