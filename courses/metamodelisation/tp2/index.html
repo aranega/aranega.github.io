@@ -1,0 +1,1526 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  
+  
+  <meta name="generator" content="Wowchemy 5.0.0-beta.0 for Hugo">
+  
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Notes À partir de ce TP, vous allez devoir manipuler les modèles de façon programmatique. Cela va forcément impliquer l’utilisation d’un langage de programmation pour lequel il existe le support de librairies de méta-modélisation.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/courses/metamodelisation/tp2/">
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#EF525B">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js" integrity="sha512-TmDwFLhg3UA4ZG0Eb4MIyT1O1Mb+Oww5kFG0uHqXsdbyZz9DcvYQhKpGgNkamAI6h2lGGZq2X8ftOJvF/XjTUg==" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono%7CLora:400,700%7CRoboto:400,700&display=swap">
+    
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.css">
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-29790075-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-29790075-3', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png">
+
+  <link rel="canonical" href="/courses/metamodelisation/tp2/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@VincentAranega">
+  <meta property="twitter:creator" content="@VincentAranega">
+  
+  <meta property="og:site_name" content="">
+  <meta property="og:url" content="/courses/metamodelisation/tp2/">
+  <meta property="og:title" content=" | ">
+  <meta property="og:description" content="Notes À partir de ce TP, vous allez devoir manipuler les modèles de façon programmatique. Cela va forcément impliquer l’utilisation d’un langage de programmation pour lequel il existe le support de librairies de méta-modélisation."><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png">
+  <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title> | </title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper  ">
+
+  
+  
+  
+    <script>window.wcDarkLightEnabled = true;</script>
+  
+  
+    <script>const isSiteThemeDark = false;</script>
+  
+  
+  <script src="/js/load-theme.js"></script>
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/"></a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/"></a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#teaching"><span>Teaching</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/courses/"><span>Teaching Resources</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#softwares"><span>Softwares</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1></h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <div class="sect1">
+<h2 id="_notes">Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>À partir de ce TP, vous allez devoir manipuler les modèles de façon programmatique.
+Cela va forcément impliquer l’utilisation d’un langage de programmation pour lequel il existe le support de librairies de méta-modélisation.
+Vous avez le choix entre Java et Python.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Si vous décidez d’utiliser Java, vous devez travailler sous Eclipse, vous ne pouvez pas utiliser Intellij, les outils EMFs ne sont disponibles que sous Eclipse.</p>
+</li>
+<li>
+<p>Si vous décidez d’utiliser Python, vous pouvez utiliser l’éditeur de code que vous préférez, mais il est indispensable d’utiliser un env. virtuel pour installer les dépendances sans altérer votre système.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Comme ce TP est une prise en main des différentes librairies, des détails seront donnés pour les deux langages et les différents outils.
+Par contre, il est important que :
+* soit vous décidiez de tester les deux librairies au fil des TPs et alors, d’être bien attentif et de faire attention à la manière de manipuler les choses,
+* soit vous décidiez de rester avec un seul langage/lib pour éviter de multiplier la complexité, dans ce cas, jetez quand-même un oeil à comment les choses sont manipulées chez un de vos camarades pour bien voir les similitudes et différences techniques.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_manipulation_dinstances">Manipulation d’instances</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vous allez manipuler ici les méta-modèles que vous avez définis au TP précédent, c’est-à-dire <code>simplejava</code>, <code>filesystem</code> et votre méta-modèle de base de donnée.
+Pour pouvoir manipuler des modèles, il faut être en mesure de charger le méta-modèle dont ils sont instances depuis un fichier <code>.ecore</code>.
+Pour charger un fichier, EMF/PyEcore passent par un système de <code>Resource</code>.
+Une <code>Resource</code> représente une entité logique qui contient un modèle ou un méta-modèle depuis une source en particulier (ici depuis un fichier).
+Ces resources sont conservées dans un <code>ResourceSet</code>, qui représente un conteneur de resources.
+Le <code>ResourceSet</code> fait plus qu’uniquement conserver des resources par ce qu’il va aussi permettre de lier des factories spéciales pour lire des formats de fichiers spécifiques et pour enregistrer des méta-modèles existants.
+Enregistrer un méta-modèle dans un ResourceSet signifie que ce ResourceSet est en mesure de lire des instances de ce méta-modèle.</p>
+</div>
+<div class="sect2">
+<h3 id="_directement_à_partir_de_code_généré">Directement, à partir de code généré</h3>
+<div class="paragraph">
+<p>La génération du code d’un méta-modèle repose sur le fait de générer le code Java ou Python des méta-classes décrites dans le méta-modèle.
+Comme les librairies de méta-modélisation sont légèrement différentes, la génération de code ne se passe pas de la même manière.</p>
+</div>
+<div class="sect3">
+<h4 id="_en_java_avec_emf">En Java avec EMF</h4>
+<div class="paragraph">
+<p>La génération de code passe par un <code>.genmodel</code> qui est un fichier de configuration de la génération de code.
+Pour le méta-modèle simple java, le <code>.genmodel</code> devrait être déjà existant, vous pouvez donc le réutiliser.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ouvrez le fichier <code>.genmodel</code> et faites clic-droit sur la racine du fichier ouvert, puis <code>Generate Model Code</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Si vous n’avez pas de <code>.genmodel</code> pour votre méta-modèle</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Faites un clic-droit sur votre <code>.ecore</code>, puis <code>new→Other→EMF Generator Model</code>, suivez les étapes pour générer le <code>.genmodel</code></p>
+</li>
+<li>
+<p>Ouvrez ensuite le fichier généré et faites clic-droit sur la racine du fichier ouvert, puis <code>Generate Model Code</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>À l’issue de ces étapes, vous devriez avoir le code de votre méta-modèle entièrement généré.
+Maintenant, pour pouvoir ouvrir des modèles existant, il est nécessaire d’enregistrer le méta-modèle que vous voulez utiliser dans un <code>ResourceSet</code>.
+Cela se fait avec le code suivant :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">ResourceSet</span> <span class="n">rset</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ResourceSetImpl</span><span class="o">();</span>
+<span class="n">rset</span><span class="o">.</span><span class="na">getResourceFactoryRegistry</span><span class="o">().</span><span class="na">getExtensionToFactoryMap</span><span class="o">().</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;ecore&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="nc">XMIResourceFactoryImpl</span><span class="o">());</span>
+<span class="n">rset</span><span class="o">.</span><span class="na">getPackageRegistry</span><span class="o">().</span><span class="na">put</span><span class="o">(</span><span class="nc">SimplejavaPackage</span><span class="o">.</span><span class="na">eNS_URI</span><span class="o">,</span> <span class="nc">SimplejavaPackage</span><span class="o">.</span><span class="na">eINSTANCE</span><span class="o">);</span>
+
+<span class="nc">Resource</span> <span class="n">resource</span> <span class="o">=</span> <span class="n">rset</span><span class="o">.</span><span class="na">getResource</span><span class="o">(</span><span class="no">URI</span><span class="o">.</span><span class="na">fileURI</span><span class="o">(</span><span class="s">&#34;path_vers_un_modele&#34;</span><span class="o">),</span> <span class="kc">true</span><span class="o">);</span>
+<span class="nc">JavaModel</span> <span class="n">model</span> <span class="o">=</span> <span class="o">(</span><span class="nc">JavaModel</span><span class="o">)</span> <span class="n">resource</span><span class="o">.</span><span class="na">getContents</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+<span class="c1">// JavaModel est le nom du concept racine du méta-modèle simple java,</span>
+<span class="c1">// chez vous il peut avoir un nom différent</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_en_python_avec_pyecore">En Python avec PyEcore</h4>
+<div class="paragraph">
+<p>La génération de code avec PyEcore passe par <code>pyecoregen</code> un outil dédié utilisant PyEcore pour générer le code Python des concepts du méta-modèle.
+Dans un premier temps, créez un env. virtuel :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>placez-vous dans votre répertoire de travail (celui de votre repository) et tapez la commande suivante : <code>$ virtualenv venv</code>. Cela va créer un environnement virtuel dans le répertoire <code>venv</code> que vous pourrez activez quand vous voulez.</p>
+</li>
+<li>
+<p>Avant d’activer votre environnement virtuel, ajoutez le répertoire <code>venv</code> à votre <code>.gitignore</code> pour ne pas le commiter</p>
+</li>
+<li>
+<p>Activez votre environnement virtuel de la manière suivante : <code>source venv/bin/activate</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Vous pouvez maintenant installer les dépendances qui vous seront utiles :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Installez <code>pyecoregen</code>, dans votre virtualenv, tapez <code>pip install pyecoregen</code></p>
+</li>
+<li>
+<p>Générez le code de votre méta-modèle, ceci se fait avec la commande <code>pyecoregen -e chemin_vers_ecore -o .</code> (il s’agit bien d’un <code>.</code> en fin de ligne). Cette commande génère le code de votre méta-modèle dans le répertoire courant.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Maintenant que le code de votre méta-modèle est généré, il est possible de l’utiliser et d’ouvrir un modèle existant :
+Dans un premier temps, enregistrez le métamodèle dans un <code>ResourceSet</code> comme ceci :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="python"><span class="kn">from</span> <span class="nn">pyecore.resources</span> <span class="kn">import</span>
+<span class="kn">import</span> <span class="nn">simplejava</span>  <span class="c1"># pour le méta-modèle simplejava
+</span>
+<span class="n">rset</span> <span class="o">=</span> <span class="n">ResourceSet</span><span class="p">()</span>
+<span class="n">rset</span><span class="p">.</span><span class="n">metamodel_registry</span><span class="p">[</span><span class="n">simplejava</span><span class="p">.</span><span class="n">nsURI</span><span class="p">]</span> <span class="o">=</span> <span class="n">simplejava</span>
+<span class="n">resource</span> <span class="o">=</span> <span class="n">rset</span><span class="p">.</span><span class="n">get_resource</span><span class="p">(</span><span class="s">&#39;path_vers_un_modele_simplejava&#39;</span><span class="p">)</span>
+<span class="n">racine</span> <span class="o">=</span> <span class="n">resource</span><span class="p">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_questions_générales">Questions générales</h4>
+<div class="paragraph">
+<p>Voilà quelques questions relatives à simple java :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrivez une fonction qui prend en paramètre l’équivalent d’un <code>JavaModel</code> et qui retourne la liste de toutes les classes de votre modèle. Testez votre fonction avec plusieurs modèles. Si vous êtes certains qu’un de vos collègues à exactement le même méta-modèle que vous (mêmes nommage, relations, URI, prefix…​etc), vous pouvez échanger des modèles pour vérifier que tout fonctionne correctement.</p>
+</li>
+<li>
+<p>Écrivez une fonction qui affiche à l’écran le nom de tous les attributs de votre modèle java.</p>
+</li>
+<li>
+<p>Écrivez une fonction qui retourne la profondeur d’héritage d’une classe en particulier (0 pour la classe Object, 1 pour les classes qui héritent de Object, 2 pour les classes qui héritent des précédentes et ainsi de suite)</p>
+</li>
+<li>
+<p>Écrivez une fonction qui retourne le nom pleinement qualifié d’une classe (le nom de tous ses packages contenant séparés par un <code>.</code> suivi du nom de la classe)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Voilà quelques questions relatives à filesystem :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrivez une fonction qui retourne le nombre de fichiers de votre modèle</p>
+</li>
+<li>
+<p>Écrivez une fonction qui retourne le poids de tous les fichiers contenus dans un répertoire</p>
+</li>
+<li>
+<p>Écrivez une fonction qui retourne le poids de tous les fichiers contenus dans le modèle</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Et quelques questions pour la manipulation directe de vos méta-modèles :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrivez une fonction qui prend un <code>EPackage</code> en paramètre et retourne le nombre de méta-classes d’un de vos méta-modèles</p>
+</li>
+<li>
+<p>Écrivez une fonction qui prend une <code>EClass</code> en paramètre et retourne les méta-classes qui héritent d’elle dans votre méta-modèle.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_réflexivement_sans_code_généré">Réflexivement, sans code généré</h3>
+<div class="sect3">
+<h4 id="_en_java_avec_emf_2">En Java avec EMF</h4>
+<div class="paragraph">
+<p>La première étape pour pouvoir créer des modèles relatifs à un méta-modèle, il vous faut charger en mémoire un méta-modèle existant à partir d’un fichier <code>.ecore</code>.
+Pour pouvoir faire ceci, il est nécessaire d’ajouter des dépendances à votre projet &#34;Ecore Modeling Project&#34;.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ouvrez le fichier <code>META-INF/MANIFEST.MF</code>, puis switchez sur l’onglet <code>Dependencies</code></p>
+</li>
+<li>
+<p>À partir de cet onglet, cliquez sur le <code>Add…​</code> de la frame de gauche <code>Required plug-ins</code> et ajoutez le plugin suivant :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>org.eclipse.emf.ecore.xmi</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Voilà le fragment de code que vous pouvez utiliser pour charger un modèle ecore/xmi directement en Java :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">ResourceSet</span> <span class="n">rset</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ResourceSetImpl</span><span class="o">();</span>
+<span class="n">rset</span><span class="o">.</span><span class="na">getResourceFactoryRegistry</span><span class="o">().</span><span class="na">getExtensionToFactoryMap</span><span class="o">()*</span>
+                                 <span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;ecore&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="nc">XMIResourceFactoryImpl</span><span class="o">());</span>
+
+<span class="nc">Resource</span> <span class="n">resource</span> <span class="o">=</span> <span class="n">rset</span><span class="o">.</span><span class="na">getResource</span><span class="o">(</span><span class="no">URI</span><span class="o">.</span><span class="na">createFileURI</span><span class="o">(</span><span class="s">&#34;path_vers_ecore&#34;</span><span class="o">),</span> <span class="kc">true</span><span class="o">);</span>
+
+<span class="c1">// À partir de là &#34;pack&#34; contient le EPackage de votre méta-modèle</span>
+<span class="nc">EPackage</span> <span class="n">pack</span> <span class="o">=</span> <span class="o">(</span><span class="nc">EPackage</span><span class="o">)</span> <span class="n">resource</span><span class="o">.</span><span class="na">getContents</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+
+<span class="c1">// Puis pour l&#39;enregistrer</span>
+<span class="n">rset</span><span class="o">.</span><span class="na">getPackageRegistry</span><span class="o">().</span><span class="na">put</span><span class="o">(</span><span class="n">pack</span><span class="o">.</span><span class="na">getNsURI</span><span class="o">(),</span> <span class="n">pack</span><span class="o">);</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vous pouvez maintenant charger un modèle instance du méta-modèle enregistré comme vue précédemment en utilisant le <code>ResourceSet</code> correctement paramétré.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_en_python_avec_pyecore_2">En Python avec PyEcore</h4>
+<div class="paragraph">
+<p>L’ouverture d’un modèle <code>.ecore</code> via PyEcore se fait de plusieurs façons, mais la façon la plus simple est d’utiliser un <code>ResourceSet</code> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="python"><span class="kn">from</span> <span class="nn">pyecore.resources</span> <span class="kn">import</span> <span class="n">ResourceSet</span>
+
+<span class="n">rset</span> <span class="o">=</span> <span class="n">ResourceSet</span><span class="p">()</span>
+<span class="n">resource</span> <span class="o">=</span> <span class="n">rset</span><span class="p">.</span><span class="n">get_resource</span><span class="p">(</span><span class="s">&#39;path_vers_ecore&#39;</span><span class="p">)</span>
+<span class="n">pack</span> <span class="o">=</span> <span class="n">resource</span><span class="p">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">rset</span><span class="p">.</span><span class="n">metamodel_registry</span><span class="p">[</span><span class="n">pack</span><span class="p">.</span><span class="n">nsURI</span><span class="p">]</span> <span class="o">=</span> <span class="n">pack</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_création_modification_de_modèles">Création, modification de modèles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Une fois que votre métamodèle est chargé en mémoire à partir de son <code>.ecore</code>, vous allez l’utiliser pour créer des petits modèles dans les questions suivantes.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrivez une fonction qui prend en paramètre le nom d’une des méta-classes de votre métamodèle et qui retourne la méta-classe associée ou <code>null</code> si la méta-classe n’existe pas.</p>
+</li>
+<li>
+<p>Écrivez une fonction qui permet de créer une instance d’un méta-classe dont le <code>EPackage</code> et le nom de la méta-classe serait passé en paramètre.</p>
+</li>
+<li>
+<p>Écrivez une fonction qui prend un <code>EObject</code> quelconque, une chaine de caractère et qui initialise l’équivalent du nom de l&#39;`EObject` à la valeur passée en paramètre si l’objet en question possède un attribut <code>name</code>.</p>
+</li>
+<li>
+<p>Testez votre solution avec des instances de votre méta-modèle java, votre méta-modèle de système de fichier et votre méta-modèle de BD. Pour faire ceci :</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>chargez les trois <code>EPackage</code> de chaque méta-modèles depuis leur <code>.ecore</code> dans des variables <code>sjava</code>, <code>fsystem</code> et <code>bd</code> en utilisant le code fournit plus haut relatif à votre langage (celui pour charger un métamodèle depuis un <code>.ecore</code>).</p>
+</li>
+<li>
+<p>créez une instance d’un des concepts de vos métamodèles en utilisant votre fonction de création à partir d’un nom de méta-classe</p>
+</li>
+<li>
+<p>initialisez le nom des instances que vous avez créé avec une valeur</p>
+</li>
+<li>
+<p>recherchez reflexivement la valeur du <code>name</code> de votre objet pour vérifier que la valeur a bien été initialisé pour l’attribut.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_autre_utilisation_de_la_couche_réflexive">Autre utilisation de la couche réflexive</h3>
+<div class="paragraph">
+<p>Dans cette partie du TP, vous allez utilisez plus en détail la couche réflexive pour commencer à prendre plus d’aisance avec la manipulation du méta-niveau.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrivez une fonction qui prend un <code>EObject</code> quelconque et qui affiche à l’écran le nom de chacun de ses attributs/références ainsi que la valeur de chacun des attributs/références.</p>
+</li>
+<li>
+<p>Écrivez une fonction qui recherche dans un objet le premier attribut de type chaîne de caractère (type <code>EString</code>) et qui le modifie pour que le nom devienne <code>id_VALEURAVANT</code> (ex : pour <code>egg</code> stocké dans l’attribut <code>nom</code>, la nouvelle chaîne attribué à <code>nom</code> sera <code>id_egg</code>).</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/courses/metamodelisation/tp2/&amp;text=" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/courses/metamodelisation/tp2/&amp;t=" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=&amp;body=/courses/metamodelisation/tp2/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/courses/metamodelisation/tp2/&amp;title=" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=%20/courses/metamodelisation/tp2/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/courses/metamodelisation/tp2/&amp;title=" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      <a href="/"><img class="avatar mr-3 avatar-circle" src="https://s.gravatar.com/avatar/668aa0d0b75bbdc48f9cc653cc3bfd61?s=200')" alt=""></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/"></a></h5>
+      <h6 class="card-subtitle">Associate professor in Computer Sciences</h6>
+      <p class="card-text">My research interests include language engineering, virtual machine and software engineering in general.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:vincent.aranega@univ-lille.fr" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/VincentAranega" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.fr/citations?user=c_Lv5PEAAAAJ" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/aranega" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+    Published with
+    <a href="https://wowchemy.com" target="_blank" rel="noopener">Wowchemy</a>  —
+    the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">
+    open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/wowchemy.min.a30e17c6197f21f7f966f9a6cd022a55.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>
