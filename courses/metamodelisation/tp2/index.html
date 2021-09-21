@@ -838,6 +838,17 @@ Par contre, il est important que :
 * soit vous décidiez de tester les deux librairies au fil des TPs et alors, d’être bien attentif et de faire attention à la manière de manipuler les choses,
 * soit vous décidiez de rester avec un seul langage/lib pour éviter de multiplier la complexité, dans ce cas, jetez quand-même un oeil à comment les choses sont manipulées chez un de vos camarades pour bien voir les similitudes et différences techniques.</p>
 </div>
+<div class="paragraph">
+<p><strong>À vérifier</strong> : à plusieurs étapes, du code va être généré, soit en Java, soit en Python.
+Faîtes bien attention au nommage de vos méta-classes dans votre méta-modèle.
+Si vous utilisez des noms réservés ou des noms spéciaux, il est possible que cela pose problème une fois que le code sera généré.
+Spécialement, faites attention aux noms de méta-classes/attributs/references qui porteraient des nom comme <code>class</code> (avec une minuscule), <code>super</code> (qui clasherait en Python), <code>return</code> (qui pourrait poser problème en Java et Python),…​etc
+Tout ces noms ne vont pas poser systématiquement problème, mais si vous vous retrouvez avec un modèle qui ne se charge pas pour une raison obscure, essayez de vérifier qu’il n’y a pas de soucis de nommage.</p>
+</div>
+<div class="paragraph">
+<p>Aussi, prêtez une attention toute particulière à l&#39;`URI` de vos méta-modèles.
+Si vous avez un modèle qui ne se charge pas bien et que vous ne comprenez pas pourquoi, vérifiez que votre modèle au format <code>.xmi</code> fait bien référence au même <code>prefix</code> et <code>URI</code> que ceux écrit pour votre méta-modèle (pour votre <code>EPackage</code> racine).</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -910,7 +921,9 @@ Maintenant, pour pouvoir ouvrir des modèles existant, il est nécessaire d’en
 </div>
 <div class="paragraph">
 <p>le méta-modèle que vous voulez utiliser dans un <code>ResourceSet</code>.
-Cela se fait avec le code suivant :</p>
+Cela se fait avec le code ci-dessous.
+Notez bien que ce snippet créer en premier lieux un <code>ResourceSet</code> et le configure ensuite en enregistrant les méta-modèles dont il aura besoin pour lire votre modèle.
+Pour chaque nouveau méta-modèle dont vous générez le code, vous devez aussi l’enregistrer dans le <code>ResourceSet</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -935,13 +948,13 @@ Dans un premier temps, créez un env. virtuel :</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>placez-vous dans votre répertoire de travail (celui de votre repository) et tapez la commande suivante : <code>$ virtualenv venv</code>. Cela va créer un environnement virtuel dans le répertoire <code>venv</code> que vous pourrez activez quand vous voulez.</p>
+<p>placez-vous dans votre répertoire de travail (celui de votre repository) et tapez la commande suivante : <code>$ virtualenv venv</code>. Cela va créer un environnement virtuel dans le répertoire <code>venv</code> que vous pourrez activez quand vous voulez. Si la commande <code>virtualenv</code> n’est pas connue directement, utilisez à la place <code>$ python3 -m venv venv</code>, cela va créer un environnement virtuel <code>venv</code>, exactement comme la première commande.</p>
 </li>
 <li>
 <p>Avant d’activer votre environnement virtuel, ajoutez le répertoire <code>venv</code> à votre <code>.gitignore</code> pour ne pas le commiter</p>
 </li>
 <li>
-<p>Activez votre environnement virtuel de la manière suivante : <code>source venv/bin/activate</code></p>
+<p>Activez votre environnement virtuel de la manière suivante : <code>source venv/bin/activate</code>. <strong>Attention</strong> Si vous êtes sous windows, pour activer l’environnement virtuel, il est possible que la commande soit différente et qu’il faille aller chercher le <code>venv\bin\activate.bat</code>, si vous utilisez le sous-système linux sous windows, ça devrait être la même chose.</p>
 </li>
 </ol>
 </div>
@@ -968,8 +981,9 @@ Dans un premier temps, enregistrez le métamodèle dans un <code>ResourceSet</co
 <span class="kn">import</span> <span class="nn">simplejava</span>  <span class="c1"># pour le méta-modèle simplejava
 </span>
 <span class="n">rset</span> <span class="o">=</span> <span class="n">ResourceSet</span><span class="p">()</span>
-<span class="n">rset</span><span class="p">.</span><span class="n">metamodel_registry</span><span class="p">[</span><span class="n">simplejava</span><span class="p">.</span><span class="n">nsURI</span><span class="p">]</span> <span class="o">=</span> <span class="n">simplejava</span>
-<span class="n">resource</span> <span class="o">=</span> <span class="n">rset</span><span class="p">.</span><span class="n">get_resource</span><span class="p">(</span><span class="s">&#39;path_vers_un_modele_simplejava&#39;</span><span class="p">)</span>
+<span class="n">rset</span><span class="p">.</span><span class="n">metamodel_registry</span><span class="p">[</span><span class="n">simplejava</span><span class="p">.</span><span class="n">nsURI</span><span class="p">]</span> <span class="o">=</span> <span class="n">simplejava</span>  <span class="c1"># enregistre le méta-modèle simplejava
+# si vous générez le code d&#39;autres méta-modèles, n&#39;oubliez pas de les enregistrer aussi
+</span><span class="n">resource</span> <span class="o">=</span> <span class="n">rset</span><span class="p">.</span><span class="n">get_resource</span><span class="p">(</span><span class="s">&#39;path_vers_un_modele_simplejava&#39;</span><span class="p">)</span>
 <span class="n">racine</span> <span class="o">=</span> <span class="n">resource</span><span class="p">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></code></pre>
 </div>
 </div>
@@ -982,16 +996,16 @@ Dans un premier temps, enregistrez le métamodèle dans un <code>ResourceSet</co
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Écrivez une fonction qui prend en paramètre l’équivalent d’un <code>JavaModel</code> et qui retourne la liste de toutes les classes de votre modèle. Testez votre fonction avec plusieurs modèles. Si vous êtes certains qu’un de vos collègues à exactement le même méta-modèle que vous (mêmes nommage, relations, URI, prefix…​etc), vous pouvez échanger des modèles pour vérifier que tout fonctionne correctement.</p>
+<p>Écrivez une fonction qui prend en paramètre l’équivalent d’un <code>JavaModel</code> et qui retourne la liste de toutes les classes d’un de vos modèles <code>simplejava</code> (toutes les classes qui ont été modélisées dans le modèle, donc toute les instances de <code>JClass</code> si vous les avez nommé comme ça). Testez votre fonction avec plusieurs modèles. Si vous êtes certains qu’un de vos collègues à exactement le même méta-modèle que vous (mêmes nommage, relations, URI, prefix…​etc), vous pouvez échanger des modèles pour vérifier que tout fonctionne correctement.</p>
 </li>
 <li>
-<p>Écrivez une fonction qui affiche à l’écran le nom de tous les attributs de votre modèle java.</p>
+<p>Écrivez une fonction qui affiche à l’écran le nom de tous les attributs (equivalent <code>JAttribute</code> contenues par les <code>JClass</code>) de votre modèle java.</p>
 </li>
 <li>
-<p>Écrivez une fonction qui retourne la profondeur d’héritage d’une classe en particulier (0 pour la classe Object, 1 pour les classes qui héritent de Object, 2 pour les classes qui héritent des précédentes et ainsi de suite)</p>
+<p>Écrivez une fonction qui retourne la profondeur d’héritage d’une <code>JCLass</code> classe en particulier (par exemple, en considérant que l’on a une instance de class <code>JObject</code> nommé <code>Object</code> dans notre méta-modèle, 0 sera retourné pour cette instance de <code>JClass</code>, 1 pour les classes qui héritent de <code>Object</code>, 2 pour les classes qui héritent des précédentes et ainsi de suite)</p>
 </li>
 <li>
-<p>Écrivez une fonction qui retourne le nom pleinement qualifié d’une classe (le nom de tous ses packages contenant séparés par un <code>.</code> suivi du nom de la classe)</p>
+<p>Écrivez une fonction qui retourne le nom pleinement qualifié d’une instance de <code>JClass</code> (le nom de tous ses packages contenant séparés par un <code>.</code> suivi du nom de la classe)</p>
 </li>
 </ol>
 </div>
@@ -1032,27 +1046,7 @@ Dans un premier temps, enregistrez le métamodèle dans un <code>ResourceSet</co
 <h4 id="_en_java_avec_emf_2">En Java avec EMF</h4>
 <div class="paragraph">
 <p>La première étape pour pouvoir créer des modèles relatifs à un méta-modèle, il vous faut charger en mémoire un méta-modèle existant à partir d’un fichier <code>.ecore</code>.
-Pour pouvoir faire ceci, il est nécessaire d’ajouter des dépendances à votre projet &#34;Ecore Modeling Project&#34;.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Ouvrez le fichier <code>META-INF/MANIFEST.MF</code>, puis switchez sur l’onglet <code>Dependencies</code></p>
-</li>
-<li>
-<p>À partir de cet onglet, cliquez sur le <code>Add…​</code> de la frame de gauche <code>Required plug-ins</code> et ajoutez le plugin suivant :</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>org.eclipse.emf.ecore.xmi</code></p>
-</li>
-</ul>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Voilà le fragment de code que vous pouvez utiliser pour charger un modèle ecore/xmi directement en Java :</p>
+Voilà le fragment de code que vous pouvez utiliser pour charger un modèle ecore/xmi directement en Java :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1071,7 +1065,8 @@ Pour pouvoir faire ceci, il est nécessaire d’ajouter des dépendances à votr
 </div>
 </div>
 <div class="paragraph">
-<p>Vous pouvez maintenant charger un modèle instance du méta-modèle enregistré comme vue précédemment en utilisant le <code>ResourceSet</code> correctement paramétré.</p>
+<p>Contrairement au snipet Java précédent, vous pouvez noter que cette fois, le code du méta-modèle n’est pas généré, on vient charger le méta-modèle à partir d’un fichier (on le charge en mémoire) et qu’ensuite, on enregistre cette représentation mémoire dans le <code>ResourceSet</code>.
+Vous pouvez maintenant charger un modèle instance du méta-modèle enregistré comme vue précédemment en utilisant ce <code>ResourceSet</code> correctement paramétré.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1089,6 +1084,10 @@ Pour pouvoir faire ceci, il est nécessaire d’ajouter des dépendances à votr
 <span class="n">rset</span><span class="p">.</span><span class="n">metamodel_registry</span><span class="p">[</span><span class="n">pack</span><span class="p">.</span><span class="n">nsURI</span><span class="p">]</span> <span class="o">=</span> <span class="n">pack</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Contrairement au snipet Python précédent, vous pouvez noter que cette fois, le code du méta-modèle n’est pas généré, on vient charger le méta-modèle à partir d’un fichier (on le charge en mémoire) et qu’ensuite, on enregistre cette représentation mémoire dans le <code>ResourceSet</code>.
+Vous pouvez maintenant charger un modèle instance du méta-modèle enregistré comme vue précédemment en utilisant ce <code>ResourceSet</code> correctement paramétré.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1097,12 +1096,12 @@ Pour pouvoir faire ceci, il est nécessaire d’ajouter des dépendances à votr
 <h2 id="_création_modification_de_modèles">Création, modification de modèles</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Une fois que votre métamodèle est chargé en mémoire à partir de son <code>.ecore</code>, vous allez l’utiliser pour créer des petits modèles dans les questions suivantes.</p>
+<p>Une fois que votre méta-modèle est chargé en mémoire à partir de son <code>.ecore</code>, vous allez l’utiliser pour créer des petits modèles dans les questions suivantes.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Écrivez une fonction qui prend en paramètre le nom d’une des méta-classes de votre métamodèle et qui retourne la méta-classe associée ou <code>null</code> si la méta-classe n’existe pas.</p>
+<p>Écrivez une fonction qui prend en paramètre le nom d’une des méta-classes de votre méta-modèle et qui retourne la méta-classe associée ou <code>null</code> si la méta-classe n’existe pas.</p>
 </li>
 <li>
 <p>Écrivez une fonction qui permet de créer une instance d’un méta-classe dont le <code>EPackage</code> et le nom de la méta-classe serait passé en paramètre.</p>

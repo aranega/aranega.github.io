@@ -190,6 +190,17 @@ Par contre, il est important que :
 * soit vous décidiez de tester les deux librairies au fil des TPs et alors, d’être bien attentif et de faire attention à la manière de manipuler les choses,
 * soit vous décidiez de rester avec un seul langage/lib pour éviter de multiplier la complexité, dans ce cas, jetez quand-même un oeil à comment les choses sont manipulées chez un de vos camarades pour bien voir les similitudes et différences techniques.&lt;/p&gt;
 &lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;&lt;strong&gt;À vérifier&lt;/strong&gt; : à plusieurs étapes, du code va être généré, soit en Java, soit en Python.
+Faîtes bien attention au nommage de vos méta-classes dans votre méta-modèle.
+Si vous utilisez des noms réservés ou des noms spéciaux, il est possible que cela pose problème une fois que le code sera généré.
+Spécialement, faites attention aux noms de méta-classes/attributs/references qui porteraient des nom comme &lt;code&gt;class&lt;/code&gt; (avec une minuscule), &lt;code&gt;super&lt;/code&gt; (qui clasherait en Python), &lt;code&gt;return&lt;/code&gt; (qui pourrait poser problème en Java et Python),…​etc
+Tout ces noms ne vont pas poser systématiquement problème, mais si vous vous retrouvez avec un modèle qui ne se charge pas pour une raison obscure, essayez de vérifier qu’il n’y a pas de soucis de nommage.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Aussi, prêtez une attention toute particulière à l&amp;#39;`URI` de vos méta-modèles.
+Si vous avez un modèle qui ne se charge pas bien et que vous ne comprenez pas pourquoi, vérifiez que votre modèle au format &lt;code&gt;.xmi&lt;/code&gt; fait bien référence au même &lt;code&gt;prefix&lt;/code&gt; et &lt;code&gt;URI&lt;/code&gt; que ceux écrit pour votre méta-modèle (pour votre &lt;code&gt;EPackage&lt;/code&gt; racine).&lt;/p&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&#34;sect1&#34;&gt;
@@ -262,7 +273,9 @@ Maintenant, pour pouvoir ouvrir des modèles existant, il est nécessaire d’en
 &lt;/div&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;le méta-modèle que vous voulez utiliser dans un &lt;code&gt;ResourceSet&lt;/code&gt;.
-Cela se fait avec le code suivant :&lt;/p&gt;
+Cela se fait avec le code ci-dessous.
+Notez bien que ce snippet créer en premier lieux un &lt;code&gt;ResourceSet&lt;/code&gt; et le configure ensuite en enregistrant les méta-modèles dont il aura besoin pour lire votre modèle.
+Pour chaque nouveau méta-modèle dont vous générez le code, vous devez aussi l’enregistrer dans le &lt;code&gt;ResourceSet&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;listingblock&#34;&gt;
 &lt;div class=&#34;content&#34;&gt;
@@ -287,13 +300,13 @@ Dans un premier temps, créez un env. virtuel :&lt;/p&gt;
 &lt;div class=&#34;olist arabic&#34;&gt;
 &lt;ol class=&#34;arabic&#34;&gt;
 &lt;li&gt;
-&lt;p&gt;placez-vous dans votre répertoire de travail (celui de votre repository) et tapez la commande suivante : &lt;code&gt;$ virtualenv venv&lt;/code&gt;. Cela va créer un environnement virtuel dans le répertoire &lt;code&gt;venv&lt;/code&gt; que vous pourrez activez quand vous voulez.&lt;/p&gt;
+&lt;p&gt;placez-vous dans votre répertoire de travail (celui de votre repository) et tapez la commande suivante : &lt;code&gt;$ virtualenv venv&lt;/code&gt;. Cela va créer un environnement virtuel dans le répertoire &lt;code&gt;venv&lt;/code&gt; que vous pourrez activez quand vous voulez. Si la commande &lt;code&gt;virtualenv&lt;/code&gt; n’est pas connue directement, utilisez à la place &lt;code&gt;$ python3 -m venv venv&lt;/code&gt;, cela va créer un environnement virtuel &lt;code&gt;venv&lt;/code&gt;, exactement comme la première commande.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Avant d’activer votre environnement virtuel, ajoutez le répertoire &lt;code&gt;venv&lt;/code&gt; à votre &lt;code&gt;.gitignore&lt;/code&gt; pour ne pas le commiter&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Activez votre environnement virtuel de la manière suivante : &lt;code&gt;source venv/bin/activate&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Activez votre environnement virtuel de la manière suivante : &lt;code&gt;source venv/bin/activate&lt;/code&gt;. &lt;strong&gt;Attention&lt;/strong&gt; Si vous êtes sous windows, pour activer l’environnement virtuel, il est possible que la commande soit différente et qu’il faille aller chercher le &lt;code&gt;venv\bin\activate.bat&lt;/code&gt;, si vous utilisez le sous-système linux sous windows, ça devrait être la même chose.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
@@ -320,8 +333,9 @@ Dans un premier temps, enregistrez le métamodèle dans un &lt;code&gt;ResourceS
 &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;simplejava&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# pour le méta-modèle simplejava
 &lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ResourceSet&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;metamodel_registry&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;simplejava&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nsURI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;simplejava&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_resource&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;path_vers_un_modele_simplejava&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;metamodel_registry&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;simplejava&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nsURI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;simplejava&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# enregistre le méta-modèle simplejava
+# si vous générez le code d&amp;#39;autres méta-modèles, n&amp;#39;oubliez pas de les enregistrer aussi
+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_resource&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;path_vers_un_modele_simplejava&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;racine&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;contents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -334,16 +348,16 @@ Dans un premier temps, enregistrez le métamodèle dans un &lt;code&gt;ResourceS
 &lt;div class=&#34;olist arabic&#34;&gt;
 &lt;ol class=&#34;arabic&#34;&gt;
 &lt;li&gt;
-&lt;p&gt;Écrivez une fonction qui prend en paramètre l’équivalent d’un &lt;code&gt;JavaModel&lt;/code&gt; et qui retourne la liste de toutes les classes de votre modèle. Testez votre fonction avec plusieurs modèles. Si vous êtes certains qu’un de vos collègues à exactement le même méta-modèle que vous (mêmes nommage, relations, URI, prefix…​etc), vous pouvez échanger des modèles pour vérifier que tout fonctionne correctement.&lt;/p&gt;
+&lt;p&gt;Écrivez une fonction qui prend en paramètre l’équivalent d’un &lt;code&gt;JavaModel&lt;/code&gt; et qui retourne la liste de toutes les classes d’un de vos modèles &lt;code&gt;simplejava&lt;/code&gt; (toutes les classes qui ont été modélisées dans le modèle, donc toute les instances de &lt;code&gt;JClass&lt;/code&gt; si vous les avez nommé comme ça). Testez votre fonction avec plusieurs modèles. Si vous êtes certains qu’un de vos collègues à exactement le même méta-modèle que vous (mêmes nommage, relations, URI, prefix…​etc), vous pouvez échanger des modèles pour vérifier que tout fonctionne correctement.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Écrivez une fonction qui affiche à l’écran le nom de tous les attributs de votre modèle java.&lt;/p&gt;
+&lt;p&gt;Écrivez une fonction qui affiche à l’écran le nom de tous les attributs (equivalent &lt;code&gt;JAttribute&lt;/code&gt; contenues par les &lt;code&gt;JClass&lt;/code&gt;) de votre modèle java.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Écrivez une fonction qui retourne la profondeur d’héritage d’une classe en particulier (0 pour la classe Object, 1 pour les classes qui héritent de Object, 2 pour les classes qui héritent des précédentes et ainsi de suite)&lt;/p&gt;
+&lt;p&gt;Écrivez une fonction qui retourne la profondeur d’héritage d’une &lt;code&gt;JCLass&lt;/code&gt; classe en particulier (par exemple, en considérant que l’on a une instance de class &lt;code&gt;JObject&lt;/code&gt; nommé &lt;code&gt;Object&lt;/code&gt; dans notre méta-modèle, 0 sera retourné pour cette instance de &lt;code&gt;JClass&lt;/code&gt;, 1 pour les classes qui héritent de &lt;code&gt;Object&lt;/code&gt;, 2 pour les classes qui héritent des précédentes et ainsi de suite)&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Écrivez une fonction qui retourne le nom pleinement qualifié d’une classe (le nom de tous ses packages contenant séparés par un &lt;code&gt;.&lt;/code&gt; suivi du nom de la classe)&lt;/p&gt;
+&lt;p&gt;Écrivez une fonction qui retourne le nom pleinement qualifié d’une instance de &lt;code&gt;JClass&lt;/code&gt; (le nom de tous ses packages contenant séparés par un &lt;code&gt;.&lt;/code&gt; suivi du nom de la classe)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
@@ -384,27 +398,7 @@ Dans un premier temps, enregistrez le métamodèle dans un &lt;code&gt;ResourceS
 &lt;h4 id=&#34;_en_java_avec_emf_2&#34;&gt;En Java avec EMF&lt;/h4&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;La première étape pour pouvoir créer des modèles relatifs à un méta-modèle, il vous faut charger en mémoire un méta-modèle existant à partir d’un fichier &lt;code&gt;.ecore&lt;/code&gt;.
-Pour pouvoir faire ceci, il est nécessaire d’ajouter des dépendances à votre projet &amp;#34;Ecore Modeling Project&amp;#34;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;olist arabic&#34;&gt;
-&lt;ol class=&#34;arabic&#34;&gt;
-&lt;li&gt;
-&lt;p&gt;Ouvrez le fichier &lt;code&gt;META-INF/MANIFEST.MF&lt;/code&gt;, puis switchez sur l’onglet &lt;code&gt;Dependencies&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;À partir de cet onglet, cliquez sur le &lt;code&gt;Add…​&lt;/code&gt; de la frame de gauche &lt;code&gt;Required plug-ins&lt;/code&gt; et ajoutez le plugin suivant :&lt;/p&gt;
-&lt;div class=&#34;ulist&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;org.eclipse.emf.ecore.xmi&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-&lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;Voilà le fragment de code que vous pouvez utiliser pour charger un modèle ecore/xmi directement en Java :&lt;/p&gt;
+Voilà le fragment de code que vous pouvez utiliser pour charger un modèle ecore/xmi directement en Java :&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;listingblock&#34;&gt;
 &lt;div class=&#34;content&#34;&gt;
@@ -423,7 +417,8 @@ Pour pouvoir faire ceci, il est nécessaire d’ajouter des dépendances à votr
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;Vous pouvez maintenant charger un modèle instance du méta-modèle enregistré comme vue précédemment en utilisant le &lt;code&gt;ResourceSet&lt;/code&gt; correctement paramétré.&lt;/p&gt;
+&lt;p&gt;Contrairement au snipet Java précédent, vous pouvez noter que cette fois, le code du méta-modèle n’est pas généré, on vient charger le méta-modèle à partir d’un fichier (on le charge en mémoire) et qu’ensuite, on enregistre cette représentation mémoire dans le &lt;code&gt;ResourceSet&lt;/code&gt;.
+Vous pouvez maintenant charger un modèle instance du méta-modèle enregistré comme vue précédemment en utilisant ce &lt;code&gt;ResourceSet&lt;/code&gt; correctement paramétré.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&#34;sect3&#34;&gt;
@@ -441,6 +436,10 @@ Pour pouvoir faire ceci, il est nécessaire d’ajouter des dépendances à votr
 &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;metamodel_registry&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pack&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nsURI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pack&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Contrairement au snipet Python précédent, vous pouvez noter que cette fois, le code du méta-modèle n’est pas généré, on vient charger le méta-modèle à partir d’un fichier (on le charge en mémoire) et qu’ensuite, on enregistre cette représentation mémoire dans le &lt;code&gt;ResourceSet&lt;/code&gt;.
+Vous pouvez maintenant charger un modèle instance du méta-modèle enregistré comme vue précédemment en utilisant ce &lt;code&gt;ResourceSet&lt;/code&gt; correctement paramétré.&lt;/p&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -449,12 +448,12 @@ Pour pouvoir faire ceci, il est nécessaire d’ajouter des dépendances à votr
 &lt;h2 id=&#34;_création_modification_de_modèles&#34;&gt;Création, modification de modèles&lt;/h2&gt;
 &lt;div class=&#34;sectionbody&#34;&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;Une fois que votre métamodèle est chargé en mémoire à partir de son &lt;code&gt;.ecore&lt;/code&gt;, vous allez l’utiliser pour créer des petits modèles dans les questions suivantes.&lt;/p&gt;
+&lt;p&gt;Une fois que votre méta-modèle est chargé en mémoire à partir de son &lt;code&gt;.ecore&lt;/code&gt;, vous allez l’utiliser pour créer des petits modèles dans les questions suivantes.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;olist arabic&#34;&gt;
 &lt;ol class=&#34;arabic&#34;&gt;
 &lt;li&gt;
-&lt;p&gt;Écrivez une fonction qui prend en paramètre le nom d’une des méta-classes de votre métamodèle et qui retourne la méta-classe associée ou &lt;code&gt;null&lt;/code&gt; si la méta-classe n’existe pas.&lt;/p&gt;
+&lt;p&gt;Écrivez une fonction qui prend en paramètre le nom d’une des méta-classes de votre méta-modèle et qui retourne la méta-classe associée ou &lt;code&gt;null&lt;/code&gt; si la méta-classe n’existe pas.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Écrivez une fonction qui permet de créer une instance d’un méta-classe dont le &lt;code&gt;EPackage&lt;/code&gt; et le nom de la méta-classe serait passé en paramètre.&lt;/p&gt;
