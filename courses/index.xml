@@ -14,6 +14,138 @@
     
     <item>
       <title></title>
+      <link>/courses/c3p/tp4bis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/courses/c3p/tp4bis/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Le but de ce TP est d’implémenter en OCaml un interpréteur Magistack (&lt;a href=&#34;https://esolangs.org/wiki/MagiStack&#34; class=&#34;bare&#34;&gt;https://esolangs.org/wiki/MagiStack&lt;/a&gt;), une machine virtuelle minimale à pile.
+Il y a plusieurs façons de proposer une solution, mais nous allons nous concentrer sur une en particulier.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;De manière générale, une machine virtuelle (VM) est un programme qui va lire et donner du sens à un ensemble d’instructions.
+Ces instructions sont encodées d’une certaine manière et chacune de ces instructions représente une action que la machine virtuelle doit effectuer.
+Dans les VM à pile, la machine virtuelle considère pour gérer ses opérations une pile sur laquelle elle pousse, enlève des valeurs…​etc.
+Les instructions qu’une VM à pile est capable de comprendre sont donc fortement à la manipulation de la pile.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;La VM que vous allez implémenter ici (ou commencer à implémenter), est une VM &amp;#34;jouet&amp;#34;.
+Elle ne considère que très peu d’instructions.
+Chaque instruction est encodée sur un caractère, et un programme est une longue chaine de caractère où chacun d’eux est donc une instruction.
+À chaque &amp;#34;étape&amp;#34; de l’exécution d’un programme, la VM va décoder un des caractères et faire ce que le symbole indique.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Pour coder cette VM en OCaml, vous allez devoir recoder ce comportement général, à savoir : évoluer dans un programme, vers la gauche ou la droite (en fonction des actions), pour regarder quelle est l’action et effectuer l’action en question.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_représentation_des_concepts&#34;&gt;Représentation des concepts&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Si on regarde bien, il y a très peu de concepts qui vont être manipulés par notre VM.
+Essayez de vous poser quelques instants pour réfléchir au problème (on en discute ensemble évidemment).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Quels concepts voyez-vous qui vont être indispensable à la réalisation de la VM ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Parmi ces concepts, comment vais-je les représenter ? (quelle structure je peux utiliser pour les représenter)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Imaginez que vous avez une fonction générale &lt;code&gt;eval_program&lt;/code&gt;, quels vont être les paramètres que vous allez passer à la fonction ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Imaginez maintenant que vous avec une fonction très spécifique qui est responsable de l’exécution de votre programme. Combien de concepts pensez-vous qu’il est nécessaire de passer à cette fonction ? Que vont-ils représenter ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;À un instant &lt;code&gt;T&lt;/code&gt;, qu’est-ce qui va donner l’état de ma VM en cour d’exécution ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_première_étape_de_compilation_de_notre_programme&#34;&gt;Première étape de &amp;#34;compilation&amp;#34; de notre programme&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Comme vous l’avez peut-être deviner, travailler directement sur notre programme sous forme de chaine de caractère n’est pas très pratique.
+Nous allons donc &amp;#34;compiler&amp;#34; notre programme pour nous retrouver avec une représentation qui va être plus facile à manipuler en mémoire.
+L’idée générale va être de considérer que notre programme sous forme de chaine de caractère va être transformé en une liste d’instructions.
+Pour produire cette liste à partir d’une chaine de caractère, il est plus facile de passer par une première étape qui va prendre la chaine de caractère et la &amp;#34;couper&amp;#34; en une liste de caractère. Vous pouvez vous servir de la fonction suivante pour faire ça :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;highlight&#34;&gt;&lt;code class=&#34;language-ocaml&#34; data-lang=&#34;ocaml&#34;&gt;let explode s = List.init (String.length s) (String.get s);;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Proposez un type algébrique pour représenter les instructions&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ecrivez une fonction qui va prendre une liste de caractère et la transforme en liste d’instructions&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ecrivez une fonction qui prend une chaine de caractère et la transforme en liste d’instructions&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_modélisation_de_la_pile_et_de_la_vm_et_avancer_dans_un_programme&#34;&gt;Modélisation de la pile et de la VM et avancer dans un programme&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Nous allons maintenant regarder comment nous pouvons modéliser le fait d’avancer dans un programme, la pile et la VM.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Comment peut-on représenter le fait qu’on avance dans un programme à chaque fois qu’on lit une instruction ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Comment peut-on représenter la pile ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Comment peut-on représenter la VM en elle-même ? A-t-on besoin d’une structure de donnée spéciale ou un ensemble de fonctions suffit ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_comportement_des_instructions_et_de_la_vm&#34;&gt;Comportement des instructions et de la VM&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Il est possible d’associer une fonction à chacune des instructions.
+Regardez bien sur le site de présentation du langage (&lt;a href=&#34;https://esolangs.org/wiki/MagiStack&#34; class=&#34;bare&#34;&gt;https://esolangs.org/wiki/MagiStack&lt;/a&gt;) quelles sont les différentes instructions et ce qu’elles font.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Ecrivez une fonction pour chacune de ces instructions. Faites bien attention à ce qu’elles prennent en entrée et comment elles agissent sur le système pour le modifier (donc, que prennent-elles en entrée et que produisent-elle en sortie).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ecrivez une fonction spéciale pour la VM qui prend une liste d’instructions (à voir comment vous la représentez exactement, discutons en), une stack vide et qui exécute le programme.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ecrivez une fonction qui prend un programme sous forme de caractère et qui l’exécute en vous servant de toutes les fonctions précédentes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>/courses/metamodelisation/tp1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/courses/metamodelisation/tp1/</guid>
