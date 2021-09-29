@@ -34,10 +34,10 @@
   
     
   
-  <meta name="description" content="Associate professor in Computer Sciences">
+  <meta name="description" content="Le but de ce TP est de proposer un désassembleur chip8, c’est-à-dire un programme capable de lire des programmes (ROM) pour plateforme à base de chip8 et de proposer le code assembleur représenté sous forme textuelle plutôt que sous forme numérique.">
 
   
-  <link rel="alternate" hreflang="en-us" href="/courses/">
+  <link rel="alternate" hreflang="en-us" href="/courses/c3p/chip8/">
 
   
 
@@ -292,14 +292,12 @@
   
 
   
-  <link rel="alternate" href="/courses/index.xml" type="application/rss+xml" title="">
-  
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png">
 
-  <link rel="canonical" href="/courses/">
+  <link rel="canonical" href="/courses/c3p/chip8/">
 
   
   
@@ -318,11 +316,12 @@
   <meta property="twitter:creator" content="@VincentAranega">
   
   <meta property="og:site_name" content="">
-  <meta property="og:url" content="/courses/">
-  <meta property="og:title" content="Ressources | ">
-  <meta property="og:description" content="Associate professor in Computer Sciences"><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png">
+  <meta property="og:url" content="/courses/c3p/chip8/">
+  <meta property="og:title" content=" | ">
+  <meta property="og:description" content="Le but de ce TP est de proposer un désassembleur chip8, c’est-à-dire un programme capable de lire des programmes (ROM) pour plateforme à base de chip8 et de proposer le code assembleur représenté sous forme textuelle plutôt que sous forme numérique."><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png">
   <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
   
+    
     
   
 
@@ -330,17 +329,19 @@
 
 
 
-
   
 
 
   
 
 
+  
 
 
 
-  <title>Ressources | </title>
+
+
+  <title> | </title>
 
 </head>
 
@@ -731,6 +732,65 @@
   </div>
 
   <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1></h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
     
 
 
@@ -744,189 +804,437 @@
 
 
 
-  
 
-  
-  
-  
-    
-  
-<div class="universal-wrapper pt-3">
-  <h1>Ressources</h1>
-
-  
 
   
 </div>
 
 
 
-<div class="universal-wrapper">
-  
-  <div class="article-style"><div class="sect1">
-<h2 id="_c3p_paradigme_de_programmation_par_la_pratique">C3P - Paradigme de Programmation par la Pratique</h2>
+  <div class="article-container">
+
+    <div class="article-style">
+      <div id="preamble">
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_supports_de_cours_et_de_tps">Supports de cours et de TPs</h3>
+<div class="paragraph">
+<p>Le but de ce TP est de proposer un désassembleur chip8, c’est-à-dire un programme capable de lire
+des programmes (ROM) pour plateforme à base de chip8 et de proposer le code assembleur représenté
+sous forme textuelle plutôt que sous forme numérique.
+Le chip8 n’est pas un processeur, mais plus l’équivalent d’une machine virtuelle. Néanmoins, son
+architecture et son mode de fonctionnement sont assez proche de ce que l’on peut trouver dans un
+processeurs.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_représentation_dune_machine">Représentation d’une machine</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Une machine chip8 est constituée (entre autre) :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>d’une mémoire,</p>
+</li>
+<li>
+<p>d’un ensemble de 16 registres (notés <code>V1</code>, …​, <code>VF</code> ) de 8bits,</p>
+</li>
+<li>
+<p>d’un pseudo-registre d’accés à la mémoire <code>I</code> de 12bits,</p>
+</li>
+<li>
+<p>d’un “programme counter” (<code>PC</code>) de 16bits.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>Note</em> : le chip8 n’est capable de “comprendre” que des entiers positifs, on ne travaillera donc que sur des valeur <code>unsigned</code> systématiquement (dans les structures, variables locales et paramètres). Par exemple : <code>unsigned short</code>…​</p>
+</div>
+<div class="paragraph">
+<p>Le chip8 est capable d’accéder à 4096 octets de RAM, depuis l’adresse <code>0x000</code> (0) à <code>0xFFF</code> (4095).
+Le pseudo-registre <code>PC</code> sert à stocker l’adresse de l’instruction en mémoire qui va être exécutée.</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><a href="../files/courses/C3P/01-intro.pdf">Introduction</a></p>
+<p>Pour proposer une structure capable de représenter une machine Chip8, il faut pouvoir être capable de représenter toutes les composantes de la machine dans une structure. De combien de champs va-t-on avoir besoin dans cette structure et quels vont être leurs types ?</p>
 </li>
 <li>
-<p><a href="../files/courses/C3P/04-OCaml.pdf">Programmation Fonctionnelle avec OCaml</a></p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="../files/courses/C3P/01-TP-ocaml.pdf">TP1 - Premières fonctions</a></p>
+<p>Écrivez une structure capable de représenter une machine Chip8.</p>
 </li>
-<li>
-<p><a href="../files/courses/C3P/02-TP-ocaml.pdf">TP2 - Listes, fonctions sur les listes</a></p>
-</li>
-<li>
-<p><a href="../files/courses/C3P/03-TP-ocaml.pdf">TP3 - Arbres Binaires</a> (<em>en suspend, TP4 ou 4bis à la place</em>)</p>
-</li>
-<li>
-<p><a href="../files/courses/C3P/04-TP-ocaml.pdf">TP4 - Mini langage d’expressions</a></p>
-</li>
-<li>
-<p><a href="c3p/tp4bis">TP4bis - Magistack, VM à pile</a></p>
-</li>
-</ul>
+</ol>
 </div>
-</li>
-<li>
-<p><a href="../files/courses/C3P/03-C.pdf">Programmation Procédurale avec C</a></p>
+<div class="paragraph">
+<p>Comme la plupart des APIs qui manipulent des données en C et en procédural, il est nécessaire de donner 2 fonctions principales :</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="c3p/chip8">TP5 - Désassemblage ROM Chip8</a></p>
+<p>une fonction pour la création des donnée,</p>
 </li>
 <li>
-<p><a href="../files/courses/C3P/06-TP-C.pdf">TP6 - Framework check</a> (<em>en suspend</em>)</p>
-<div class="ulist">
-<ul>
+<p>une fonction pour l’initialisation de la donnée créée.</p>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p><a href="../files/courses/C3P/tsuite.h">tsuite.h</a></p>
+<p>Écrivez une fonction qui permet de créer une donnée de la structure que vous avez définit précédemment.</p>
 </li>
 <li>
-<p><a href="../files/courses/C3P/Makefile">Makefile</a></p>
+<p>Écrivez une fonction qui va initialiser la donnée créée, c’est-à-dire, qui va initialiser tout les champs de la structure aux bonnes valeurs de départ (en général, tout à 0).</p>
 </li>
-</ul>
+</ol>
 </div>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><a href="../files/courses/C3P/05-Python.pdf">Programmation Orienté Objet avec Python</a></p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="../files/courses/C3P/07-TP-python.pdf">TP7 - Prise en main de pytest</a></p>
-</li>
-<li>
-<p><a href="../files/courses/C3P/08-TP-python.pdf">TP8 - Mini langage d’expression en Python</a></p>
-</li>
-<li>
-<p><a href="../files/courses/C3P/09-TP-python.pdf">TP9 - Micro framework de spécification de code</a></p>
-</li>
-</ul>
 </div>
-</li>
-<li>
-<p>Projets C3P 2019</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="../files/courses/C3P/2019/projets.html">2019</a> (<a href="../files/courses/C3P/2019/protocol.txt">specification du protocol</a>, <a href="../files/courses/C3P/2019/server.py">serveur REST de test</a>)</p>
-</li>
-<li>
-<p><a href="../files/courses/C3P/2020/projets.html">2020</a> (<a href="../files/courses/C3P/2020/protocol.txt">specification du protocol</a>, <a href="../files/courses/C3P/2020/server.py">serveur REST de test</a>)</p>
-</li>
-</ul>
 </div>
+<div class="sect1">
+<h2 id="_chargement_dune_rom">Chargement d’une ROM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vous pourrez trouver des ROM pour chip8 un peu partout sur le net (ex: <a href="https://www.zophar.net/pdroms/chip8.html" class="bare">https://www.zophar.net/pdroms/chip8.html</a>).
+Vérifier juste qu’il sagit bien de ROM pour le chip8 et pas le super chip8.
+Une ROM est l’équivalent d’un &#34;morceau de mémoire&#34; mis dans un fichier.
+Cela signifie qu’elle contient l’état de la mémoire à un instant précis.
+En conséquence, lorsque l’on veut charger une ROM, il convient donc de lire le fichier contenant la ROM et de le stocker dans la mémoire de notre Chip8 (donc dans le champs mémoire de notre donnée représentant le Chip8).
+Le chargement d’une ROM se fait par lecture du fichier en mode binaire, puis en lisant octet par octet.
+Chaque octet est stocké dans la mémoire de la machine à partir de l’adresse <code>0x200</code> (contrainte du chip8).</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrivez une fonction qui lit un fichier contenant une ROM et la stocke dans la mémoire d’une machine (rappel : vous utiliserez les fonctions <code>fopen</code>, <code>fread</code> et <code>fclose</code>).</p>
 </li>
 </ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_liens_et_ressources_externes">Liens et ressources externes</h3>
-<div class="sect3">
-<h4 id="_ocaml">OCaml</h4>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://caml.inria.fr/pub/docs/manual-ocaml/index.html">Documentation OCaml</a></p>
-</li>
-<li>
-<p><a href="https://dev.realworldocaml.org/toc.html">Real World OCaml</a></p>
-</li>
-<li>
-<p><a href="http://ounit.forge.ocamlcore.org/api-ounit/index.html">OUnit User Guide</a></p>
-</li>
-<li>
-<p><a href="http://nealford.com/functionalthinking.html">Functional Thinking</a></p>
-</li>
-</ul>
 </div>
+<div class="sect1">
+<h2 id="_décodage_dune_instruction">Décodage d’une instruction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Une instruction chip8 est codée sur 16bits (2 octets). Par exemple : <code>0x00E0</code> représente l’instruction qui demande l’effacement de l’écran.
+Lorsque l’on veut décoder une instruction, il est donc nécessaire de lire 2 octets (2 <code>unsigned chars</code>) en mémoire à l’adresse pointé par <code>PC</code>, et de placer les 2 octets dans une seule variable de plus grande capacité (<code>unsigned short</code>).</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Proposez une fonction qui prend deux <code>unsigned char</code> en paramètre et qui retourne le résultat &#34;concaténé&#34; des 2 <code>unsigned chars</code>. Par exemple, avec <code>a = 0xAB</code> et <code>b = 0xCD</code>, le résultat sera une variable de type <code>unsigned short</code> avec <code>0xABCD</code>. Pour pouvoir faire ceci, il est nécessaire d’effectuer des opérations de décalage binaire et de jouer avec l’opération <code>||</code>.</p>
+</li>
+<li>
+<p>Écrivez une fonction qui retourne l’instruction (le <code>unsigned short</code>) présente en mémoire d’une machine à l’adresse indiquée par <code>PC</code>.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_anatomie_dune_instruction">Anatomie d’une instruction</h3>
+<div class="paragraph">
+<p>Une instruction peut être constituée d’un certains nombre de morceaux qui donne des informations sur l’action qu’elle représente.
+Par exemple <code>0x6633</code> représente le chargement de la valeur <code>0x33</code> dans le registre <code>V6</code>.
+De manière un peu plus générale, les instructions qui ont la forme <code>0x6RJJ</code> représente le chargement d’une valeur <code>0xJJ</code> dans le registre <code>VR</code>.
+Nous n’allons pas décoder toutes les instructions chip8 (il en existe 35), mais juste quelques unes (vous pouvez toutes les faire si vous le souhaitez).
+Le but des fonctions suivante vont être de produire un affichage plus intelligible que <code>0x6633</code> en affichant <code>mov V6, 0x33</code> (si l’on reprend l’exemple précédent).</p>
+</div>
+<div class="paragraph">
+<p>Les instructions que nous allons décoder sont les suivantes :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>0x00E0  → CLS
+0xBjjj  → JMP jjj
+0x6rjj  → MOV Vr, jj
+0x7rjj  → ADD Vr, jj
+0x8ry4  → ADD Vr, Vy
+0xAjjj  → MOV I, jjj
+UNKNOWN → fonction de fallback si inst pas encore codé</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Pour simplifier l’identification de chaque informations de chaque instructions, vous allez écrire 4 fonctions : <code>part1</code>, <code>part2</code>, <code>part3</code> et <code>part4</code> qui vont isoler une partie des bits du <code>unsigned short</code> passé en paramètre de la fonction.
+Par exemple : <code>part1(0x6234)</code> va retourner <code>0x6000</code>, <code>part3(0x6234)</code> va retourner <code>0x0200</code>…​etc</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrivez les fonction <code>part1</code>, <code>part2</code>, <code>part3</code> et <code>part4</code> (vous utiliserez des masques pour faire ceci).</p>
+</li>
+<li>
+<p>Proposez une fonction par instruction qui prend l’entier représentant l’instruction en paramètre et propose un affichage de en mode texte (on sait que l’instruction sera la bonne passée en paramètre, pas besoin de tester ici).</p>
+</li>
+<li>
+<p>Proposez une fonction qui exécute la bonne fonction d’affichage en fonction de l’instruction passée
+en paramètre. si l’instruction n’est pas encore connue, alors la fonction de fallback est appelée.</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_metamodelisation">Metamodelisation</h2>
+<h2 id="_dump_de_la_mémoire">Dump de la mémoire</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_supports_de_cours_et_de_tps_2">Supports de cours et de TPs</h3>
+<div class="paragraph">
+<p>Il faut maintenant mettre tout en commun pour proposer un dump de la mémoire. La boucle de décodage suit la logique suivante :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>pour i = 0..fin de la mémoire:
+    inst = fetch_inst(machine)
+    decode_affiche(inst)
+    machine.PC = machine.PC + 1</code></pre>
+</div>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><a href="../files/courses/metamodelisation/0-introduction.pdf">Introduction</a></p>
+<p>Écrivez une fonction qui code ce comportement</p>
 </li>
 <li>
-<p><a href="../files/courses/metamodelisation/1-rappels.pdf">Rappels</a></p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="metamodelisation/tp1">TP1 - métamodèles et outils de création</a> — [<a href="../files/courses/metamodelisation/tp1.pdf">PDF</a>]</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><a href="../files/courses/metamodelisation/2-navigation.pdf">Manipulation de modèles</a></p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="metamodelisation/tp2">TP2 - manipulation de modèles de manière programmatique</a> — [<a href="../files/courses/metamodelisation/tp2.pdf">PDF</a>]</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><a href="../files/courses/metamodelisation/3-industrie.pdf">Méta-modélisation dans l’industrie</a> <em>Coming soon</em></p>
-</li>
-<li>
-<p><a href="../files/courses/metamodelisation/4-serialization.pdf">Sérialisation &amp; big models</a> <em>Coming soon</em></p>
-</li>
-<li>
-<p><a href="../files/courses/metamodelisation/5-transformations.pdf">Transformations de modèles</a> <em>Coming soon</em></p>
-</li>
-<li>
-<p><a href="../files/courses/metamodelisation/6-metaprog.pdf">Méta-programmation</a> <em>Coming soon</em></p>
+<p>Écrivez le <code>main</code> terminal qui prend en paramètre de la ligne de commande une ROM à dump</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_sil_vous_reste_du_temps">S’il vous reste du temps</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Vous pouvez implémenter l’affichage des autres instructions.</p>
+</li>
+<li>
+<p>Pour l’instant, l’algo de dump balaye toute la mémoire même si la ROM chargée est petite. Trouvez un moyen de ne parcourir que l’équivalent du programme chargé en mémoire plutôt que tout.</p>
+</li>
+<li>
+<p>Vous pouvez aussi code le comportement des instructions et leur impact sur la machine faisant tourner le code (assignation de registres, affichage en mode texte…​etc). De cette façon, vous pouvez coder un émulateur Chip8 quasi complet.</p>
+</li>
+</ol>
 </div>
 </div>
-  
-  <ul class="list-unstyled">
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/courses/c3p/chip8/&amp;text=" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/courses/c3p/chip8/&amp;t=" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=&amp;body=/courses/c3p/chip8/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/courses/c3p/chip8/&amp;title=" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=%20/courses/c3p/chip8/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/courses/c3p/chip8/&amp;title=" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
     
   </ul>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      <a href="/"><img class="avatar mr-3 avatar-circle" src="https://s.gravatar.com/avatar/668aa0d0b75bbdc48f9cc653cc3bfd61?s=200')" alt=""></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/"></a></h5>
+      <h6 class="card-subtitle">Associate professor in Computer Sciences</h6>
+      <p class="card-text">My research interests include language engineering, virtual machine and software engineering in general.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:vincent.aranega@univ-lille.fr" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/VincentAranega" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.fr/citations?user=c_Lv5PEAAAAJ" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/aranega" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
   </div>
 
   <div class="page-footer">

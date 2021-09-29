@@ -193,6 +193,216 @@ Lille 1&lt;/a&gt; from 2011 to 2012, and since 2012, I teach to &lt;a href=&#34;
     
     <item>
       <title></title>
+      <link>/courses/c3p/chip8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/courses/c3p/chip8/</guid>
+      <description>&lt;div id=&#34;preamble&#34;&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Le but de ce TP est de proposer un désassembleur chip8, c’est-à-dire un programme capable de lire
+des programmes (ROM) pour plateforme à base de chip8 et de proposer le code assembleur représenté
+sous forme textuelle plutôt que sous forme numérique.
+Le chip8 n’est pas un processeur, mais plus l’équivalent d’une machine virtuelle. Néanmoins, son
+architecture et son mode de fonctionnement sont assez proche de ce que l’on peut trouver dans un
+processeurs.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_représentation_dune_machine&#34;&gt;Représentation d’une machine&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Une machine chip8 est constituée (entre autre) :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;ulist&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;d’une mémoire,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;d’un ensemble de 16 registres (notés &lt;code&gt;V1&lt;/code&gt;, …​, &lt;code&gt;VF&lt;/code&gt; ) de 8bits,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;d’un pseudo-registre d’accés à la mémoire &lt;code&gt;I&lt;/code&gt; de 12bits,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;d’un “programme counter” (&lt;code&gt;PC&lt;/code&gt;) de 16bits.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;&lt;em&gt;Note&lt;/em&gt; : le chip8 n’est capable de “comprendre” que des entiers positifs, on ne travaillera donc que sur des valeur &lt;code&gt;unsigned&lt;/code&gt; systématiquement (dans les structures, variables locales et paramètres). Par exemple : &lt;code&gt;unsigned short&lt;/code&gt;…​&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Le chip8 est capable d’accéder à 4096 octets de RAM, depuis l’adresse &lt;code&gt;0x000&lt;/code&gt; (0) à &lt;code&gt;0xFFF&lt;/code&gt; (4095).
+Le pseudo-registre &lt;code&gt;PC&lt;/code&gt; sert à stocker l’adresse de l’instruction en mémoire qui va être exécutée.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Pour proposer une structure capable de représenter une machine Chip8, il faut pouvoir être capable de représenter toutes les composantes de la machine dans une structure. De combien de champs va-t-on avoir besoin dans cette structure et quels vont être leurs types ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une structure capable de représenter une machine Chip8.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Comme la plupart des APIs qui manipulent des données en C et en procédural, il est nécessaire de donner 2 fonctions principales :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;ulist&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;une fonction pour la création des donnée,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;une fonction pour l’initialisation de la donnée créée.&lt;/p&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui permet de créer une donnée de la structure que vous avez définit précédemment.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui va initialiser la donnée créée, c’est-à-dire, qui va initialiser tout les champs de la structure aux bonnes valeurs de départ (en général, tout à 0).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_chargement_dune_rom&#34;&gt;Chargement d’une ROM&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Vous pourrez trouver des ROM pour chip8 un peu partout sur le net (ex: &lt;a href=&#34;https://www.zophar.net/pdroms/chip8.html&#34; class=&#34;bare&#34;&gt;https://www.zophar.net/pdroms/chip8.html&lt;/a&gt;).
+Vérifier juste qu’il sagit bien de ROM pour le chip8 et pas le super chip8.
+Une ROM est l’équivalent d’un &amp;#34;morceau de mémoire&amp;#34; mis dans un fichier.
+Cela signifie qu’elle contient l’état de la mémoire à un instant précis.
+En conséquence, lorsque l’on veut charger une ROM, il convient donc de lire le fichier contenant la ROM et de le stocker dans la mémoire de notre Chip8 (donc dans le champs mémoire de notre donnée représentant le Chip8).
+Le chargement d’une ROM se fait par lecture du fichier en mode binaire, puis en lisant octet par octet.
+Chaque octet est stocké dans la mémoire de la machine à partir de l’adresse &lt;code&gt;0x200&lt;/code&gt; (contrainte du chip8).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui lit un fichier contenant une ROM et la stocke dans la mémoire d’une machine (rappel : vous utiliserez les fonctions &lt;code&gt;fopen&lt;/code&gt;, &lt;code&gt;fread&lt;/code&gt; et &lt;code&gt;fclose&lt;/code&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_décodage_dune_instruction&#34;&gt;Décodage d’une instruction&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Une instruction chip8 est codée sur 16bits (2 octets). Par exemple : &lt;code&gt;0x00E0&lt;/code&gt; représente l’instruction qui demande l’effacement de l’écran.
+Lorsque l’on veut décoder une instruction, il est donc nécessaire de lire 2 octets (2 &lt;code&gt;unsigned chars&lt;/code&gt;) en mémoire à l’adresse pointé par &lt;code&gt;PC&lt;/code&gt;, et de placer les 2 octets dans une seule variable de plus grande capacité (&lt;code&gt;unsigned short&lt;/code&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Proposez une fonction qui prend deux &lt;code&gt;unsigned char&lt;/code&gt; en paramètre et qui retourne le résultat &amp;#34;concaténé&amp;#34; des 2 &lt;code&gt;unsigned chars&lt;/code&gt;. Par exemple, avec &lt;code&gt;a = 0xAB&lt;/code&gt; et &lt;code&gt;b = 0xCD&lt;/code&gt;, le résultat sera une variable de type &lt;code&gt;unsigned short&lt;/code&gt; avec &lt;code&gt;0xABCD&lt;/code&gt;. Pour pouvoir faire ceci, il est nécessaire d’effectuer des opérations de décalage binaire et de jouer avec l’opération &lt;code&gt;||&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui retourne l’instruction (le &lt;code&gt;unsigned short&lt;/code&gt;) présente en mémoire d’une machine à l’adresse indiquée par &lt;code&gt;PC&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect2&#34;&gt;
+&lt;h3 id=&#34;_anatomie_dune_instruction&#34;&gt;Anatomie d’une instruction&lt;/h3&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Une instruction peut être constituée d’un certains nombre de morceaux qui donne des informations sur l’action qu’elle représente.
+Par exemple &lt;code&gt;0x6633&lt;/code&gt; représente le chargement de la valeur &lt;code&gt;0x33&lt;/code&gt; dans le registre &lt;code&gt;V6&lt;/code&gt;.
+De manière un peu plus générale, les instructions qui ont la forme &lt;code&gt;0x6RJJ&lt;/code&gt; représente le chargement d’une valeur &lt;code&gt;0xJJ&lt;/code&gt; dans le registre &lt;code&gt;VR&lt;/code&gt;.
+Nous n’allons pas décoder toutes les instructions chip8 (il en existe 35), mais juste quelques unes (vous pouvez toutes les faire si vous le souhaitez).
+Le but des fonctions suivante vont être de produire un affichage plus intelligible que &lt;code&gt;0x6633&lt;/code&gt; en affichant &lt;code&gt;mov V6, 0x33&lt;/code&gt; (si l’on reprend l’exemple précédent).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Les instructions que nous allons décoder sont les suivantes :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;highlight&#34;&gt;&lt;code&gt;0x00E0  → CLS
+0xBjjj  → JMP jjj
+0x6rjj  → MOV Vr, jj
+0x7rjj  → ADD Vr, jj
+0x8ry4  → ADD Vr, Vy
+0xAjjj  → MOV I, jjj
+UNKNOWN → fonction de fallback si inst pas encore codé&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Pour simplifier l’identification de chaque informations de chaque instructions, vous allez écrire 4 fonctions : &lt;code&gt;part1&lt;/code&gt;, &lt;code&gt;part2&lt;/code&gt;, &lt;code&gt;part3&lt;/code&gt; et &lt;code&gt;part4&lt;/code&gt; qui vont isoler une partie des bits du &lt;code&gt;unsigned short&lt;/code&gt; passé en paramètre de la fonction.
+Par exemple : &lt;code&gt;part1(0x6234)&lt;/code&gt; va retourner &lt;code&gt;0x6000&lt;/code&gt;, &lt;code&gt;part3(0x6234)&lt;/code&gt; va retourner &lt;code&gt;0x0200&lt;/code&gt;…​etc&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez les fonction &lt;code&gt;part1&lt;/code&gt;, &lt;code&gt;part2&lt;/code&gt;, &lt;code&gt;part3&lt;/code&gt; et &lt;code&gt;part4&lt;/code&gt; (vous utiliserez des masques pour faire ceci).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Proposez une fonction par instruction qui prend l’entier représentant l’instruction en paramètre et propose un affichage de en mode texte (on sait que l’instruction sera la bonne passée en paramètre, pas besoin de tester ici).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Proposez une fonction qui exécute la bonne fonction d’affichage en fonction de l’instruction passée
+en paramètre. si l’instruction n’est pas encore connue, alors la fonction de fallback est appelée.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_dump_de_la_mémoire&#34;&gt;Dump de la mémoire&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Il faut maintenant mettre tout en commun pour proposer un dump de la mémoire. La boucle de décodage suit la logique suivante :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;highlight&#34;&gt;&lt;code&gt;pour i = 0..fin de la mémoire:
+    inst = fetch_inst(machine)
+    decode_affiche(inst)
+    machine.PC = machine.PC + 1&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez une fonction qui code ce comportement&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez le &lt;code&gt;main&lt;/code&gt; terminal qui prend en paramètre de la ligne de commande une ROM à dump&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_sil_vous_reste_du_temps&#34;&gt;S’il vous reste du temps&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Vous pouvez implémenter l’affichage des autres instructions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pour l’instant, l’algo de dump balaye toute la mémoire même si la ROM chargée est petite. Trouvez un moyen de ne parcourir que l’équivalent du programme chargé en mémoire plutôt que tout.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Vous pouvez aussi code le comportement des instructions et leur impact sur la machine faisant tourner le code (assignation de registres, affichage en mode texte…​etc). De cette façon, vous pouvez coder un émulateur Chip8 quasi complet.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>/courses/c3p/tp4bis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/courses/c3p/tp4bis/</guid>
