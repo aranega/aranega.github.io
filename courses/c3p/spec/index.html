@@ -34,10 +34,10 @@
   
     
   
-  <meta name="description" content="Associate professor in Computer Sciences">
+  <meta name="description" content="Dans ce TP, nous allons faire de la génération de code Python à partir de code Python en utilisatn Python. Le but du TP sera de générer du code Python à partir de classes Pythons qui serviront de “spécification”, c’est à dire que ces classes vont avoir peu d’information, mais ces informations vont nous servir à dériver du code.">
 
   
-  <link rel="alternate" hreflang="en-us" href="/courses/">
+  <link rel="alternate" hreflang="en-us" href="/courses/c3p/spec/">
 
   
 
@@ -292,14 +292,12 @@
   
 
   
-  <link rel="alternate" href="/courses/index.xml" type="application/rss+xml" title="">
-  
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png">
 
-  <link rel="canonical" href="/courses/">
+  <link rel="canonical" href="/courses/c3p/spec/">
 
   
   
@@ -318,11 +316,12 @@
   <meta property="twitter:creator" content="@VincentAranega">
   
   <meta property="og:site_name" content="">
-  <meta property="og:url" content="/courses/">
-  <meta property="og:title" content="Ressources | ">
-  <meta property="og:description" content="Associate professor in Computer Sciences"><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png">
+  <meta property="og:url" content="/courses/c3p/spec/">
+  <meta property="og:title" content=" | ">
+  <meta property="og:description" content="Dans ce TP, nous allons faire de la génération de code Python à partir de code Python en utilisatn Python. Le but du TP sera de générer du code Python à partir de classes Pythons qui serviront de “spécification”, c’est à dire que ces classes vont avoir peu d’information, mais ces informations vont nous servir à dériver du code."><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png">
   <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
   
+    
     
   
 
@@ -330,17 +329,19 @@
 
 
 
-
   
 
 
   
 
 
+  
 
 
 
-  <title>Ressources | </title>
+
+
+  <title> | </title>
 
 </head>
 
@@ -731,6 +732,65 @@
   </div>
 
   <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1></h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
     
 
 
@@ -744,189 +804,436 @@
 
 
 
-  
 
-  
-  
-  
-    
-  
-<div class="universal-wrapper pt-3">
-  <h1>Ressources</h1>
-
-  
 
   
 </div>
 
 
 
-<div class="universal-wrapper">
-  
-  <div class="article-style"><div class="sect1">
-<h2 id="_c3p_paradigme_de_programmation_par_la_pratique">C3P - Paradigme de Programmation par la Pratique</h2>
+  <div class="article-container">
+
+    <div class="article-style">
+      <div id="preamble">
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_supports_de_cours_et_de_tps">Supports de cours et de TPs</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><a href="../files/courses/C3P/01-intro.pdf">Introduction</a></p>
-</li>
-<li>
-<p><a href="../files/courses/C3P/04-OCaml.pdf">Programmation Fonctionnelle avec OCaml</a></p>
+<div class="paragraph">
+<p>Dans ce TP, nous allons faire de la génération de code Python à partir de code Python en utilisatn Python.
+Le but du TP sera de générer du code Python à partir de classes Pythons qui serviront de “spécification”, c’est à dire que ces classes vont avoir peu d’information, mais ces informations vont nous servir à dériver du code.
+Le TP se découpe en deux parties, une première partie d’introspection et collecte d’information, puis une génération de texte qui sera du code Python.
+S’il vous reste du temps, vous pourrez effectuer une dernière partie sur la compilation en mémoire du code.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_une_spécification">Une spécification ?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Nous allons considérer directement des classes Python comme étant la spécification du code que nous voulons générer.
+Voilà un exemple de code que nous aimerions pouvoir écrire comme spécification :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">@specification
+class Engine(object):
+  ...
+
+
+@specification
+class Vehicule(object):
+  number_of_wheels = Attribute(int)
+  engine = Attribute(Engine)
+
+
+@specification
+class Car(Vehicule):
+  ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ce code précise que les classes <code>Engine</code>, <code>Vehicule</code> et <code>Car</code> ne sont plus exactement uniquement des classes, mais des <code>@specification</code>.
+On peut remarquer qu’il y a 2 variables de classe pour <code>Vehicule</code> qui précise qui représentent 2 attributs de type <code>int</code> et de type <code>Engine</code>.
+On voit donc que :</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../files/courses/C3P/01-TP-ocaml.pdf">TP1 - Premières fonctions</a></p>
+<p>il y a un décorateur particulier pour préciser qu’une classe est une spécification,</p>
 </li>
 <li>
-<p><a href="../files/courses/C3P/02-TP-ocaml.pdf">TP2 - Listes, fonctions sur les listes</a></p>
-</li>
-<li>
-<p><a href="../files/courses/C3P/03-TP-ocaml.pdf">TP3 - Arbres Binaires</a> (<em>en suspend, TP4 ou 4bis à la place</em>)</p>
-</li>
-<li>
-<p><a href="../files/courses/C3P/04-TP-ocaml.pdf">TP4 - Mini langage d’expressions</a></p>
-</li>
-<li>
-<p><a href="c3p/tp4bis">TP4bis - Magistack, VM à pile</a></p>
+<p>il y a une classe spécial <code>Attribute</code> qui est utilisé pour indiquer qu’une variable de classe
+représente un attribut et son type.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><a href="../files/courses/C3P/03-C.pdf">Programmation Procédurale avec C</a></p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="c3p/chip8">TP5 - Désassemblage ROM Chip8</a></p>
-</li>
-<li>
-<p><a href="../files/courses/C3P/06-TP-C.pdf">TP6 - Framework check</a> (<em>en suspend</em>)</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="../files/courses/C3P/tsuite.h">tsuite.h</a></p>
-</li>
-<li>
-<p><a href="../files/courses/C3P/Makefile">Makefile</a></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>À partir de cette spécification, nous aimerions obtenir le code généré suivant :</p>
 </div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><a href="../files/courses/C3P/05-Python.pdf">Programmation Orienté Objet avec Python</a></p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="../files/courses/C3P/07-TP-python.pdf">TP7 - Prise en main de pytest</a> (<em>en suspend</em>)</p>
-</li>
-<li>
-<p><a href="c3p/matlpython">TP8 - Mini langage d’exepression en Python</a></p>
-</li>
-<li>
-<p><a href="c3p/spec">TP9 - Micro framework de spécification de code</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Projets C3P</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="../files/courses/C3P/2019/projets.html">2019</a> (<a href="../files/courses/C3P/2019/protocol.txt">specification du protocol</a>, <a href="../files/courses/C3P/2019/server.py">serveur REST de test</a>)</p>
-</li>
-<li>
-<p><a href="../files/courses/C3P/2020/projets.html">2020</a> (<a href="../files/courses/C3P/2020/protocol.txt">specification du protocol</a>, <a href="../files/courses/C3P/2020/server.py">serveur REST de test</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_liens_et_ressources_externes">Liens et ressources externes</h3>
-<div class="sect3">
-<h4 id="_ocaml">OCaml</h4>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://caml.inria.fr/pub/docs/manual-ocaml/index.html">Documentation OCaml</a></p>
-</li>
-<li>
-<p><a href="https://dev.realworldocaml.org/toc.html">Real World OCaml</a></p>
-</li>
-<li>
-<p><a href="http://ounit.forge.ocamlcore.org/api-ounit/index.html">OUnit User Guide</a></p>
-</li>
-<li>
-<p><a href="http://nealford.com/functionalthinking.html">Functional Thinking</a></p>
-</li>
-</ul>
-</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">class Engine(object):
+  ...
+
+
+class Vehicule(object):
+  def __init__(self, number_of_wheels=None, engine=None):
+    self.number_of_wheels = number_of_wheels
+    self.engine = engine
+
+  @property
+  def number_of_wheels(self):
+    return self._number_of_wheels
+
+  @number_of_wheels.setter
+  def number_of_wheels(self, value):
+    assert value is None or isinstance(value, int)
+    self._number_of_wheels = value
+
+  @property
+  def engine(self):
+    return self._engine
+
+  @engine.setter
+  def engine(self, value):
+    assert value is None or isinstance(value, Engine)
+    self._engine = value
+
+
+class Car(Vehicule):
+  ...</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_metamodelisation">Metamodelisation</h2>
+<h2 id="_mise_en_place_du_framework">Mise en place du framework</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_supports_de_cours_et_de_tps_2">Supports de cours et de TPs</h3>
+<div class="paragraph">
+<p>Vous allez adopter la même &#34;hiérarchie&#34; de fichiers, pour pouvoir facilement vous y retrouver :</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><a href="../files/courses/metamodelisation/0-introduction.pdf">Introduction</a></p>
+<p>Créez un fichier <code>spec.py</code> qui sera utilisé pour écrire l’implémentation de notre mini-framework
+de spécification (c’est-à-dire, le décorateur et la classe <code>Attribute</code>).</p>
 </li>
-<li>
-<p><a href="../files/courses/metamodelisation/1-rappels.pdf">Rappels</a></p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="metamodelisation/tp1">TP1 - métamodèles et outils de création</a> — [<a href="../files/courses/metamodelisation/tp1.pdf">PDF</a>]</p>
-</li>
-</ul>
+</ol>
 </div>
-</li>
-<li>
-<p><a href="../files/courses/metamodelisation/2-navigation.pdf">Manipulation de modèles</a></p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="metamodelisation/tp2">TP2 - manipulation de modèles de manière programmatique</a> — [<a href="../files/courses/metamodelisation/tp2.pdf">PDF</a>]</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Maintenant, vous pouvez commencer à coder les artefacts qui vont servir à représenter une spécification.</p>
 </div>
+<div class="paragraph">
+<p>On va commencer par coder le décorateur <code>specification</code>.
+Un décorateur sur une classe en Python s’implémente en réalisant une fonction qui prend en paramètre une classe et qui retourne la classe.
+Ce décorateur va faire très peu de chose, il va juste “marquer” la classe comme étant une spécification en rajoutant un attribut <code>specification</code> avec la valeur <code>True</code> sur la classe qu’il décore.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrire le décorateur <code>specification</code> (c’est-à-dire, écrire une fonction <code>specification</code> qui prend un paramètre), qui rajoute l’attribut à la classe passée en paramètre et qui retourne la classe modifiée.</p>
 </li>
 <li>
-<p><a href="../files/courses/metamodelisation/3-industrie.pdf">Méta-modélisation dans l’industrie</a> <em>Coming soon</em></p>
+<p>Écrire la classe <code>Attribute</code> qui va représenter un attribut de la spécification. Cette classe ne possède qu’une référence vers le type qu’elle est censé représenter et rien d’autre.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Maintenant que vous avez les éléments principaux de votre framework qui vous permettent de représenter une spécification, écrivez l’équivalent de la spécification montré au début du TP.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Créez un fichier <code>cars.py</code> qui contiendra le code de la spécification exemple donné plus haut dans le sujet.</p>
 </li>
 <li>
-<p><a href="../files/courses/metamodelisation/4-serialization.pdf">Sérialisation &amp; big models</a> <em>Coming soon</em></p>
-</li>
-<li>
-<p><a href="../files/courses/metamodelisation/5-transformations.pdf">Transformations de modèles</a> <em>Coming soon</em></p>
-</li>
-<li>
-<p><a href="../files/courses/metamodelisation/6-metaprog.pdf">Méta-programmation</a> <em>Coming soon</em></p>
+<p>Écrivez ensuite la spécification d’exemple (celui du véhicule) dans <code>cars.py</code> en utilisant votre micro-framework <code>spec.py</code>. (Noubliez pas de faire un <code>from spec import *</code> en entête de votre fichier <code>cars.py</code> pour importer les éléments du framework que vous allez utiliser).</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_introspection_de_classes_et_de_modules">Introspection de classes et de modules</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Maintenant que nous sommes capable d’exprimer que des classes sont des spécifications et de décrire des attributs sur ces classes, nous allons proposer les fonctions d’analyse de la spécification pour produire le code associé.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrire une fonction <code>gen_class_header</code> qui prend une classe spécification en paramètre et qui retourne l’entête de la classe uniquement (pour l’instant) sous forme de chaîne de caractère.
+Cette fonction doit gérer l’héritage en générant correctement le code relatif à l’héritage (Indication, l’attribut <code><em>bases</em></code> permet d’obtenir la liste des classes dont hérite une classe et pour vous aider dans la génération du texte, regardez l’utilisation de <code>join</code> qui est une méthode sur les chaines de caractères).</p>
+</li>
+<li>
+<p>Écrire une fonction <code>gen_class_body</code> qui prend une classe spécification en paramètre et qui retourne une liste où chaque élément et l’équivalent du texte de chaque fonctions (faites bien attention à l’indentation, le code de chaque méthode devra être placé ensuite dans une classe).</p>
+</li>
+<li>
+<p>Écrire une fonction <code>gen_class</code> qui prend une classe spécification et qui retourne une grande chaine de caractère représentant la classe générée à partir de la classe de spécification.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Maintenant que nous sommes capable de générer le code pour une classe, il ne nous reste plus qu’à être capable de récupérer toutes les classes d’un module.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrire une fonction <code>collect_specifications</code> qui prend un module en paramètre et qui retourne la liste des classes qui seront analyser plus tard (Indication, l’attribut <code><em>dict</em></code> d’un module permet de récupérer un dictionnaire des éléments qu’il contient, le module <code>inspect</code> donne accès à des fonctions qui permettent de tester si un élément qu’il contient et la fonction <code>hasattr(elem, &#39;attr&#39;)</code> permet de vérifier que l’attribut <code>attr</code> existe dans <code>elem</code>).</p>
+</li>
+</ol>
 </div>
 </div>
-  
-  <ul class="list-unstyled">
+</div>
+<div class="sect1">
+<h2 id="_génération_de_code">Génération de code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Nous avons tout ce qu’il nous faut pour pouvoir générer du code à partir d’une spécification :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>nous sommes capable d’analyser des classes de spécification et de retourner le code correspondant,</p>
+</li>
+<li>
+<p>nous sommes capable de récupérer toutes les classes spécification depuis un module.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Il ne reste plus qu’à écrire le tout dans un fichier.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrire une fonction <code>gen_module</code> qui prend un module en paramètres, qui collecte la totalité des classes de spécification et qui écrit dans un fichier le code des classes.
+Le nom du fichier sera nommé en fonction du nom du module.
+Par exemple pour <code>cars.py</code> qui correspond au fichier de
+spécification, le fichier généré sera nommé : <code>cars_gen.py</code> (Indication, on peut accéder au nom
+d’un module par l’attribut <code><em>name</em></code>).</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/courses/c3p/spec/&amp;text=" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/courses/c3p/spec/&amp;t=" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=&amp;body=/courses/c3p/spec/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/courses/c3p/spec/&amp;title=" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=%20/courses/c3p/spec/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/courses/c3p/spec/&amp;title=" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
     
   </ul>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      <a href="/"><img class="avatar mr-3 avatar-circle" src="https://s.gravatar.com/avatar/668aa0d0b75bbdc48f9cc653cc3bfd61?s=200')" alt=""></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/"></a></h5>
+      <h6 class="card-subtitle">Associate professor in Computer Sciences</h6>
+      <p class="card-text">My research interests include language engineering, virtual machine and software engineering in general.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:vincent.aranega@univ-lille.fr" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/VincentAranega" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.fr/citations?user=c_Lv5PEAAAAJ" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/aranega" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
   </div>
 
   <div class="page-footer">

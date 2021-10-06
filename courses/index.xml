@@ -224,6 +224,333 @@ en paramètre. si l’instruction n’est pas encore connue, alors la fonction d
     
     <item>
       <title></title>
+      <link>/courses/c3p/matlpython/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/courses/c3p/matlpython/</guid>
+      <description>&lt;div id=&#34;preamble&#34;&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Dans ce TP, nous allons revenir sur MatL et proposer une implémentation en Python pure.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_environnement_virtuel_et_framework_de_tests&#34;&gt;Environnement virtuel et framework de tests&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Lorsque l’on code en Python, on passe très vite par la création d’un environnement virtuel.
+Un virtualenv permet d’isoler l’installation de librairies tierce du système et d’éviter de polluer son système.
+Pour créer un virtualenv :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;placez-vous dans votre répertoire de travail (celui de votre repository) et tapez la commande suivante : &lt;code&gt;$ virtualenv venv&lt;/code&gt;.
+Cela va créer un environnement virtuel dans le répertoire &lt;code&gt;venv&lt;/code&gt; que vous pourrez activez quand vous voulez.
+Si la commande &lt;code&gt;virtualenv&lt;/code&gt; n’est pas connue directement, utilisez à la place &lt;code&gt;$ python3 -m venv venv&lt;/code&gt;, cela va créer un environnement virtuel &lt;code&gt;venv&lt;/code&gt;, exactement comme la première commande.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Avant d’activer votre environnement virtuel, ajoutez le répertoire &lt;code&gt;venv&lt;/code&gt; à votre &lt;code&gt;.gitignore&lt;/code&gt; pour ne pas le commiter&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Activez votre environnement virtuel de la manière suivante : &lt;code&gt;source venv/bin/activate&lt;/code&gt;. &lt;strong&gt;Attention&lt;/strong&gt; Si vous êtes sous windows, pour activer l’environnement virtuel, il est possible que la commande soit différente et qu’il faille aller chercher le &lt;code&gt;venv\bin\activate.bat&lt;/code&gt;, si vous utilisez le sous-système linux sous windows, ça devrait être la même chose.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Une fois que le virtualenv est activé, vous pouvez installer le framework &lt;code&gt;pytest&lt;/code&gt; pour écrire des tests unitaires.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Activez votre virtualenv et installez &lt;code&gt;pytest&lt;/code&gt; avec la commande &lt;code&gt;pip install pytest&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_coo_diagramme_de_classe&#34;&gt;COO - Diagramme de classe&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Encore une fois, nous allons utiliser un diagramme de classe pour représenter les différents éléments proposés par le langage.
+Nous allons directement considérer les opérations binaires, opération unaire ainsi que l’utilisation et la définition de variables (donc Expressions, Statements, …​)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Proposez un diagramme de classe représentant le système. Que peut-on remarquer par rapport aux types définit en OCaml ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_just_do_it&#34;&gt;Just do it&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Écrire les tests et implémenter MatL en Python. Pour faire ceci, il est nécessaire de faire deux
+choses fondamentales :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez les classes correspondantes à tout les types d’expression, statements, …​ de MatL&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Donner des méthodes d’évaluation sur chacun de ces types pour calculer le résultat du tout.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez les tests unitaires pour l’évaluation du langage.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Quel est l’intérêt d’avoir une grosse hiérarchie de classe ?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_sil_vous_reste_du_temps&#34;&gt;S’il vous reste du temps&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Normalement, si vous avez bien fait le diagramme de classe et que vous avez bien compris le principe de l’objet ici, le TP devrait être assez court.
+On va donc prendre du temps pour implémenter un simple analyseur de code qui permettra statiquement de vérifier que les variables utilisées ont bien été définies.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Pour implémenter facilement ce comportement, nous avons besoin de traverser l’AST MatL.
+Nous allons utiliser pour ceci le principe d’un visiteur.
+Vous avez, au choix, la possibilité de coder le pattern visiteur ou, pour éviter de réimplémenter un tel comportement, d’utiliser le &lt;code&gt;singledispatch&lt;/code&gt; proposé par Python.
+Si vous décidez d’utiliser le &lt;code&gt;singledispatch&lt;/code&gt;, cherchez
+une documentation sur le net (c’est pas ce qui manque).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Comment représenter les erreurs dans l’analyse de l’AST ? Proposer un type conservant les
+informations nécessaires.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Implémenter l’analyse de l’AST en utilisant le single dispatch.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/courses/c3p/spec/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/courses/c3p/spec/</guid>
+      <description>&lt;div id=&#34;preamble&#34;&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Dans ce TP, nous allons faire de la génération de code Python à partir de code Python en utilisatn Python.
+Le but du TP sera de générer du code Python à partir de classes Pythons qui serviront de “spécification”, c’est à dire que ces classes vont avoir peu d’information, mais ces informations vont nous servir à dériver du code.
+Le TP se découpe en deux parties, une première partie d’introspection et collecte d’information, puis une génération de texte qui sera du code Python.
+S’il vous reste du temps, vous pourrez effectuer une dernière partie sur la compilation en mémoire du code.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_une_spécification&#34;&gt;Une spécification ?&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Nous allons considérer directement des classes Python comme étant la spécification du code que nous voulons générer.
+Voilà un exemple de code que nous aimerions pouvoir écrire comme spécification :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;highlight&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;@specification
+class Engine(object):
+  ...
+
+
+@specification
+class Vehicule(object):
+  number_of_wheels = Attribute(int)
+  engine = Attribute(Engine)
+
+
+@specification
+class Car(Vehicule):
+  ...&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Ce code précise que les classes &lt;code&gt;Engine&lt;/code&gt;, &lt;code&gt;Vehicule&lt;/code&gt; et &lt;code&gt;Car&lt;/code&gt; ne sont plus exactement uniquement des classes, mais des &lt;code&gt;@specification&lt;/code&gt;.
+On peut remarquer qu’il y a 2 variables de classe pour &lt;code&gt;Vehicule&lt;/code&gt; qui précise qui représentent 2 attributs de type &lt;code&gt;int&lt;/code&gt; et de type &lt;code&gt;Engine&lt;/code&gt;.
+On voit donc que :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;ulist&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;il y a un décorateur particulier pour préciser qu’une classe est une spécification,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;il y a une classe spécial &lt;code&gt;Attribute&lt;/code&gt; qui est utilisé pour indiquer qu’une variable de classe
+représente un attribut et son type.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;À partir de cette spécification, nous aimerions obtenir le code généré suivant :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;highlight&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;class Engine(object):
+  ...
+
+
+class Vehicule(object):
+  def __init__(self, number_of_wheels=None, engine=None):
+    self.number_of_wheels = number_of_wheels
+    self.engine = engine
+
+  @property
+  def number_of_wheels(self):
+    return self._number_of_wheels
+
+  @number_of_wheels.setter
+  def number_of_wheels(self, value):
+    assert value is None or isinstance(value, int)
+    self._number_of_wheels = value
+
+  @property
+  def engine(self):
+    return self._engine
+
+  @engine.setter
+  def engine(self, value):
+    assert value is None or isinstance(value, Engine)
+    self._engine = value
+
+
+class Car(Vehicule):
+  ...&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_mise_en_place_du_framework&#34;&gt;Mise en place du framework&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Vous allez adopter la même &amp;#34;hiérarchie&amp;#34; de fichiers, pour pouvoir facilement vous y retrouver :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Créez un fichier &lt;code&gt;spec.py&lt;/code&gt; qui sera utilisé pour écrire l’implémentation de notre mini-framework
+de spécification (c’est-à-dire, le décorateur et la classe &lt;code&gt;Attribute&lt;/code&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Maintenant, vous pouvez commencer à coder les artefacts qui vont servir à représenter une spécification.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;On va commencer par coder le décorateur &lt;code&gt;specification&lt;/code&gt;.
+Un décorateur sur une classe en Python s’implémente en réalisant une fonction qui prend en paramètre une classe et qui retourne la classe.
+Ce décorateur va faire très peu de chose, il va juste “marquer” la classe comme étant une spécification en rajoutant un attribut &lt;code&gt;specification&lt;/code&gt; avec la valeur &lt;code&gt;True&lt;/code&gt; sur la classe qu’il décore.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrire le décorateur &lt;code&gt;specification&lt;/code&gt; (c’est-à-dire, écrire une fonction &lt;code&gt;specification&lt;/code&gt; qui prend un paramètre), qui rajoute l’attribut à la classe passée en paramètre et qui retourne la classe modifiée.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrire la classe &lt;code&gt;Attribute&lt;/code&gt; qui va représenter un attribut de la spécification. Cette classe ne possède qu’une référence vers le type qu’elle est censé représenter et rien d’autre.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Maintenant que vous avez les éléments principaux de votre framework qui vous permettent de représenter une spécification, écrivez l’équivalent de la spécification montré au début du TP.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Créez un fichier &lt;code&gt;cars.py&lt;/code&gt; qui contiendra le code de la spécification exemple donné plus haut dans le sujet.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrivez ensuite la spécification d’exemple (celui du véhicule) dans &lt;code&gt;cars.py&lt;/code&gt; en utilisant votre micro-framework &lt;code&gt;spec.py&lt;/code&gt;. (Noubliez pas de faire un &lt;code&gt;from spec import *&lt;/code&gt; en entête de votre fichier &lt;code&gt;cars.py&lt;/code&gt; pour importer les éléments du framework que vous allez utiliser).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_introspection_de_classes_et_de_modules&#34;&gt;Introspection de classes et de modules&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Maintenant que nous sommes capable d’exprimer que des classes sont des spécifications et de décrire des attributs sur ces classes, nous allons proposer les fonctions d’analyse de la spécification pour produire le code associé.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrire une fonction &lt;code&gt;gen_class_header&lt;/code&gt; qui prend une classe spécification en paramètre et qui retourne l’entête de la classe uniquement (pour l’instant) sous forme de chaîne de caractère.
+Cette fonction doit gérer l’héritage en générant correctement le code relatif à l’héritage (Indication, l’attribut &lt;code&gt;&lt;em&gt;bases&lt;/em&gt;&lt;/code&gt; permet d’obtenir la liste des classes dont hérite une classe et pour vous aider dans la génération du texte, regardez l’utilisation de &lt;code&gt;join&lt;/code&gt; qui est une méthode sur les chaines de caractères).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrire une fonction &lt;code&gt;gen_class_body&lt;/code&gt; qui prend une classe spécification en paramètre et qui retourne une liste où chaque élément et l’équivalent du texte de chaque fonctions (faites bien attention à l’indentation, le code de chaque méthode devra être placé ensuite dans une classe).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Écrire une fonction &lt;code&gt;gen_class&lt;/code&gt; qui prend une classe spécification et qui retourne une grande chaine de caractère représentant la classe générée à partir de la classe de spécification.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Maintenant que nous sommes capable de générer le code pour une classe, il ne nous reste plus qu’à être capable de récupérer toutes les classes d’un module.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrire une fonction &lt;code&gt;collect_specifications&lt;/code&gt; qui prend un module en paramètre et qui retourne la liste des classes qui seront analyser plus tard (Indication, l’attribut &lt;code&gt;&lt;em&gt;dict&lt;/em&gt;&lt;/code&gt; d’un module permet de récupérer un dictionnaire des éléments qu’il contient, le module &lt;code&gt;inspect&lt;/code&gt; donne accès à des fonctions qui permettent de tester si un élément qu’il contient et la fonction &lt;code&gt;hasattr(elem, &amp;#39;attr&amp;#39;)&lt;/code&gt; permet de vérifier que l’attribut &lt;code&gt;attr&lt;/code&gt; existe dans &lt;code&gt;elem&lt;/code&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_génération_de_code&#34;&gt;Génération de code&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Nous avons tout ce qu’il nous faut pour pouvoir générer du code à partir d’une spécification :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;ulist&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;nous sommes capable d’analyser des classes de spécification et de retourner le code correspondant,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;nous sommes capable de récupérer toutes les classes spécification depuis un module.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Il ne reste plus qu’à écrire le tout dans un fichier.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Écrire une fonction &lt;code&gt;gen_module&lt;/code&gt; qui prend un module en paramètres, qui collecte la totalité des classes de spécification et qui écrit dans un fichier le code des classes.
+Le nom du fichier sera nommé en fonction du nom du module.
+Par exemple pour &lt;code&gt;cars.py&lt;/code&gt; qui correspond au fichier de
+spécification, le fichier généré sera nommé : &lt;code&gt;cars_gen.py&lt;/code&gt; (Indication, on peut accéder au nom
+d’un module par l’attribut &lt;code&gt;&lt;em&gt;name&lt;/em&gt;&lt;/code&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>/courses/c3p/tp4bis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/courses/c3p/tp4bis/</guid>
@@ -923,7 +1250,7 @@ Le champ &lt;code&gt;#id&lt;/code&gt; donne un numéro unique pour l’objet qui
 &lt;h2 id=&#34;_sérialisation_à_plat&#34;&gt;Sérialisation &amp;#34;à plat&amp;#34;&lt;/h2&gt;
 &lt;div class=&#34;sectionbody&#34;&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;Comme nous l’avons vu en cours, la sérialisation à plat repose sur le fait que tous les éléments sont &amp;#34;à plat&amp;#34;, c’est-à-dire qu’ils sont tous sauvegardés de manière textuelle dans l’équivalent d’une grande liste.&lt;/p&gt;
+&lt;p&gt;Comme nous l’avons vu en cours, la sérialisation à plat repose sur le fait que tous les éléments sont sauvegardés de manière textuelle dans l’équivalent d’une grande liste.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Pour écrire la sérialisation, voilà les questions que vous devez vous poser :&lt;/p&gt;
