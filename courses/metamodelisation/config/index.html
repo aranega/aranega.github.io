@@ -1,0 +1,1434 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  
+  
+  <meta name="generator" content="Wowchemy 5.0.0-beta.0 for Hugo">
+  
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Sérialisation de données Dans ce TP vous allez coder un algorithme de sérialisation. Comme pour les précédents TPs, vous avez le choix entre Java et Python. De manière générale nous allons sérialiser les modèles en JSON selon un schéma de votre choix.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/courses/metamodelisation/config/">
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#EF525B">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js" integrity="sha512-TmDwFLhg3UA4ZG0Eb4MIyT1O1Mb+Oww5kFG0uHqXsdbyZz9DcvYQhKpGgNkamAI6h2lGGZq2X8ftOJvF/XjTUg==" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono%7CLora:400,700%7CRoboto:400,700&display=swap">
+    
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.css">
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-29790075-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-29790075-3', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png">
+
+  <link rel="canonical" href="/courses/metamodelisation/config/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@VincentAranega">
+  <meta property="twitter:creator" content="@VincentAranega">
+  
+  <meta property="og:site_name" content="">
+  <meta property="og:url" content="/courses/metamodelisation/config/">
+  <meta property="og:title" content=" | ">
+  <meta property="og:description" content="Sérialisation de données Dans ce TP vous allez coder un algorithme de sérialisation. Comme pour les précédents TPs, vous avez le choix entre Java et Python. De manière générale nous allons sérialiser les modèles en JSON selon un schéma de votre choix."><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png">
+  <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title> | </title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper  ">
+
+  
+  
+  
+    <script>window.wcDarkLightEnabled = true;</script>
+  
+  
+    <script>const isSiteThemeDark = false;</script>
+  
+  
+  <script src="/js/load-theme.js"></script>
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/"></a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/"></a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#teaching"><span>Teaching</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/courses/"><span>Teaching Resources</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#softwares"><span>Softwares</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1></h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <div class="sect1">
+<h2 id="_sérialisation_de_données">Sérialisation de données</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Dans ce TP vous allez coder un algorithme de sérialisation.
+Comme pour les précédents TPs, vous avez le choix entre Java et Python.
+De manière générale nous allons sérialiser les modèles en JSON selon un schéma de votre choix.
+Regardez comment produire et lire du JSON en Java.
+En Python, tout est intégré dans la bibliothèque standard, mais en Java, il faudra que vous utilisiez une bibliothèque externe.
+En Java, il existe plusieurs bibliothèques, mais on vous conseille d’utiliser <a href="https://github.com/stleary/JSON-java"><code>org.json</code></a> qui est simple à prendre en main.</p>
+</div>
+<div class="paragraph">
+<p>Vous pouvez trouvez au dessous comment paramétrer votre projet Java et Python correctement avec quelques exemples de code de comment utiliser les bibliothèques en Java et Python voici quelques liens :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#_créerparamétrer_son_projet_java">Créer/paramétrer son projet Java</a></p>
+</li>
+<li>
+<p><a href="#_créerparamétrer_son_projet_python">Créer/paramétrer son projet Python</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_créerparamétrer_son_projet_java">Créer/paramétrer son projet Java</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Le paramétrage du projet en Java n’est pas compliqué en soit, mais il peut-être long si vous ne savez pas vraiment où aller.
+Ici, vous trouverez un mini-tuto pour paramétrer correctement votre projet.
+Si vous rencontrez trop de difficultés avec le paramétrage de votre projet, n’hésitez pas à demander ou à passer en Python.
+Pour init votre projet, il va falloire faire deux choses imporantes :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>installer les composants <code>maven</code> pour Eclipse (pas nécessaire si vous les avez déjà),</p>
+</li>
+<li>
+<p>bien créer votre <code>pom.xml</code>.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_installation_des_composants_maven_pour_eclipse">Installation des composants <code>maven</code> pour Eclipse</h3>
+<div class="paragraph">
+<p>Allez dans <code>Help→Install new software…​</code>, dans la partie combo-box <code>Work with</code>, sélectionnez <code>2021-06…​</code> (ou tout autre date que vous avez, mais sélectionnez la plus récente des entrées avec une date).
+Ensuite, dans le champ <code>type filter text</code>, cherchez <code>maven</code>, puis sélectionnez à installer :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>m2e - Maven Integration for Eclipse</code></p>
+</li>
+<li>
+<p><code>m2e connector for mavenarchiver pom properties</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cliquez ensuite sur <code>Finish</code> et poursuivez l’installation.
+Une fois l’installation terminée, redémarrez votre Eclipse.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_création_du_projet_pour_le_tp">Création du projet pour le TP</h3>
+<div class="paragraph">
+<p>Il faut maintenant créer un projet Eclipse-Maven et bien le paramétrer.
+Créez un projet avec <code>File→new→Other→Maven project</code>.
+Sur la page de création du projet Maven, sélectionnez <code>create a simple project (skip archetype selection)</code>.
+Sur la page suivante, entrez les informations suivantes pour la création du projet Maven :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Group ID</code>: <code>org.univ.metamodeling</code></p>
+</li>
+<li>
+<p><code>Artifact ID</code>: <code>serializer</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Une fois le projet créé, ouvrez le fichier <code>pom.xml</code> et utilisez les dépendances suivantes :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="xml"><span class="nt">&lt;dependencies&gt;</span>
+  <span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.json<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>json<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>20210307<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;/dependency&gt;</span>
+  <span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.eclipse.emf<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>org.eclipse.emf.ecore<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.25.0<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;/dependency&gt;</span>
+  <span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.eclipse.emf<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>org.eclipse.emf.ecore.xmi<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.16.0<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+Si vous avez des erreurs sur votre projet, il y a de fortes chances que ça soit des erreurs Maven.
+Pour les résoudre, faites un clic droit sur votre projet, puis sélectionnez <code>Maven→Update project</code> tout en cochant <code>Force Update of Snapshot Releases</code>.
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_utiliser_la_bibliothèque_org_json">Utiliser la bibliothèque <code>org.json</code></h3>
+<div class="paragraph">
+<p>La bibliothèque est plutôt simple à utiliser, on créer des <code>JSONObject</code> et/ou <code>JSONArray</code> qui sont l’équivalent soit de map, soit de collection dans lesquels on rajoute les informations dont on a besoin.
+Voici un exemple de comment créer un objet et un array <code>JSON</code> et de comment les &#34;dumps&#34; en chaine de caractère :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">JSONObject</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JSONObject</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;JSON1&#34;</span><span class="o">,</span> <span class="s">&#34;Hello World!&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;JSON2&#34;</span><span class="o">,</span> <span class="s">&#34;Hello my World!&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;JSON3&#34;</span><span class="o">,</span> <span class="mi">44</span><span class="o">);</span>
+<span class="nc">JSONArray</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JSONArray</span><span class="o">().</span><span class="na">put</span><span class="o">(</span><span class="n">obj</span><span class="o">);</span>
+
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">array</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testez_votre_code">Testez votre code</h3>
+<div class="paragraph">
+<p>Pour tester votre projet, il est plus simple de prendre directement des méta-modèles que vous avez déjà produit.
+Normalement votre code est censé fonctionner avec n’importe quel type d’éléments, méta-modèle ou modèles, il est donc facile d’ouvrir un de vos modèles ou méta-modèles et de voir si tout fonctionne :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">ResourceSet</span> <span class="n">rset</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ResourceSetImpl</span><span class="o">();</span>
+<span class="n">rset</span><span class="o">.</span><span class="na">getResourceFactoryRegistry</span><span class="o">().</span><span class="na">getExtensionToFactoryMap</span><span class="o">().</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;ecore&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="nc">XMIResourceFactoryImpl</span><span class="o">());</span>
+<span class="n">rset</span><span class="o">.</span><span class="na">getResourceFactoryRegistry</span><span class="o">().</span><span class="na">getExtensionToFactoryMap</span><span class="o">().</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;xmi&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="nc">XMIResourceFactoryImpl</span><span class="o">());</span>
+
+<span class="c1">// Enregistrez ici vos méta-modèles si nécessaire</span>
+<span class="c1">//	rset.getPackageRegistry().put(YOUR_MM_URI, YOUR_MM_EPACKAGE)</span>
+
+<span class="nc">Resource</span> <span class="n">r</span> <span class="o">=</span> <span class="n">rset</span><span class="o">.</span><span class="na">getResource</span><span class="o">(</span><span class="no">URI</span><span class="o">.</span><span class="na">createFileURI</span><span class="o">(</span><span class="no">PATH_TO_YOUR_ECORE_OR_XMI_MODEL</span><span class="o">),</span> <span class="kc">true</span><span class="o">);</span>
+<span class="nc">EObject</span> <span class="n">root</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="na">getContents</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+
+<span class="c1">// Ici l&#39;appel à votre code pour la sérialisation</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_créerparamétrer_son_projet_python">Créer/paramétrer son projet Python</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Si vous avez déjà travaillé en Python, il n’y a pas de manipulation spéciale à faire si ce n’est l’activation de votre env. virtuel.
+Si vous n’avez encore jamais travaillé avec Python, il est nécessaire de travailler avec un env. virtuel.
+Regardez sur le TP 2 comment les choses étaient faites.</p>
+</div>
+<div class="sect2">
+<h3 id="_utiliser_la_bibliothèque_intégrée_pour_la_gestion_du_json">Utiliser la bibliothèque intégrée pour la gestion du JSON</h3>
+<div class="paragraph">
+<p>Python propose directement une bibliothèque pour la création d’objets JSON.
+La bibliothèque travaille avec des objets Python de base (dictionnaire pour les objets et liste pour les arrays JSON).
+Le petit morceau de code suivant vous montre comment créer un objet et un array JSON.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="python"><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">&#39;JSON1&#39;</span><span class="p">:</span> <span class="s">&#39;Hello World!&#39;</span><span class="p">,</span>
+  <span class="s">&#39;JSON3&#39;</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">obj</span><span class="p">[</span><span class="s">&#39;JSON2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;Hello my World!&#39;</span>
+<span class="n">array</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">array</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="c1"># ou directement array = [obj]
+</span>
+<span class="n">jsonstring</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">jsonstring</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testez_votre_code_2">Testez votre code</h3>
+<div class="paragraph">
+<p>Pour tester votre projet, il est plus simple de prendre directement des méta-modèles que vous avez déjà produit.
+Normalement votre code est censé fonctionner avec n’importe quel type d’éléments, méta-modèle ou modèles, il est donc facile d’ouvrir un de vos modèles ou méta-modèles et de voir si tout fonctionne :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="python"><span class="kn">from</span> <span class="nn">pyecore.resources</span> <span class="kn">import</span> <span class="n">ResourceSet</span>
+
+<span class="n">rset</span> <span class="o">=</span> <span class="n">ResourceSet</span><span class="p">()</span>
+<span class="c1"># Enregistrez ici vos méta-modèles si nécessaire
+#  rset.metamodel_registry[YOUR_MM_URI] = YOUR_MM_EPACKAGE
+</span>
+<span class="n">resource</span> <span class="o">=</span> <span class="n">rset</span><span class="p">.</span><span class="n">get_resource</span><span class="p">(</span><span class="n">PATH_TO_YOUR_ECORE_OR_XMI_MODEL</span><span class="p">)</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">resource</span><span class="p">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/courses/metamodelisation/config/&amp;text=" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/courses/metamodelisation/config/&amp;t=" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=&amp;body=/courses/metamodelisation/config/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/courses/metamodelisation/config/&amp;title=" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=%20/courses/metamodelisation/config/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/courses/metamodelisation/config/&amp;title=" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      <a href="/"><img class="avatar mr-3 avatar-circle" src="https://s.gravatar.com/avatar/668aa0d0b75bbdc48f9cc653cc3bfd61?s=200')" alt=""></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/"></a></h5>
+      <h6 class="card-subtitle">Associate professor in Computer Sciences</h6>
+      <p class="card-text">My research interests include language engineering, virtual machine and software engineering in general.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:vincent.aranega@univ-lille.fr" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/VincentAranega" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.fr/citations?user=c_Lv5PEAAAAJ" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/aranega" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+    Published with
+    <a href="https://wowchemy.com" target="_blank" rel="noopener">Wowchemy</a>  —
+    the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">
+    open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/wowchemy.min.a30e17c6197f21f7f966f9a6cd022a55.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>
