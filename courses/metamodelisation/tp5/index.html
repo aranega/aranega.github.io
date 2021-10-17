@@ -1,0 +1,1579 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  
+  
+  <meta name="generator" content="Wowchemy 5.0.0-beta.0 for Hugo">
+  
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Note et pré-requis Le but de ce TP va être de produire au moins deux petites transformations de modèles, basées sur les méta-modèles que vous avez pu développer ainsi qu’un moteur de chaînes de transformations MDE-based.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/courses/metamodelisation/tp5/">
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#EF525B">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js" integrity="sha512-TmDwFLhg3UA4ZG0Eb4MIyT1O1Mb+Oww5kFG0uHqXsdbyZz9DcvYQhKpGgNkamAI6h2lGGZq2X8ftOJvF/XjTUg==" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono%7CLora:400,700%7CRoboto:400,700&display=swap">
+    
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.css">
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-29790075-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-29790075-3', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png">
+
+  <link rel="canonical" href="/courses/metamodelisation/tp5/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@VincentAranega">
+  <meta property="twitter:creator" content="@VincentAranega">
+  
+  <meta property="og:site_name" content="">
+  <meta property="og:url" content="/courses/metamodelisation/tp5/">
+  <meta property="og:title" content=" | ">
+  <meta property="og:description" content="Note et pré-requis Le but de ce TP va être de produire au moins deux petites transformations de modèles, basées sur les méta-modèles que vous avez pu développer ainsi qu’un moteur de chaînes de transformations MDE-based."><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png">
+  <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title> | </title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper  ">
+
+  
+  
+  
+    <script>window.wcDarkLightEnabled = true;</script>
+  
+  
+    <script>const isSiteThemeDark = false;</script>
+  
+  
+  <script src="/js/load-theme.js"></script>
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/"></a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/"></a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#teaching"><span>Teaching</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/courses/"><span>Teaching Resources</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#softwares"><span>Softwares</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1></h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <div class="sect1">
+<h2 id="_note_et_pré_requis">Note et pré-requis</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Le but de ce TP va être de produire au moins deux petites transformations de modèles, basées sur les méta-modèles que vous avez pu développer ainsi qu’un moteur de chaînes de transformations MDE-based.</p>
+</div>
+<div class="paragraph">
+<p>Ce TP, un peu plus long que les autres mais est plus &#34;guidé&#34;.
+Il est à faire en utilisant Python, pour des raisons techniques.
+Les moteurs de transformations de modèles utilisant les technologies EMF-Java (ex: ATL, QVTo, Epsilon, Acceleo), sont bien établies et fonctionnent très bien lorsqu’on les utilise de manière localisées, mais leur usage est parfois très lourd : configurations complexes, interfaçage avec divers moteurs complexes, chaînage de transformations complexes à mettre en oeuvre et usage en dehors d’Eclipse vraiment compliqué et pénible.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Pré-requis</dt>
+<dd>
+<p>Si vous n’avez pas travaillé en Python en premier lieux, assurez-vous d’avoir bien les méta-modèles au format <code>.ecore</code> pour ce TP, il faudra générer les méta-modèle PyEcore à partir d’eux. Aussi, créez un virtualenv dédié pour ce TPs si vous ne l’avez pas fait dans les TPs précédents (environnement virtuel Python pour installer des dépendances sans bouleverser votre système).</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_génération_du_code_des_méta_modèles">Génération du code des méta-modèles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Si vous avez le code des méta-modèles déjà générés en Python, vous pouvez sauter cette étape et passer directement à la prochaine section.</p>
+</div>
+<div class="paragraph">
+<p>Si vous n’avez pas le code des méta-modèles en Python, il est nécessaire de les générer.
+Pour faire ça, dans un premier temps, il est intéressant de créer un environnement virtuel.
+Pour créer un environnement virtuel :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>placez-vous dans votre répertoire de travail (celui de votre repository) et tapez la commande suivante : <code>$ virtualenv venv</code> (ou <code>$ python -m venv venv</code>).
+Cela va créer un environnement virtuel dans le répertoire <code>venv</code> que vous pourrez activez quand vous voulez.</p>
+</li>
+<li>
+<p>Avant d’activer votre environnement virtuel, ajoutez le répertoire <code>venv</code> à votre <code>.gitignore</code> pour ne pas le commiter</p>
+</li>
+<li>
+<p>Activez votre environnement virtuel de la manière suivante : <code>source venv/bin/activate</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Vous pouvez maintenant installer les outils nécessaires pour méta-modéliser et travailler avec Ecore de la manière suivante :<br/>
+<code>$ pip install pyecore pyecoregen</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_transformations_de_modèles_avec_motra">Transformations de modèles avec Motra</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>L’année passée vous avez manipulé des transformations de modèles type ATL ou, très certainement, QVTo.
+Ces langages de transformations reposent sur OCL pour la navigation dans les modèles et rajoutent des concepts pour la création/modification/suppression d’éléments dans les modèles manipulés.
+Dans ce TP, vous allez utiliser un nouveau type de langage qui n’est pas, comme ATL, QVT…​ un DSL externe, mais un DSL interne à Python nommé Motra (pour MOdel TRAnsformation).
+Ce DSL repose entièrement sur Python en étendant, d’une certaine manière, le langage et en proposant une sémantique proche de QVTo.
+Motra est toujours considéré comme expérimental, donc si vous trouvez des soucis, n’hésitez pas à nous les remonter directement ou à écrire une issue détaillée sur github.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Activez votre virtualenv et installez la librairie : <code>$ pip install motra</code></p>
+</li>
+<li>
+<p>Regardez les quelques exemples donnés directement sur le repository : <a href="https://github.com/pyecore/motra/tree/main/examples/m2m" class="bare">https://github.com/pyecore/motra/tree/main/examples/m2m</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Vous allez maintenant écrire plusieurs petites transformations (au moins 2) qui seront des transformations &#34;sur-place&#34; et &#34;exogènes&#34;.
+Regardez bien toutes les transformations proposées et sélectionnez celles que vous voulez écrires.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Si vous avez l’idée d’une transformation en particulier, parlez en nous et faites là.
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="sect2">
+<h3 id="_transformation_sur_votre_meta_modèle_de_bd_ou_filesystem_ou_simple_java">Transformation sur votre meta-modèle de BD ou FileSystem ou Simple Java</h3>
+<div class="paragraph">
+<p>Vous pouvez implémenter ces transformations pour le méta-modèle que vous préférez.
+Vous n’avez pas à écrire une seule transformation qui fonctionne avec tout les méta-modèles, ça impliquerait de faire une transformation générique et c’est un poil plus compliqué.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrivez une transformation qui transforme le nom de toutes les tables (ou fichiers ou java classes) de camel case vers snake case majuscule (ex: <code>MyTable</code> deviendra <code>MY_TABLE</code>).</p>
+</li>
+<li>
+<p>Écrivez une transformation qui préfixe le nom de chaque éléments avec un numéro unique (vous pouvez utiliser <code>id(…​)</code> pour obtenir un id unique à partir d’un objet).</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_transformations_sur_simplejava">Transformations sur <code>simplejava</code></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrivez une transformation qui ajoute un attribut <code>id</code> de type <code>String</code> pour chaque objets. Attention à n’introduire l’attribut que pour les classes qui n’héritent d’aucune autre. S’il existe déjà dans la classe un attribut qui commence par <code>id_</code> ou qui s’appelle <code>id</code>, alors la transformation n’ajoutera pas de nouveau l’élément.</p>
+</li>
+<li>
+<p>Écrivez une transformation qui introduit une interface commune possédant une méthode <code>getUUID()</code> à tout les objets. Attention à n’introduire l’interface que pour les classes qui n’héritent d’aucune autre.</p>
+</li>
+<li>
+<p>Écrivez une transformation qui détecte les hiérarchies de classes (arbres d’héritages) et qui rajoute au modèle l’équivalent d’une factory, c’est-à-dire, une classe qui possède une méthode pour créer une instance de chaque classe non abstraite de l’arbre d’héritage découvert.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_transformation_de_simplejava_vers_votre_méta_modèle_de_bd">Transformation de <code>simplejava</code> vers votre méta-modèle de BD</h3>
+<div class="paragraph">
+<p>Vous allez maintenant écrire une transformation qui permet de passer d’un modèle simple Java vers un modèle de base de donnée.
+Voilà les questions à vous poser :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Quels sont les éléments à traduire ?</p>
+</li>
+<li>
+<p>Quelle va être la traduction d’une classe ?</p>
+</li>
+<li>
+<p>Quelle va être la traduction d’un attribut ?</p>
+</li>
+<li>
+<p>Comment gérer l’héritage ?</p>
+</li>
+<li>
+<p>Comment déterminer une clef primaire depuis une classe Java ?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Puis, une fois que vous avez des réponses plutôt précises à ces questions :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrivez la transformation pour passer d’un modèle Java à un modèle de base de données.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_transformation_de_simplejava_vers_votre_méta_modèle_de_système_de_fichiers">Transformation de <code>simplejava</code> vers votre méta-modèle de système de fichiers</h3>
+<div class="paragraph">
+<p>Comme précédemment, les mêmes questions se posent :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Quels sont les éléments à traduire ?</p>
+</li>
+<li>
+<p>Quelle va être la traduction d’un package ?</p>
+</li>
+<li>
+<p>Quelle va être la traduction d’une classe ?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Puis, une fois que vous avez des réponses plutôt précises à ces questions :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrivez la transformation pour passer d’un modèle Java à un modèle de système de fichiers.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_un_moteur_de_chaîne_de_transformations">Un moteur de chaîne de transformations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vous allez développer ici un moteur de chaîne de transformations et expérimenter avec les transformations que vous avez écrites avant.
+Pour modéliser le moteur de chaîne, vous allez modéliser dans un premier temps un méta-modèle Ecore de chaîne de transformations.</p>
+</div>
+<div class="sect2">
+<h3 id="_une_chaîne_simplifiée_de_transformations">Une chaîne simplifiée de transformations</h3>
+<div class="paragraph">
+<p>Une chaîne de transformations est composée de plusieurs opérations.
+Ces opérations peuvent être des transformations de modèles (M2M et M2T) ou une opération de sauvegarde de modèle vers un chemin en particulier.
+Chaque opération possède une relation vers la chaîne qui la contient.
+Chaque opération possède une méthode <code>execute</code> qui prend exactement un paramètre, le modèle sur lequel va s’appliquer l’opération et qui retourne le nouveau modèle.
+Chaque transformation est liée à une transformation Motra (modélisée par un attribut vers un <code>EJavaObject</code> qui sera traduit vers une relation vers un objet Python natif lors de la génération).
+Finalement, la chaîne en elle-même possède une méthode <code>run</code> qui prend en paramètre un chemin vers un fichier et qui retourne le résultat de la dernière opération exécutée.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Modélisez le méta-modèle de chaîne de transformations au format Ecore en utilisant le &#34;ecore diagram tool&#34; sous Eclipse. Pour simplifier les prochaines opérations, utilisez ces valeurs pour le package racine de votre méta-modèle : <code>name=chainengine</code>, <code>nsPrefix=chainengine</code>, <code>nsURI=http://chainengine/1.0</code></p>
+</li>
+<li>
+<p>Une fois que vous avez modélisé votre méta-modèle de chaîne, utilisez la ligne suivante pour générer le code du méta-modèle :<br/>
+<code>$ pyecoregen -e votre_metamodel.ecore -o . --user-module chainengine.mixins</code></p>
+</li>
+<li>
+<p>Copiez le fichier de mixins généré avec cette commande : <code>$ cp chainengine/chainengine_mixins.py.skeleton chainengine/mixins.py</code>. Vous allez écrire le code des méthodes <code>execute</code> et <code>run</code> directement dans ce fichier <code>chainengine/mixins.py</code>, cela évitera, si vous générez plusieurs fois le code de votre méta-modèle, d’écraser le code que vous avez écrit.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Voici un exemple de comment vous pouvez décrire maintenant une chaîne de transformations (pour un méta-modèle, si vous avez modélisé les choses autrement, vous aurez un autre code) :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="python"><span class="kn">from</span> <span class="nn">chainengine</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">transfos</span> <span class="kn">import</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="n">t3</span>  <span class="c1"># on suppose plusieurs transformations
+</span>
+<span class="n">chain</span> <span class="o">=</span> <span class="n">Chain</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;first_chain&#34;</span><span class="p">)</span>
+<span class="n">chain</span><span class="p">.</span><span class="n">operations</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">M2M</span><span class="p">(</span><span class="n">transformation</span><span class="o">=</span><span class="n">t1</span><span class="p">))</span>
+<span class="n">chain</span><span class="p">.</span><span class="n">operations</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">M2M</span><span class="p">(</span><span class="n">transformation</span><span class="o">=</span><span class="n">t2</span><span class="p">))</span>
+<span class="n">chain</span><span class="p">.</span><span class="n">operations</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">SaveModel</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s">&#39;intermediaire.xmi&#39;</span><span class="p">))</span>
+<span class="n">chain</span><span class="p">.</span><span class="n">operations</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">M2M</span><span class="p">(</span><span class="n">transformation</span><span class="o">=</span><span class="n">t1</span><span class="p">))</span>
+<span class="n">chain</span><span class="p">.</span><span class="n">operations</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">M2M</span><span class="p">(</span><span class="n">transformation</span><span class="o">=</span><span class="n">t3</span><span class="p">))</span>
+<span class="n">chain</span><span class="p">.</span><span class="n">operations</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">SaveModel</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s">&#39;final.xmi&#39;</span><span class="p">)))</span>
+<span class="n">chain</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="s">&#39;mon_modele.xmi&#39;</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Actuellement, si vous exécutez ce code, vous allez récupérer une exception vous disant que votre code pour les méthodes <code>run</code> et <code>execute</code> ne sont pas encore implémentées.
+C’est ce que vous allez faire maintenant, mais avant ça, il est nécessaire de comprendre un peu comment Motra lance les transformations, ce qu’il attend en paramètre et ce qu’il retourne.</p>
+</div>
+<div class="sect3">
+<h4 id="_motra_paramètre_dentrée_de_sorties_et_un_resourceset_unique">Motra, paramètre d’entrée, de sorties et un <code>ResourceSet</code> unique</h4>
+<div class="paragraph">
+<p>Lorsque vous avez codé une transformation avec Motra, vous pouvez la lancer de la manière suivante :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="python"><span class="kn">from</span> <span class="nn">pyecore.resources</span> <span class="kn">import</span> <span class="n">ResourceSet</span>
+<span class="kn">from</span> <span class="nn">matransfo</span> <span class="kn">import</span> <span class="n">t</span>  <span class="c1"># import de la transformation
+</span>
+<span class="c1"># En considérant que &#34;t&#34; est définie comme t [in_model, out_model]
+</span><span class="n">rset</span> <span class="o">=</span> <span class="n">ResourceSet</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">in_model</span><span class="o">=</span><span class="s">&#39;path_to_model.xmi&#39;</span><span class="p">,</span> <span class="n">resource_set</span><span class="o">=</span><span class="n">rset</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Il est important de noter que pour lancer la transformation, le nom du modèle d’entrée spécifié lors de la transformation doit-être utilisé.
+Il faut aussi noter que tout au long de la transformation, il faudra gérer une même instance de <code>ResourceSet</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Au début de la méthode <code>run</code> de votre chaîne, ajouter un attribut d’instance <code>resource_set</code> initialisé avec une nouvelle instance de <code>ResourceSet</code>. Cette instance pourra être récupérée par toutes les opérations si elles en ont besoin.</p>
+</li>
+<li>
+<p>À la fin de la méthode <code>run</code> de votre chaîne, affectez la valeur <code>None</code> à votre attribut d’instance <code>resource_set</code>. Cela marque le fait qu’une fois que l’exécution de la chaine est terminée, cet attribut n’a plus de raison d’avoir une valeur non-nulle.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Vous allez coder maintenant les méthodes <code>execute</code> pour chacune des opérations.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrivez la méthode <code>execute</code> de l’opération de sauvegarde de modèle. Pour rappel, cette méthode reçoit en paramètre la resource représentant le modèle qui doit être sauvegardé, doit sauvegarder le modèle (en utilisant la méthode <code>save(output=…​)</code> de la resource), puis retourner la resource passée en paramètre.</p>
+</li>
+<li>
+<p>Écrivez la méthode <code>execute</code> de l’opération d’exécution d’une transformation de modèle. Cette méthode doit :<br/></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>prendre en paramètre un modèle,</p>
+</li>
+<li>
+<p>demander à la transformation le nom de son paramètre d’entrée (récupérable par en utilisant le premier élément de la collection <code>input_defs[0]</code>),</p>
+</li>
+<li>
+<p>construire un dictionnaire avec comme clé le nom du paramètre d’entrée et en valeur associé le paramètre d’entrée de la méthode,</p>
+</li>
+<li>
+<p>récupérer le <code>ResourceSet</code> de la chaîne,</p>
+</li>
+<li>
+<p>exécuter la transformation associé à l’opération avec en paramètre, le resource set récupéré et le dictionnaire que vous avez construit expand avec l’opérateur <code>**</code>. Cela signifie que si votre dictionnaire s’appelle <code>input_dict</code> et votre resource set stocké dans une variable <code>rset</code>, les paramètres passés à l’appel devront être <code>(resource_set=rset, **input_dict)</code>,</p>
+</li>
+<li>
+<p>récupérer le résultat de l’exécution</p>
+</li>
+<li>
+<p>retourner le premier modèle de sortie de la transformation, récupérable via l’attribut <code>outputs[0]</code> du résultat de l’exécution</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>À l’issue de ces 2 méthodes, vous avez presque fini l’écriture de votre moteur de chaîne, il ne vous reste plus qu’à coder le corps de la fonction qui va vous servir à lancer le tout.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrivez la méthode <code>run</code> de votre chaîne. Cette méthode va tout simplement itérer sur toutes les opérations de votre chaîne et passer le résultat de chaque appels comme paramètre de la prochaine opération.</p>
+</li>
+<li>
+<p>Utilisez votre moteur de chaîne pour décrire plusieurs chaînes de transformations en composant avec les transformations que vous avez codé précédemment, ou en utilisant les transformations codées par vos camarade, si vous êtes certains que vous avez des méta-modèles compatibles</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_vers_une_fluent_api_pour_la_création_de_chaînes">Vers une fluent-API pour la création de chaînes</h3>
+<div class="paragraph">
+<p>Avec votre moteur de chaînes, vous êtes en mesure de créer des chaînes complexes et d’observer comment les transformations peuvent-être réutilisés et l’impact du chaînage sur les modèles.
+Cependant, vous pouvez remarquer que la description d’un modèle de chaînes est un peu pénible.
+Ici, vous allez implémenter une fluent-API qui va vous permettre de modéliser plus facilement des chaînes.</p>
+</div>
+<div class="paragraph">
+<p>Les fluent-API sont des APIs proposés pour simplifier l’utilisation de bibliothèques en donnant une abstraction qui permet de très facilement chaîner plusieurs appels pour écrire une &#34;longue phrase&#34; plutôt que plusieurs lignes.
+C’est, par exemple, le cas de l’API de stream de Java et, plus généralement, pour implémenter les patterns builder.</p>
+</div>
+<div class="paragraph">
+<p>Pour faire ceci, vous allez implémenter, dans un module Python séparé (un autre fichier Python), une classe qui servira de point d’entrée pour la création de chaînes.
+Vous nommerez cette classe comme vous voulez, mais voilà à quoi devrait ressembler ce que vous pourrez exprimer une fois que votre fluent-API aura été codée (ici nommé ChainBuilder):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Les parenthèses de début et fin ne sont là que pour pouvoir écrire le code sur
+# plusieurs lignes
+</span><span class="p">(</span><span class="n">ChainBuilder</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;first_chain&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">m2m</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">m2m</span><span class="p">(</span><span class="n">t2</span><span class="p">).</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;intermediaire.xmi&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">m2m</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">m2m</span><span class="p">(</span><span class="n">t3</span><span class="p">).</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;final.xmi&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="s">&#39;mon_modele.xmi&#39;</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrivez une classe permettant de définir une Fluent-API pour votre moteur de chaine.</p>
+</li>
+<li>
+<p>Utilisez votre nouvelle API pour décrire plusieurs chaines de transformations en composant avec les transformations que vous avez codé précédemment, ou en utilisant les transformations codées par vos camarade, si vous êtes certains que vous avez des méta-modèles compatibles</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/courses/metamodelisation/tp5/&amp;text=" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/courses/metamodelisation/tp5/&amp;t=" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=&amp;body=/courses/metamodelisation/tp5/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/courses/metamodelisation/tp5/&amp;title=" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=%20/courses/metamodelisation/tp5/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/courses/metamodelisation/tp5/&amp;title=" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      <a href="/"><img class="avatar mr-3 avatar-circle" src="https://s.gravatar.com/avatar/668aa0d0b75bbdc48f9cc653cc3bfd61?s=200')" alt=""></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/"></a></h5>
+      <h6 class="card-subtitle">Associate professor in Computer Sciences</h6>
+      <p class="card-text">My research interests include language engineering, virtual machine and software engineering in general.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:vincent.aranega@univ-lille.fr" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/VincentAranega" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.fr/citations?user=c_Lv5PEAAAAJ" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/aranega" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+    Published with
+    <a href="https://wowchemy.com" target="_blank" rel="noopener">Wowchemy</a>  —
+    the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">
+    open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/wowchemy.min.a30e17c6197f21f7f966f9a6cd022a55.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>

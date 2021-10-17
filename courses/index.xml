@@ -1418,12 +1418,10 @@ Vous pouvez maintenant charger un modèle instance du méta-modèle enregistré 
 &lt;p&gt;Dans ce TP vous allez coder un algorithme de sérialisation à plat.
 Comme pour les précédents TPs, vous avez le choix entre Java et Python.
 De manière générale, pour simplifier le parsing, nous allons sérialiser les modèles en JSON selon un schéma de votre choix.
-Regardez comment produire et lire du JSON en Java.
-En Python, tout est intégré dans la bibliothèque standard, mais en Java, il faudra que vous utilisiez une bibliothèque externe.
-Regardez celles qui existent et choisissez celle que vous préférez.&lt;/p&gt;
+Vous pouvez trouvez en ligne comment paramétrer correctement votre projet Java et Python avec quelques exemples de code de comment utiliser les bibliothèques en Java et Python vous trouverez les informations en ligne sur la page référençant tout les TPs : &lt;a href=&#34;https://aranega.github.io/courses&#34; class=&#34;bare&#34;&gt;https://aranega.github.io/courses&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;Au TP2, vous avez vu comment lire toutes les informations d’un objet de manière réflexive, cette étape est primordiale pour pouvoir écrire l’algorithme de sérialisation.&lt;/p&gt;
+&lt;p&gt;Au TP2, vous avez vu comment lire toutes les informations d’un objet de manière réflexive, cette étape est importante pour pouvoir écrire l’algorithme de sérialisation.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1435,14 +1433,14 @@ Regardez celles qui existent et choisissez celle que vous préférez.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Deux méta-informations vont devoir être conservées lorsque le modèle est sérialisé.
-Ces informations sont nécessaires pour indiquer certaines choses sur les données, mais elle ne fait pas directement partie de l’objet.
+Pour souvenir, ces informations sont nécessaires pour indiquer certaines choses sur les données (type, identifiant unique), mais elle ne fait pas directement partie de l’objet.
 On parle donc de méta-information, elle est utile, mais pas directement comprise dans les objets.
 Ici, deux méta-informations vont être nécessaires :&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;ulist&#34;&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;un identifiant unique qui sera donné à chaque objet afin de pouvoir le référencer dans le modèle,&lt;/p&gt;
+&lt;p&gt;un identifiant unique qui sera donné à chaque objet afin de pouvoir le référencer dans le modèle (un simple numéro sera suffisant pour référencer les informations à travers le fichier),&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;une référence vers la méta-classe de l’objet.&lt;/p&gt;
@@ -1450,11 +1448,8 @@ Ici, deux méta-informations vont être nécessaires :&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;Concernant l’identifiant, un simple numéro sera suffisant pour référencer les informations à travers le fichier.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Pour la référence à la méta-classe, plutôt que, comme dans XMI, donner juste le nom de la méta-classe et faire référence à un préfix représentant une référence indirecte vers l’URI du méta-modèle dans lequel se trouve la méta-classe en question, vous allez utiliser le format suivant : &lt;code&gt;URI_DU_MM#NOM_DE_LA_MC&lt;/code&gt;.
-Si on prend l’exemple de java simplifié, il serait possible de sérialiser un simple objet classe en JSON de la manière suivante :&lt;/p&gt;
+Si on prend l’exemple de java simplifié, il serait possible de sérialiser un simple objet classe en JSON de la manière suivante (les champs débutant par un &lt;code&gt;#&lt;/code&gt; représentent des méta-informations):&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;listingblock&#34;&gt;
 &lt;div class=&#34;content&#34;&gt;
@@ -1465,18 +1460,13 @@ Si on prend l’exemple de java simplifié, il serait possible de sérialiser un
 &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;Sur cette exemple, les champs débutant par un &lt;code&gt;#&lt;/code&gt; représentent des méta-informations.
-Le champ &lt;code&gt;#metaclass&lt;/code&gt; donne à la fois l’URI du méta-modèle d’où provient la méta-classe et le nom de la méta-classe en elle-même.
-Le champ &lt;code&gt;#id&lt;/code&gt; donne un numéro unique pour l’objet qui est sérialisé.&lt;/p&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&#34;sect1&#34;&gt;
 &lt;h2 id=&#34;_sérialisation_à_plat&#34;&gt;Sérialisation &amp;#34;à plat&amp;#34;&lt;/h2&gt;
 &lt;div class=&#34;sectionbody&#34;&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;Comme nous l’avons vu en cours, la sérialisation à plat repose sur le fait que tous les éléments sont sauvegardés de manière textuelle dans l’équivalent d’une grande liste.&lt;/p&gt;
+&lt;p&gt;Comme nous l’avons vu en cours, la sérialisation à plat repose sur le fait que tous les éléments sont &amp;#34;à plat&amp;#34;, c’est-à-dire qu’ils sont tous sauvegardés de manière textuelle dans l’équivalent d’une grande liste.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Pour écrire la sérialisation, voilà les questions que vous devez vous poser :&lt;/p&gt;
@@ -1490,20 +1480,48 @@ Le champ &lt;code&gt;#id&lt;/code&gt; donne un numéro unique pour l’objet qui
 &lt;p&gt;Dois-je traiter les attributs et références de manières différentes ?&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Comment dois-je gérer les relations many ? Et les relations &amp;#34;opposites&amp;#34; ?&lt;/p&gt;
+&lt;p&gt;Comment dois-je gérer les relations many ?&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Comment dois-je faire référence à un objet au sein du fichier ?&lt;/p&gt;
+&lt;p&gt;Comment puis-je faire référence à un objet au sein du fichier ? (c’est à vous de proposer une solution, plusieurs sont envisageables)&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Est-il possible d’éviter de sauvegarder certaines informations ?&lt;/p&gt;
+&lt;p&gt;Est-il possible d’éviter de sauvegarder certaines informations ? (optionel)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&#34;sect1&#34;&gt;
-&lt;h2 id=&#34;_sil_vous_reste_du_temps&#34;&gt;S’il vous reste du temps&lt;/h2&gt;
+&lt;h2 id=&#34;_quelques_méthodes_qui_peuvent_vous_aider&#34;&gt;Quelques méthodes qui peuvent vous aider&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Comme vous le savez, il existe sur les &lt;code&gt;EObject&lt;/code&gt; plusieurs méthodes qui peuvent vous aider à travailler avec les différentes instances.
+Voici une liste de certaines méthodes qui peuvent vous aider, ou non, tout dépend de ce que vous allez faire (elles à dériver en fonction de si vous utilisez Java ou Python) :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;ulist&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;eSet(…​, …​)/eGet(…​)&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;eAllContents()&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;eStructuralFeatures/eAllStructuralFeatures()&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;eAttributes/eAllAttributes()&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;eReferences/eAllReferences()&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_sil_vous_reste_du_temps_points_bonus&#34;&gt;S’il vous reste du temps (points bonus)&lt;/h2&gt;
 &lt;div class=&#34;sectionbody&#34;&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Vous pouvez essayer d’écrire un algorithme de désérialisation.
@@ -1519,10 +1537,7 @@ Ces algos sont beaucoup moins triviaux à écrire que ceux de la sérialisation 
 &lt;div class=&#34;olist loweralpha&#34;&gt;
 &lt;ol class=&#34;loweralpha&#34; type=&#34;a&#34;&gt;
 &lt;li&gt;
-&lt;p&gt;Écrivez une fonction qui, étant donné cette information est capable de retrouver le méta-modèle à utiliser.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Écrivez une fonction qui, étant donné un nom de méta-classe est capable de retrouver la méta-classe depuis le méta-modèle&lt;/p&gt;
+&lt;p&gt;Écrivez une fonction qui, étant donné une ref à une méta-classe dans votre format, est capable de retrouver la méta-classe dans le méta-modèle&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Écrivez une fonction qui est capable de créer une instance de cette méta-classe, de lire les informations de l’objet depuis le fichier&lt;/p&gt;
@@ -1539,6 +1554,232 @@ Ces algos sont beaucoup moins triviaux à écrire que ceux de la sérialisation 
     
     <item>
       <title></title>
+      <link>/courses/metamodelisation/tp4_reco/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/courses/metamodelisation/tp4_reco/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_sérialisation_de_données&#34;&gt;Sérialisation de données&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Dans ce TP vous allez coder un algorithme de sérialisation.
+Comme pour les précédents TPs, vous avez le choix entre Java et Python.
+De manière générale nous allons sérialiser les modèles en JSON selon un schéma de votre choix.
+Regardez comment produire et lire du JSON en Java.
+En Python, tout est intégré dans la bibliothèque standard, mais en Java, il faudra que vous utilisiez une bibliothèque externe.
+En Java, il existe plusieurs bibliothèques, mais on vous conseille d’utiliser &lt;a href=&#34;https://github.com/stleary/JSON-java&#34;&gt;&lt;code&gt;org.json&lt;/code&gt;&lt;/a&gt; qui est simple à prendre en main.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Vous pouvez trouvez au dessous comment paramétrer votre projet Java et Python correctement avec quelques exemples de code de comment utiliser les bibliothèques en Java et Python voici quelques liens :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;ulist&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;#_créerparamétrer_son_projet_java&#34;&gt;Créer/paramétrer son projet Java&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;#_créerparamétrer_son_projet_python&#34;&gt;Créer/paramétrer son projet Python&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_créerparamétrer_son_projet_java&#34;&gt;Créer/paramétrer son projet Java&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Le paramétrage du projet en Java n’est pas compliqué en soit, mais il peut-être long si vous ne savez pas vraiment où aller.
+Ici, vous trouverez un mini-tuto pour paramétrer correctement votre projet.
+Si vous rencontrez trop de difficultés avec le paramétrage de votre projet, n’hésitez pas à demander ou à passer en Python.
+Pour init votre projet, il va falloire faire deux choses imporantes :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;olist arabic&#34;&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;installer les composants &lt;code&gt;maven&lt;/code&gt; pour Eclipse (pas nécessaire si vous les avez déjà),&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;bien créer votre &lt;code&gt;pom.xml&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect2&#34;&gt;
+&lt;h3 id=&#34;_installation_des_composants_maven_pour_eclipse&#34;&gt;Installation des composants &lt;code&gt;maven&lt;/code&gt; pour Eclipse&lt;/h3&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Allez dans &lt;code&gt;Help→Install new software…​&lt;/code&gt;, dans la partie combo-box &lt;code&gt;Work with&lt;/code&gt;, sélectionnez &lt;code&gt;2021-06…​&lt;/code&gt; (ou tout autre date que vous avez, mais sélectionnez la plus récente des entrées avec une date).
+Ensuite, dans le champ &lt;code&gt;type filter text&lt;/code&gt;, cherchez &lt;code&gt;maven&lt;/code&gt;, puis sélectionnez à installer :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;ulist&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;m2e - Maven Integration for Eclipse&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;m2e connector for mavenarchiver pom properties&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Cliquez ensuite sur &lt;code&gt;Finish&lt;/code&gt; et poursuivez l’installation.
+Une fois l’installation terminée, redémarrez votre Eclipse.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect2&#34;&gt;
+&lt;h3 id=&#34;_création_du_projet_pour_le_tp&#34;&gt;Création du projet pour le TP&lt;/h3&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Il faut maintenant créer un projet Eclipse-Maven et bien le paramétrer.
+Créez un projet avec &lt;code&gt;File→new→Other→Maven project&lt;/code&gt;.
+Sur la page de création du projet Maven, sélectionnez &lt;code&gt;create a simple project (skip archetype selection)&lt;/code&gt;.
+Sur la page suivante, entrez les informations suivantes pour la création du projet Maven :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;ulist&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Group ID&lt;/code&gt;: &lt;code&gt;org.univ.metamodeling&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Artifact ID&lt;/code&gt;: &lt;code&gt;serializer&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Une fois le projet créé, ouvrez le fichier &lt;code&gt;pom.xml&lt;/code&gt; et utilisez les dépendances suivantes :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;rouge highlight&#34;&gt;&lt;code data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;dependencies&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.json&lt;span class=&#34;nt&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;json&lt;span class=&#34;nt&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;20210307&lt;span class=&#34;nt&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.eclipse.emf&lt;span class=&#34;nt&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;org.eclipse.emf.ecore&lt;span class=&#34;nt&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;2.25.0&lt;span class=&#34;nt&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.eclipse.emf&lt;span class=&#34;nt&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;org.eclipse.emf.ecore.xmi&lt;span class=&#34;nt&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;2.16.0&lt;span class=&#34;nt&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/dependencies&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;admonitionblock important&#34;&gt;
+&lt;table&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td class=&#34;icon&#34;&gt;
+&lt;div class=&#34;title&#34;&gt;Important&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class=&#34;content&#34;&gt;
+Si vous avez des erreurs sur votre projet, il y a de fortes chances que ça soit des erreurs Maven.
+Pour les résoudre, faites un clic droit sur votre projet, puis sélectionnez &lt;code&gt;Maven→Update project&lt;/code&gt; tout en cochant &lt;code&gt;Force Update of Snapshot Releases&lt;/code&gt;.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect2&#34;&gt;
+&lt;h3 id=&#34;_utiliser_la_bibliothèque_org_json&#34;&gt;Utiliser la bibliothèque &lt;code&gt;org.json&lt;/code&gt;&lt;/h3&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;La bibliothèque est plutôt simple à utiliser, on créer des &lt;code&gt;JSONObject&lt;/code&gt; et/ou &lt;code&gt;JSONArray&lt;/code&gt; qui sont l’équivalent soit de map, soit de collection dans lesquels on rajoute les informations dont on a besoin.
+Voici un exemple de comment créer un objet et un array &lt;code&gt;JSON&lt;/code&gt; et de comment les &amp;#34;dumps&amp;#34; en chaine de caractère :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;rouge highlight&#34;&gt;&lt;code data-lang=&#34;java&#34;&gt;&lt;span class=&#34;nc&#34;&gt;JSONObject&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;obj&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;JSONObject&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+                &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;JSON1&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Hello World!&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+                &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;JSON2&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Hello my World!&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+                &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;JSON3&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;44&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;nc&#34;&gt;JSONArray&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;JSONArray&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;obj&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;nc&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;toString&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect2&#34;&gt;
+&lt;h3 id=&#34;_testez_votre_code&#34;&gt;Testez votre code&lt;/h3&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Pour tester votre projet, il est plus simple de prendre directement des méta-modèles que vous avez déjà produit.
+Normalement votre code est censé fonctionner avec n’importe quel type d’éléments, méta-modèle ou modèles, il est donc facile d’ouvrir un de vos modèles ou méta-modèles et de voir si tout fonctionne :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;rouge highlight&#34;&gt;&lt;code data-lang=&#34;java&#34;&gt;&lt;span class=&#34;nc&#34;&gt;ResourceSet&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ResourceSetImpl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getResourceFactoryRegistry&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getExtensionToFactoryMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ecore&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;XMIResourceFactoryImpl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getResourceFactoryRegistry&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getExtensionToFactoryMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;xmi&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;XMIResourceFactoryImpl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// Enregistrez ici vos méta-modèles si nécessaire&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;//	rset.getPackageRegistry().put(YOUR_MM_URI, YOUR_MM_EPACKAGE)&lt;/span&gt;
+
+&lt;span class=&#34;nc&#34;&gt;Resource&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;r&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getResource&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;URI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;createFileURI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;PATH_TO_YOUR_ECORE_OR_XMI_MODEL&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;nc&#34;&gt;EObject&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;root&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getContents&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// Ici l&amp;#39;appel à votre code pour la sérialisation&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect1&#34;&gt;
+&lt;h2 id=&#34;_créerparamétrer_son_projet_python&#34;&gt;Créer/paramétrer son projet Python&lt;/h2&gt;
+&lt;div class=&#34;sectionbody&#34;&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Si vous avez déjà travaillé en Python, il n’y a pas de manipulation spéciale à faire si ce n’est l’activation de votre env. virtuel.
+Si vous n’avez encore jamais travaillé avec Python, il est nécessaire de travailler avec un env. virtuel.
+Regardez sur le TP 2 comment les choses étaient faites.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect2&#34;&gt;
+&lt;h3 id=&#34;_utiliser_la_bibliothèque_intégrée_pour_la_gestion_du_json&#34;&gt;Utiliser la bibliothèque intégrée pour la gestion du JSON&lt;/h3&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Python propose directement une bibliothèque pour la création d’objets JSON.
+La bibliothèque travaille avec des objets Python de base (dictionnaire pour les objets et liste pour les arrays JSON).
+Le petit morceau de code suivant vous montre comment créer un objet et un array JSON.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;rouge highlight&#34;&gt;&lt;code data-lang=&#34;python&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;json&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;obj&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;s&#34;&gt;&amp;#39;JSON1&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;Hello World!&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;s&#34;&gt;&amp;#39;JSON3&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;44&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;obj&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;JSON2&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;Hello my World!&amp;#39;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;obj&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# ou directement array = [obj]
+&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;jsonstring&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;json&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dumps&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;jsonstring&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;sect2&#34;&gt;
+&lt;h3 id=&#34;_testez_votre_code_2&#34;&gt;Testez votre code&lt;/h3&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Pour tester votre projet, il est plus simple de prendre directement des méta-modèles que vous avez déjà produit.
+Normalement votre code est censé fonctionner avec n’importe quel type d’éléments, méta-modèle ou modèles, il est donc facile d’ouvrir un de vos modèles ou méta-modèles et de voir si tout fonctionne :&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;listingblock&#34;&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;pre class=&#34;rouge highlight&#34;&gt;&lt;code data-lang=&#34;python&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pyecore.resources&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ResourceSet&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ResourceSet&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Enregistrez ici vos méta-modèles si nécessaire
+#  rset.metamodel_registry[YOUR_MM_URI] = YOUR_MM_EPACKAGE
+&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_resource&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PATH_TO_YOUR_ECORE_OR_XMI_MODEL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;contents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>/courses/metamodelisation/tp5/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/courses/metamodelisation/tp5/</guid>
@@ -1546,17 +1787,18 @@ Ces algos sont beaucoup moins triviaux à écrire que ceux de la sérialisation 
 &lt;h2 id=&#34;_note_et_pré_requis&#34;&gt;Note et pré-requis&lt;/h2&gt;
 &lt;div class=&#34;sectionbody&#34;&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;Le but de ce TP va être de produire plusieurs petites transformations de modèles, basées sur les méta-modèles que vous avez pu développer ainsi qu’un moteur de chaînes de transformations MDE-based.&lt;/p&gt;
+&lt;p&gt;Le but de ce TP va être de produire au moins deux petites transformations de modèles, basées sur les méta-modèles que vous avez pu développer ainsi qu’un moteur de chaînes de transformations MDE-based.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;Ce TP, un peu plus long que les autres, est à faire en utilisant Python, pour des raisons techniques.
+&lt;p&gt;Ce TP, un peu plus long que les autres mais est plus &amp;#34;guidé&amp;#34;.
+Il est à faire en utilisant Python, pour des raisons techniques.
 Les moteurs de transformations de modèles utilisant les technologies EMF-Java (ex: ATL, QVTo, Epsilon, Acceleo), sont bien établies et fonctionnent très bien lorsqu’on les utilise de manière localisées, mais leur usage est parfois très lourd : configurations complexes, interfaçage avec divers moteurs complexes, chaînage de transformations complexes à mettre en oeuvre et usage en dehors d’Eclipse vraiment compliqué et pénible.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;dlist&#34;&gt;
 &lt;dl&gt;
 &lt;dt class=&#34;hdlist1&#34;&gt;Pré-requis&lt;/dt&gt;
 &lt;dd&gt;
-&lt;p&gt;Si vous n’avez pas travaillé en Python en premier lieux, assurez-vous d’avoir bien les méta-modèles au format &lt;code&gt;.ecore&lt;/code&gt; pour ce TP, il faudra générer les méta-modèle PyEcore à partir d’eux. Aussi, créez un virtualenv dédié pour ce TPs (environnement virtuel Python pour installer des dépendances sans bouleverser votre système).&lt;/p&gt;
+&lt;p&gt;Si vous n’avez pas travaillé en Python en premier lieux, assurez-vous d’avoir bien les méta-modèles au format &lt;code&gt;.ecore&lt;/code&gt; pour ce TP, il faudra générer les méta-modèle PyEcore à partir d’eux. Aussi, créez un virtualenv dédié pour ce TPs si vous ne l’avez pas fait dans les TPs précédents (environnement virtuel Python pour installer des dépendances sans bouleverser votre système).&lt;/p&gt;
 &lt;/dd&gt;
 &lt;/dl&gt;
 &lt;/div&gt;
@@ -1576,7 +1818,8 @@ Pour créer un environnement virtuel :&lt;/p&gt;
 &lt;div class=&#34;olist arabic&#34;&gt;
 &lt;ol class=&#34;arabic&#34;&gt;
 &lt;li&gt;
-&lt;p&gt;placez-vous dans votre répertoire de travail (celui de votre repository) et tapez la commande suivante : &lt;code&gt;$ virtualenv venv&lt;/code&gt;. Cela va créer un environnement virtuel dans le répertoire &lt;code&gt;venv&lt;/code&gt; que vous pourrez activez quand vous voulez.&lt;/p&gt;
+&lt;p&gt;placez-vous dans votre répertoire de travail (celui de votre repository) et tapez la commande suivante : &lt;code&gt;$ virtualenv venv&lt;/code&gt; (ou &lt;code&gt;$ python -m venv venv&lt;/code&gt;).
+Cela va créer un environnement virtuel dans le répertoire &lt;code&gt;venv&lt;/code&gt; que vous pourrez activez quand vous voulez.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Avant d’activer votre environnement virtuel, ajoutez le répertoire &lt;code&gt;venv&lt;/code&gt; à votre &lt;code&gt;.gitignore&lt;/code&gt; pour ne pas le commiter&lt;/p&gt;
@@ -1613,17 +1856,34 @@ Motra est toujours considéré comme expérimental, donc si vous trouvez des sou
 &lt;/ol&gt;
 &lt;/div&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;Vous allez maintenant écrire plusieurs petites transformations qui seront des transformations &amp;#34;sur-place&amp;#34; et &amp;#34;exogènes&amp;#34;.&lt;/p&gt;
+&lt;p&gt;Vous allez maintenant écrire plusieurs petites transformations (au moins 2) qui seront des transformations &amp;#34;sur-place&amp;#34; et &amp;#34;exogènes&amp;#34;.
+Regardez bien toutes les transformations proposées et sélectionnez celles que vous voulez écrires.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;admonitionblock note&#34;&gt;
+&lt;table&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td class=&#34;icon&#34;&gt;
+&lt;div class=&#34;title&#34;&gt;Note&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class=&#34;content&#34;&gt;
+Si vous avez l’idée d’une transformation en particulier, parlez en nous et faites là.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;div class=&#34;sect2&#34;&gt;
-&lt;h3 id=&#34;_transformation_sur_votre_meta_modèle_de_bd&#34;&gt;Transformation sur votre meta-modèle de BD&lt;/h3&gt;
+&lt;h3 id=&#34;_transformation_sur_votre_meta_modèle_de_bd_ou_filesystem_ou_simple_java&#34;&gt;Transformation sur votre meta-modèle de BD ou FileSystem ou Simple Java&lt;/h3&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Vous pouvez implémenter ces transformations pour le méta-modèle que vous préférez.
+Vous n’avez pas à écrire une seule transformation qui fonctionne avec tout les méta-modèles, ça impliquerait de faire une transformation générique et c’est un poil plus compliqué.&lt;/p&gt;
+&lt;/div&gt;
 &lt;div class=&#34;olist arabic&#34;&gt;
 &lt;ol class=&#34;arabic&#34;&gt;
 &lt;li&gt;
-&lt;p&gt;Écrivez une transformation qui transforme le nom de toutes les tables de camel case vers snake case majuscule (ex: &lt;code&gt;MyTable&lt;/code&gt; deviendra &lt;code&gt;MY_TABLE&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Écrivez une transformation qui transforme le nom de toutes les tables (ou fichiers ou java classes) de camel case vers snake case majuscule (ex: &lt;code&gt;MyTable&lt;/code&gt; deviendra &lt;code&gt;MY_TABLE&lt;/code&gt;).&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Écrivez&lt;/p&gt;
+&lt;p&gt;Écrivez une transformation qui préfixe le nom de chaque éléments avec un numéro unique (vous pouvez utiliser &lt;code&gt;id(…​)&lt;/code&gt; pour obtenir un id unique à partir d’un objet).&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
